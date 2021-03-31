@@ -81,7 +81,7 @@ Compile and execute the `Arduino/Arduino_Controller.ino` file on a arduino board
 
 <h2><strong>Circuit Diagram</h2></strong>
 <div align="center">
-<img src="Readme_Assets\Arduino_Circuit.jpg"> 
+<img src="Readme_Assets\Arduino_Circuit.JPG"> 
 </div>
 <br>
 
