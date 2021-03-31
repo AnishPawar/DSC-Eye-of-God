@@ -72,7 +72,7 @@ Future<void> toFlask(CameraImage image) async {
           if (item == detected) {
             MultipartRequest request = MultipartRequest(
                 'POST', Uri.parse('http://192.168.0.103:5000/api'));
-
+            // Outdoor Navigation IP
             request.files.add(MultipartFile.fromString("Counter", img64));
 
             request.fields["x"] = gast[0];
@@ -126,7 +126,7 @@ Future<void> toFlask(CameraImage image) async {
         print("Going to die");
         MultipartRequest request1 = MultipartRequest(
             'POST', Uri.parse('http://192.168.0.103:5000/back'));
-
+        // Indoor Navigation IP
         request1.files.add(MultipartFile.fromString("Counter", img64));
 
         request1.fields["x"] = gast[0];
