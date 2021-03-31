@@ -1,7 +1,8 @@
 <h1 align="center"> :eye: Eye of God :eye:</h1>
 
 <div align="center">
-
+<img src="Readme_Assets\Logo.png"> 
+</div>
 
 <br>
 
@@ -97,12 +98,24 @@ Compile and execute the `Arduino/Arduino_Controller.ino` file on a arduino board
 
 4.	Run the Flutter Application on an Android phone and mount it to a VR headset.
 
+5. Press the button on the belt to activate speech input and dictate your destination.
+
+6. Follow the commands dictated by the app to reach the destination.
+
 <h3><strong>For Indoor Navigation:<h3></strong>
 
 1.	Run `backend.py` and `go_in.py` on a local machine. (Make sure the received_images folder is empty before each run and both the devices are connected to the same network)
+
 2.	Change the IP to the IP of local machine in flask_helpers/sendToFlask.dart (paste it in place of X --> http://X:5000/back) in the Indoor section.
+
 3.	Turn on the belt and pair the android device to HC05 via Bluetooth.
+
 4.	Run the Flutter Application on an Android phone and mount it to a VR headset.
+
+5. Press the button on the belt to activate speech input and dictate "Start Indoor Navigation".
+
+6. Follow the pulsating motor to reach your destination.
+
 ---
 <h2><strong>App Screenshots</strong>
 
