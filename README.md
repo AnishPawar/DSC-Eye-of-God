@@ -103,6 +103,13 @@ Compile and execute the `Arduino/Arduino_Controller.ino` file on a arduino board
 2.	Change the IP to the IP of local machine in flask_helpers/sendToFlask.dart (paste it in place of X --> http://X:5000/back) in the Indoor section.
 3.	Turn on the belt and pair the android device to HC05 via Bluetooth.
 4.	Run the Flutter Application on an Android phone and mount it to a VR headset.
+---
+<h2><strong>App Screenshots</strong>
+<strong>Circuit Diagram</strong>
+<div align="center">
+<img src="Readme_Assets\App_Screenshot.png"> 
+</div>
+
 
 ---
 <h2>References</h2>
