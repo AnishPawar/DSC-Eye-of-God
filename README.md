@@ -1,7 +1,7 @@
 <h1 align="center"> :eye: Eye of God :eye:</h1>
 
 <div align="center">
-<img src="Readme_Assets/Logo.png"> 
+<img src="Readme_Assets\Logo.png"> 
 </div>
 
 <br>
