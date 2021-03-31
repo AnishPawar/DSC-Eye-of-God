@@ -105,11 +105,16 @@ Compile and execute the `Arduino/Arduino_Controller.ino` file on a arduino board
 4.	Run the Flutter Application on an Android phone and mount it to a VR headset.
 ---
 <h2><strong>App Screenshots</strong>
-<strong>Circuit Diagram</strong>
+
+* Front end
 <div align="center">
 <img src="Readme_Assets\App_Screenshot.png"> 
 </div>
 
+* Backend
+<div align="center">
+<img src="Readme_Assets\Backend.png"> 
+</div>
 
 ---
 <h2>References</h2>
