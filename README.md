@@ -45,8 +45,16 @@ This innovative use of technology can help them feel more empowered and independ
 ---
 
 <h2><strong>App Workflow</h2></strong>
+
+* Outdoor Navigation
 <div align="center">
-<img src="Readme_Assets\WorkFlow.png"> 
+<img src="Readme_Assets\Outdoor_Workflow.png"> 
+</div>
+<br>
+
+* Indoor Navigation
+<div align="center">
+<img src="Readme_Assets\Indoor_Workflow.png"> 
 </div>
 <br>
 
@@ -145,11 +153,13 @@ https://create.arduino.cc/projecthub/reanimationxp/how-to-multithread-an-arduino
 <br>
 
 ---
+
 <br>
 Link to the Demo Video:
 [Eye of God](https://youtu.be/heCKjZSQmQY)
 <br>
 ---
+
 <br>
 <h3 align="center"><b>Developed by Team Hack Inversion</b></h3>
 
