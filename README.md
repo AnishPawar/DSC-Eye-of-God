@@ -98,7 +98,7 @@ Compile and execute the `Arduino/Arduino_Controller.ino` file on a arduino board
 
 4.	Run the Flutter Application on an Android phone and mount it to a VR headset.
 
-5. Press the button on the belt to activate speech input and dictate your destination.
+5. Press the button on the belt to activate speech input and dictate your destination starting with "Take me to".
 
 6. Follow the commands dictated by the app to reach the destination.
 
