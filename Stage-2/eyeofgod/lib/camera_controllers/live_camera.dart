@@ -30,6 +30,8 @@ BluetoothConnection connection;
 double latitude = 19.079790;
 double longitude = 72.904050;
 enum TtsState { playing, stopped }
+final GlobalKey<_LiveFeedState> mainkey = GlobalKey();
+List<int> x = globals.colors;
 
 class LiveFeed extends StatefulWidget {
   final List<CameraDescription> cameras;
@@ -312,6 +314,16 @@ class _LiveFeedState extends State<LiveFeed> {
     );
   }
 
+  void doSomething() {
+    doingSomething();
+  }
+
+  void doingSomething() {
+    setState(() {
+      globals.colors;
+    });
+  }
+
   void path_match(double cur_lat, double cur_lng) {
     String inst =
         "You are not on the correct route to your destination. Please turn around";
@@ -359,6 +371,12 @@ class _LiveFeedState extends State<LiveFeed> {
     print("setuppos = $destinationPos");
   }
 
+  void refresh() {
+    setState(() {
+      x = globals.colors;
+    });
+  }
+
   static final CameraPosition _currentpos = CameraPosition(
       bearing: 192.8334901395799,
       target: LatLng(latitude, longitude),
@@ -382,7 +400,8 @@ class _LiveFeedState extends State<LiveFeed> {
                   flex: 6,
                   child: Stack(
                     children: [
-                      CameraFeed(widget.cameras, setRecognitions),
+                      CameraFeed(
+                          widget.cameras, setRecognitions, mainkey, refresh),
                       BoundingBox(
                         _recognitions == null ? [] : _recognitions,
                         math.max(_imageWidth, _imageHeight),
@@ -420,6 +439,11 @@ class _LiveFeedState extends State<LiveFeed> {
                     ],
                   ),
                 ),
+                Expanded(child: RaisedButton(onPressed: () {
+                  setState(() {
+                    x = globals.colors;
+                  });
+                }))
               ],
             ),
           ),
@@ -431,7 +455,7 @@ class _LiveFeedState extends State<LiveFeed> {
                   color: Colors.amber,
                   child: Icon(
                     Icons.remove_red_eye_outlined,
-                    color: Colors.white,
+                    color: x[0] == 500 ? Colors.red : Colors.red[x[0]],
                     size: 40,
                   ),
                 ),
@@ -441,7 +465,7 @@ class _LiveFeedState extends State<LiveFeed> {
                   color: Colors.red,
                   child: Icon(
                     Icons.remove_red_eye_outlined,
-                    color: Colors.white,
+                    color: x[1] == 500 ? Colors.red : Colors.red[x[1]],
                     size: 40,
                   ),
                 ),
@@ -451,7 +475,7 @@ class _LiveFeedState extends State<LiveFeed> {
                   color: Colors.green,
                   child: Icon(
                     Icons.remove_red_eye_outlined,
-                    color: Colors.white,
+                    color: x[2] == 500 ? Colors.red : Colors.red[x[2]],
                     size: 40,
                   ),
                 ),
@@ -461,7 +485,7 @@ class _LiveFeedState extends State<LiveFeed> {
                   color: Colors.blue,
                   child: Icon(
                     Icons.remove_red_eye_outlined,
-                    color: Colors.white,
+                    color: x[3] == 500 ? Colors.red : Colors.red[x[3]],
                     size: 40,
                   ),
                 ),

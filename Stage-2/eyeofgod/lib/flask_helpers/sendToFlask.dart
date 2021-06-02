@@ -1,5 +1,6 @@
 import 'package:eyeofgod/LocationMethods/geodes.dart';
 import 'package:eyeofgod/flask_helpers/recog.dart';
+
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'dart:io';
@@ -16,8 +17,11 @@ import 'package:eyeofgod/tflite_helpers/bounding_box.dart';
 
 import 'package:eyeofgod/camera_controllers/live_camera.dart';
 
+int counter = 1;
+
 Future<void> toFlask(CameraImage image) async {
   globals.speech = null;
+
   var imageok = await convertYUV420toImageColor(image);
 
   String img64 = base64Encode(imageok);
@@ -67,13 +71,17 @@ Future<void> toFlask(CameraImage image) async {
     for (int i = 0; i < gastitems.length; i++) i: gastitems[i]
   };
 
+  void notif(var k) {
+    globals.colors = k;
+  }
+
   if (!globals.navMode) {
     if (gastitems.length != 0) {
       for (String detected in gastitems) {
         print("Please");
 
         MultipartRequest request =
-            MultipartRequest('POST', Uri.parse('http://956a84c88371.ngrok.io'));
+            MultipartRequest('POST', Uri.parse('http://4db6ec21913c.ngrok.io'));
         // Outdoor Navigation IP
         request.files.add(MultipartFile.fromString("Counter", img64));
         request.fields["x"] = gast[0];
@@ -83,32 +91,84 @@ Future<void> toFlask(CameraImage image) async {
         request.fields["dClass"] = gast[4];
 
         Response response = await Response.fromStream(await request.send());
-        print("Result: ${response.statusCode}");
-        print("Final OP:${response.body}");
-        print("length is : ${response.body.length}");
-        if (response.body.length != 0) {
-          var split = response.body.split(':');
-          final Map<int, String> values = {
-            for (int i = 0; i < split.length; i++) i: split[i]
-          };
-          print("wtf is this");
 
-          List motorpwms = [0, 0, 0, 0];
-          //int counter = 0;
-          print("values of 0 is : ${values[0]}");
-          motorpwms[int.parse(values[0]) - 1] = values[1];
+        var feedback = jsonDecode(response.body);
+        print("Returned is: $feedback");
 
-          print("PWM: ${motorpwms}");
-          SendMessage().sendMessage(
-              "${motorpwms[0]}:0&${motorpwms[1]}:0&${motorpwms[2]}:0&${motorpwms[3]}:0");
-          globals.speech = values[2].toString();
+        List<int> tempColors = [0, 0, 0, 0];
+        // var k = feedback['1'];
 
-          var SpeakInt = SpeakThis();
-          SpeakInt.initTts();
-          print("OK Working");
-          SpeakInt.speak_tts(values[2]);
-          print("OK Working");
+        for (var i = 1; i < 5; i++) {
+          var motor_reading_pre = feedback["$i"];
+
+          if (motor_reading_pre != null) {
+            var motor_reading = motor_reading_pre[0];
+            print("idiot$motor_reading");
+            if (motor_reading >= 0 && motor_reading <= 25) {
+              globals.colors[i] = 50;
+            } else if (motor_reading >= 26 && motor_reading <= 50) {
+              globals.colors[i] = 100;
+            } else if (motor_reading >= 51 && motor_reading <= 75) {
+              globals.colors[i] = 200;
+            } else if (motor_reading >= 76 && motor_reading <= 100) {
+              globals.colors[i] = 300;
+            } else if (motor_reading >= 101 && motor_reading <= 125) {
+              globals.colors[i] = 400;
+            } else if (motor_reading >= 126 && motor_reading <= 150) {
+              globals.colors[i] = 500;
+            } else if (motor_reading >= 151 && motor_reading <= 175) {
+              globals.colors[i] = 600;
+            } else if (motor_reading >= 176 && motor_reading <= 200) {
+              globals.colors[i] = 700;
+            } else if (motor_reading >= 201 && motor_reading <= 225) {
+              globals.colors[i] = 800;
+            } else if (motor_reading >= 226 && motor_reading <= 255) {
+              globals.colors[i] = 900;
+            }
+          }
         }
+
+        // globals.colors = tempColors;
+        // print("THis is shit: $tempColors");
+        // if (counter % 2 == 0) {
+        //   globals.colors[0] = 600;
+        //   globals.colors[1] = 900;
+        //   globals.colors[2] = 500;
+        //   globals.colors[3] = 50;
+        // } else {
+        //   globals.colors[0] = 50;
+        //   globals.colors[1] = 900;
+        //   globals.colors[2] = 500;
+        //   globals.colors[3] = 50;
+        // }
+        // counter += 1;
+
+        // print("Result: ${response.statusCode}");
+        // print("Final OP:${response.body}");
+        // print("length is : ${response.body.length}");
+        // if (response.body.length != 0) {
+        //   var split = response.body.split(':');
+        //   final Map<int, String> values = {
+        //     for (int i = 0; i < split.length; i++) i: split[i]
+        //   };
+        //   print("wtf is this");
+
+        //   List motorpwms = [0, 0, 0, 0];
+        //   //int counter = 0;
+        //   print("values of 0 is : ${values[0]}");
+        //   motorpwms[int.parse(values[0]) - 1] = values[1];
+
+        //   print("PWM: ${motorpwms}");
+        //   SendMessage().sendMessage(
+        //       "${motorpwms[0]}:0&${motorpwms[1]}:0&${motorpwms[2]}:0&${motorpwms[3]}:0");
+        //   globals.speech = values[2].toString();
+
+        var SpeakInt = SpeakThis();
+        // SpeakInt.initTts();
+        //   print("OK Working");
+        //   SpeakInt.speak_tts(values[2]);
+        //   print("OK Working");
+        // }
       }
     } else {
       // Empty Class
@@ -140,6 +200,7 @@ Future<void> toFlask(CameraImage image) async {
             for (int i = 0; i < split.length; i++) i: split[i]
           };
           SendMessage().sendMessage("${values[0]}");
+          // print("response ${values}");
           // var SpeakInt = SpeakThis();
           // SpeakInt.initTts();
           print("OK Working");

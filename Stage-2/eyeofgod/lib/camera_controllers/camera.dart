@@ -5,6 +5,8 @@ import 'package:tflite/tflite.dart';
 import 'dart:math' as math;
 import 'package:image_picker/image_picker.dart';
 import 'package:eyeofgod/camera_controllers/camera_converter.dart';
+import 'package:eyeofgod/variables/globals.dart' as globals;
+import 'package:eyeofgod/camera_controllers/live_camera.dart';
 
 typedef void Callback(List<dynamic> list, int h, int w);
 
@@ -13,7 +15,11 @@ class CameraFeed extends StatefulWidget {
   final Callback setRecognitions;
   // The cameraFeed Class takes the cameras list and the setRecognitions
   // function as argument
-  CameraFeed(this.cameras, this.setRecognitions);
+  // CameraFeed(this.cameras, this.setRecognitions);
+  final Function() updateColors;
+  CameraFeed(
+      this.cameras, this.setRecognitions, Key key, @required this.updateColors)
+      : super(key: key);
 
   @override
   _CameraFeedState createState() => new _CameraFeedState();
@@ -40,14 +46,17 @@ class _CameraFeedState extends State<CameraFeed> {
         if (!mounted) {
           return;
         }
-        setState(() {});
 
         controller.startImageStream((CameraImage img) {
           if (!isDetecting) {
             isDetecting = true;
-            if (coun % 10 == 0) {
+            if (coun % 3 == 0) {
               print(img);
               toFlask(img);
+              widget.updateColors();
+              setState(() {});
+              // var k  = LiveFeed();
+              // updateColor();
               print("gg${img.width}");
               print("gg1${img.height}");
             }
