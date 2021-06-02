@@ -16,3 +16,5 @@ List<Color> motorfg = [Colors.cyan, Colors.cyan, Colors.cyan, Colors.cyan];
 List<Color> motorbg = [Colors.white, Colors.white, Colors.white, Colors.white];
 
 bool navMode = false;
+
+List<int> colors = [50, 50, 50, 50];
