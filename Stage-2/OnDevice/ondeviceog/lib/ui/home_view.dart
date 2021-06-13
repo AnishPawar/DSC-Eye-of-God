@@ -82,8 +82,8 @@ class _HomeViewState extends State<HomeView> {
           ),
 
           // Bounding boxes
-
-          RotatedBox(quarterTurns: -1, child: boundingBoxes(results)),
+          // boundingBoxes(results),
+          RotatedBox(quarterTurns: 1, child: boundingBoxes(results)),
 
           // Bottom Sheet
           // Align(

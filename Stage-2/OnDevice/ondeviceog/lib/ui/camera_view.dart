@@ -80,8 +80,8 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
     cameras = await availableCameras();
 
     // cameras[0] for rear-camera
-    cameraController =
-        CameraController(cameras[0], ResolutionPreset.low, enableAudio: false);
+    cameraController = CameraController(cameras[0], ResolutionPreset.medium,
+        enableAudio: false);
 
     cameraController.initialize().then((_) async {
       // Stream of image passed to [onLatestImageAvailable] callback
@@ -121,21 +121,23 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
     var screenRatio = screenH / screenW;
     var previewRatio = previewH / previewW;
 
+    print("Previe is: $screenH $screenW");
+
     return OverflowBox(
       maxHeight:
           screenRatio > previewRatio ? screenH : screenW / previewW * previewH,
       maxWidth:
           screenRatio > previewRatio ? screenH / previewH * previewW : screenW,
-      // child: RotatedBox(
-      //   quarterTurns: 1,
-      child: Transform.rotate(
-        angle: math.pi / 2,
-        // scale: cameraController.value.aspectRatio,
-        child: AspectRatio(
-            aspectRatio: cameraController.value.aspectRatio,
-            child: CameraPreview(cameraController)),
+      child: RotatedBox(
+        quarterTurns: 0,
+        child: Transform.rotate(
+          angle: math.pi / 2,
+          // scale: cameraController.value.aspectRatio,
+          child: AspectRatio(
+              aspectRatio: cameraController.value.aspectRatio,
+              child: CameraPreview(cameraController)),
+        ),
       ),
-      // ),
     );
   }
 
