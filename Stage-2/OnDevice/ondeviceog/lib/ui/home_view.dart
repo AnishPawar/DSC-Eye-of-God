@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ondeviceog/tflite/recognition.dart';
-import 'package:ondeviceog/tflite/stats.dart';
-import 'package:ondeviceog/depthModel/depthMapRes.dart';
+import 'package:ondeviceog/OnDevice_ML/tflite/recognition.dart';
+import 'package:ondeviceog/OnDevice_ML/tflite/stats.dart';
+import 'package:ondeviceog/OnDevice_ML/depthModel/depthMapRes.dart';
 import 'package:ondeviceog/ui/box_widget.dart';
 import 'package:ondeviceog/ui/camera_view_singleton.dart';
 import 'package:image/image.dart' as img;

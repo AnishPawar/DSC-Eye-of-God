@@ -1,8 +1,8 @@
 // This is a generated file; do not edit or check into version control.
 FLUTTER_ROOT=/Users/anishpawar/flutter_lib/flutter
-FLUTTER_APPLICATION_PATH=/Volumes/MacOS/DSC/Repo_Final/Backup/OnDevice/ondeviceog
+FLUTTER_APPLICATION_PATH=/Volumes/MacOS/DSC/Repo/DSC-Eye-of-God/Stage-2/OnDevice/ondeviceog
 COCOAPODS_PARALLEL_CODE_SIGN=true
-FLUTTER_TARGET=/Volumes/MacOS/DSC/Repo_Final/Backup/OnDevice/ondeviceog/lib/main.dart
+FLUTTER_TARGET=/Volumes/MacOS/DSC/Repo/DSC-Eye-of-God/Stage-2/OnDevice/ondeviceog/lib/main.dart
 FLUTTER_BUILD_DIR=build
 SYMROOT=${SOURCE_ROOT}/../build/ios
 FLUTTER_BUILD_NAME=1.0.0
@@ -12,4 +12,4 @@ DART_DEFINES=Zmx1dHRlci5pbnNwZWN0b3Iuc3RydWN0dXJlZEVycm9ycz10cnVl,RkxVVFRFUl9XRU
 DART_OBFUSCATION=false
 TRACK_WIDGET_CREATION=true
 TREE_SHAKE_ICONS=false
-PACKAGE_CONFIG=/Volumes/MacOS/DSC/Repo_Final/Backup/OnDevice/ondeviceog/.dart_tool/package_config.json
+PACKAGE_CONFIG=/Volumes/MacOS/DSC/Repo/DSC-Eye-of-God/Stage-2/OnDevice/ondeviceog/.dart_tool/package_config.json

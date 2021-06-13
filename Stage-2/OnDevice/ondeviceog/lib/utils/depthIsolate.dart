@@ -3,10 +3,10 @@ import 'dart:isolate';
 
 import 'package:camera/camera.dart';
 import 'package:image/image.dart' as imageLib;
-import 'package:ondeviceog/tflite/classifier.dart';
+import 'package:ondeviceog/OnDevice_ML/tflite/classifier.dart';
 import 'package:ondeviceog/utils/image_utils.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
-import 'package:ondeviceog/depthModel/depthClass.dart';
+import 'package:ondeviceog/OnDevice_ML/depthModel/depthClass.dart';
 // import 'package:ondeviceog/depthModel/classifier_quant.dart';
 // import 'package:ondeviceog/depthModel/classifier_float.dart';
 

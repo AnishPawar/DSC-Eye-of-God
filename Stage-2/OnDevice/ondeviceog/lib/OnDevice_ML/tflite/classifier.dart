@@ -3,7 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:image/image.dart' as imageLib;
-import 'package:ondeviceog/tflite/recognition.dart';
+import 'package:ondeviceog/OnDevice_ML/tflite/recognition.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
 import 'package:tflite_flutter_helper/tflite_flutter_helper.dart';
 
