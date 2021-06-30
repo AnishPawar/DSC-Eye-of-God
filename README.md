@@ -23,18 +23,18 @@
 
 ---
 <h2><strong>About</h2></strong>
-<p>The World Health Organization put the global figure of visually-impaired and blind people at 285 million. For these people, navigating busy urban landscapes can be extremely challenging.</p>
-
-<p>To offer a solution to the urban-dwelling visually-impaired, we built “Eye of God”. It is an easy-to-use navigation system for visually impaired people, acting as their “virtual-cane” to help them navigate to their destination all by themselves without needing the assistance of other people.  </p>
-
-
-<p>The navigation system comes in two modes: Indoor Navigation and Outdoor Navigation. Indoor navigation is a big deal for blind people. One reason why blind people typically stay close to home is because they sense the world is not made for them. And it would be really wonderful to hear people say, 'I can walk through malls or venues without this sense of hopelessness or of missing information.' 
-
-<strong>Indoor Navigation:</strong> The user is prompted to speak out a labelled destination like General Ward Sign in a Hospital. Once the system recognises the said text, a pulsating vibration will be given on the motor of the belt which is in the direction of the labelled destination. For all the other objects of in the frame, a constant vibration will be produced on detection, to avoid deviation from the path.	  
-
-<strong>Outdoor Navigation:</strong> The user is prompted to speak out the destination, and the most optimal route is calculated. Since blind people are more efficient in hearing and possess stronger perception than normal people, therefore the system is focused on alerting the user through vibration (Haptic) and voice feedback. Step by step sound-based navigation commands are provided along with alerting the user about obstacles in the path through vibration (Haptic Feedback). Two pulses followed by constant vibration will be provided for pre-determined dangerous objects. The system also provides the exact measure (in degrees) of turn along with pulsating haptic feedback through leftmost or the right most motor depending upon the turn to inform the user the correct direction to turn to, to ensure user stays on route.  
+<p>
+The World Health Organization puts the global figure of visually-impaired and blind people at 285 million. For these people, navigating busy urban landscapes can be extremely challenging.  
+To offer a solution to the urban-dwelling visually-impaired, we built “Eye of God”. It is an easy-to-use navigation system for visually impaired people, acting as their “virtual-cane” to help them navigate to their destination all by themselves without needing the assistance of other people.  
+<p>
+One reason why blind people typically stay close to home is because they sense the world is not made for them. It would be really wonderful for blind people to feel they can visit new places on their own, and for them to be able to say, 'I can walk through malls or venues without this sense of hopelessness or of missing information.'  
 </p>
-This innovative use of technology can help them feel more empowered and independent, thus bridging the gap and getting them at par with the sighted ones.  
+<p>The Eye of God navigation system comes in two modes: Indoor Navigation and Outdoor Navigation. </p>
+
+<p><strong>Indoor Navigation:</strong> The user is prompted to speak out a destination like “General Ward Sign” in a hospital. Once the system recognises the said text in the vicinity, a pulsating vibration will be given on the motor of the belt which is in the direction of the destination. For all the other objects in the frame, a constant vibration will be produced on detection, to avoid deviation from the path.
+</p>
+<p><strong>Outdoor Navigation:</strong> The user is prompted to speak out the destination, and the most optimal route is calculated. Since blind people are more efficient in hearing and possess stronger perception than normal people, therefore the system is focused on alerting the user through vibration (Haptic) and voice feedback. Step by step sound-based navigation commands are provided along with alerting the user about obstacles in the path through vibration from four motors mounted on a waist belt. Two pulses followed by constant vibration will be provided for pre-determined dangerous objects. When the user needs to make a turn, the system also provides the exact measure (in degrees) of the turn along with pulsating haptic feedback through leftmost or the right most motor depending upon the turn to inform the user the correct direction to turn to, to ensure user stays on route.  
+This innovative use of technology can help visually impaired people feel more empowered and independent, thus bridging the gap and getting them at par with the sighted ones.  
 </p>
 <strong>In accordance with</strong>: 
 
@@ -161,7 +161,7 @@ https://medium.com/@am15hg/real-time-object-detection-using-new-tensorflow-lite-
 
 <br>
 Link to the Demo Video:
-[Eye of God](https://youtu.be/2Sjfpl-V7BU)
+[Eye of God](https://youtu.be/zipQJU651U0)
 <br>
 ---
 
