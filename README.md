@@ -83,10 +83,17 @@ Compile and execute the `ESP_Belt/ESP_Belt.ino` file on an ESP32 board with the 
 
 1. Paste Google Maps API Key ios/Runner/AppDelegate.swift:
 	`GMSServices.provideAPIKey("YOUR-API-KEY")`
+
 <h3><strong>Xcode Setup:</h3></strong>
 
 1. Change the development team in Targets/Runner/Signing&Capabilities to your Apple ID.
 2. Add a unique Bundle identifier
+
+<h3><strong>Model Files:</h3></strong>
+
+Incase the model files ("*.tflite") are missing from `eye_of_god/assets` folder, download it from here and place it in `eye_of_god/assets`:
+https://drive.google.com/drive/folders/1UU3Cknl5Ns4tQJxeLE_aPkNXSMrRk8VF?usp=sharing
+
 
 Run the app using `flutter run` in the main directory of the project `eye_of_god`.
 
