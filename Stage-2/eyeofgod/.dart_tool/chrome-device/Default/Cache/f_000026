@@ -1,0 +1,329 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/eyeofgod/variables/globals.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/painting/box_decoration.dart', 'packages/flutter/src/painting/box_border.dart', 'packages/flutter/src/painting/strut_style.dart'], (function load__packages__eyeofgod__tflite_helpers__bounding_box_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__eyeofgod__variables__globals$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__painting__box_decoration$46dart, packages__flutter__src__painting__box_border$46dart, packages__flutter__src__painting__strut_style$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const math = dart_sdk.math;
+  const ui = dart_sdk.ui;
+  const async = dart_sdk.async;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const globals = packages__eyeofgod__variables__globals$46dart.variables__globals;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const box_decoration = packages__flutter__src__painting__box_decoration$46dart.src__painting__box_decoration;
+  const box_border = packages__flutter__src__painting__box_border$46dart.src__painting__box_border;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  var bounding_box = Object.create(dart.library);
+  var $runtimeType = dartx.runtimeType;
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    PositionedL: () => (T.PositionedL = dart.constFn(dart.legacy(basic.Positioned)))(),
+    doubleL: () => (T.doubleL = dart.constFn(dart.legacy(core.double)))(),
+    doubleN: () => (T.doubleN = dart.constFn(dart.nullable(core.double)))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    dynamicToPositionedL: () => (T.dynamicToPositionedL = dart.constFn(dart.fnType(T.PositionedL(), [dart.dynamic])))(),
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    ListOfWidgetL: () => (T.ListOfWidgetL = dart.constFn(core.List$(T.WidgetL())))(),
+    ListLOfWidgetL: () => (T.ListLOfWidgetL = dart.constFn(dart.legacy(T.ListOfWidgetL())))(),
+    VoidToListLOfWidgetL: () => (T.VoidToListLOfWidgetL = dart.constFn(dart.fnType(T.ListLOfWidgetL(), [])))(),
+    ListL: () => (T.ListL = dart.constFn(dart.legacy(core.List)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 94,
+        [_Location_line]: 83,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 15,
+        [_Location_line]: 84,
+        [_Location_file]: null
+      });
+    },
+    get C1() {
+      return C[1] = dart.constList([C[2] || CT.C2, C[3] || CT.C3], T._LocationL());
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 82,
+        [_Location_file]: "file:///D:/GitHub/DSC-Project/Stage-2/eyeofgod/lib/tflite_helpers/bounding_box.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 13,
+        [_Location_line]: 75,
+        [_Location_file]: null
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 13,
+        [_Location_line]: 76,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 82,
+        [_Location_file]: null
+      });
+    },
+    get C5() {
+      return C[5] = dart.constList([C[6] || CT.C6, C[7] || CT.C7, C[8] || CT.C8], T._LocationL());
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[5] || CT.C5,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 74,
+        [_Location_file]: "file:///D:/GitHub/DSC-Project/Stage-2/eyeofgod/lib/tflite_helpers/bounding_box.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "left",
+        [_Location_column]: 11,
+        [_Location_line]: 70,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "top",
+        [_Location_column]: 11,
+        [_Location_line]: 71,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 11,
+        [_Location_line]: 72,
+        [_Location_file]: null
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 11,
+        [_Location_line]: 73,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 74,
+        [_Location_file]: null
+      });
+    },
+    get C10() {
+      return C[10] = dart.constList([C[11] || CT.C11, C[12] || CT.C12, C[13] || CT.C13, C[14] || CT.C14, C[15] || CT.C15], T._LocationL());
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[10] || CT.C10,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 69,
+        [_Location_file]: "file:///D:/GitHub/DSC-Project/Stage-2/eyeofgod/lib/tflite_helpers/bounding_box.dart"
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 7,
+        [_Location_line]: 96,
+        [_Location_file]: null
+      });
+    },
+    get C17() {
+      return C[17] = dart.constList([C[18] || CT.C18], T._LocationL());
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[17] || CT.C17,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 95,
+        [_Location_file]: "file:///D:/GitHub/DSC-Project/Stage-2/eyeofgod/lib/tflite_helpers/bounding_box.dart"
+      });
+    }
+  }, false);
+  var C = Array(19).fill(void 0);
+  var I = ["package:eyeofgod/tflite_helpers/bounding_box.dart"];
+  var results$ = dart.privateName(bounding_box, "BoundingBox.results");
+  var previewH$ = dart.privateName(bounding_box, "BoundingBox.previewH");
+  var previewW$ = dart.privateName(bounding_box, "BoundingBox.previewW");
+  var screenH$ = dart.privateName(bounding_box, "BoundingBox.screenH");
+  var screenW$ = dart.privateName(bounding_box, "BoundingBox.screenW");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  bounding_box.BoundingBox = class BoundingBox extends framework.StatelessWidget {
+    get results() {
+      return this[results$];
+    }
+    set results(value) {
+      super.results = value;
+    }
+    get previewH() {
+      return this[previewH$];
+    }
+    set previewH(value) {
+      super.previewH = value;
+    }
+    get previewW() {
+      return this[previewW$];
+    }
+    set previewW(value) {
+      super.previewW = value;
+    }
+    get screenH() {
+      return this[screenH$];
+    }
+    set screenH(value) {
+      super.screenH = value;
+    }
+    get screenW() {
+      return this[screenW$];
+    }
+    set screenW(value) {
+      super.screenW = value;
+    }
+    build(context) {
+      const _renderBox = () => {
+        core.print("Res is");
+        core.print(this.previewH);
+        core.print(this.previewW);
+        core.print(this.screenW);
+        core.print(this.screenH);
+        return this.results[$map](T.PositionedL(), dart.fn(re => {
+          let _x = dart.dsend(dart.dsend(re, '_get', ["rect"]), '_get', ["x"]);
+          let _w = dart.dsend(dart.dsend(re, '_get', ["rect"]), '_get', ["w"]);
+          let _y = dart.dsend(dart.dsend(re, '_get', ["rect"]), '_get', ["y"]);
+          let _h = dart.dsend(dart.dsend(re, '_get', ["rect"]), '_get', ["h"]);
+          let scaleW = null;
+          let scaleH = null;
+          core.print("this is class:");
+          core.print(dart.runtimeType(dart.dsend(re, '_get', ["detectedClass"])));
+          globals.detectedClass = dart.dsend(re, '_get', ["detectedClass"]);
+          if (dart.notNull(this.screenH) / dart.notNull(this.screenW) > dart.notNull(this.previewH) / dart.notNull(this.previewW)) {
+            scaleW = dart.notNull(this.screenH) / dart.notNull(this.previewH) * dart.notNull(this.previewW);
+            scaleH = this.screenH;
+            let difW = dart.dsend(dart.dsend(scaleW, '-', [this.screenW]), '/', [scaleW]);
+            globals.x = dart.dsend(dart.dsend(_x, '-', [dart.dsend(difW, '/', [2])]), '*', [scaleW]);
+            globals.w = dart.dsend(_w, '*', [scaleW]);
+            if (dart.dtest(dart.dsend(_x, '<', [dart.dsend(difW, '/', [2])]))) globals.w = dart.dsend(globals.w, '-', [dart.dsend(dart.dsend(dart.dsend(difW, '/', [2]), '-', [_x]), '*', [scaleW])]);
+            globals.y = dart.dsend(_y, '*', [scaleH]);
+            globals.h = dart.dsend(_h, '*', [scaleH]);
+          } else {
+            scaleH = dart.notNull(this.screenW) / dart.notNull(this.previewW) * dart.notNull(this.previewH);
+            scaleW = this.screenW;
+            let difH = dart.dsend(dart.dsend(scaleH, '-', [this.screenH]), '/', [scaleH]);
+            globals.x = dart.dsend(_x, '*', [scaleW]);
+            globals.w = dart.dsend(_w, '*', [scaleW]);
+            globals.y = dart.dsend(dart.dsend(_y, '-', [dart.dsend(difH, '/', [2])]), '*', [scaleH]);
+            globals.h = dart.dsend(_h, '*', [scaleH]);
+            if (dart.dtest(dart.dsend(_y, '<', [dart.dsend(difH, '/', [2])]))) globals.h = dart.dsend(globals.h, '-', [dart.dsend(dart.dsend(dart.dsend(difH, '/', [2]), '-', [_y]), '*', [scaleH])]);
+          }
+          return new basic.Positioned.new({left: math.max(T.doubleL(), 0.0, T.doubleL().as(globals.x)), top: math.max(T.doubleL(), 0.0, T.doubleL().as(globals.y)), width: T.doubleN().as(globals.w), height: T.doubleN().as(globals.h), child: new container.Container.new({padding: new edge_insets.EdgeInsets.only({top: 5.0, left: 5.0}), decoration: new box_decoration.BoxDecoration.new({border: box_border.Border.all({color: new ui.Color.fromRGBO(37, 213, 253, 1.0), width: 3.0})}), child: new text.Text.new(dart.str(dart.dsend(re, '_get', ["detectedClass"])) + " " + dart.str(dart.dsend(dart.dsend(dart.dsend(re, '_get', ["confidenceInClass"]), '*', [100]), 'toStringAsFixed', [0])) + "%", {style: new text_style.TextStyle.new({color: new ui.Color.fromRGBO(37, 213, 253, 1.0), fontSize: 14.0, fontWeight: ui.FontWeight.bold}), $creationLocationd_0dea112b090073317d4: C[0] || CT.C0}), $creationLocationd_0dea112b090073317d4: C[4] || CT.C4}), $creationLocationd_0dea112b090073317d4: C[9] || CT.C9});
+        }, T.dynamicToPositionedL()))[$toList]();
+      };
+      dart.fn(_renderBox, T.VoidToListLOfWidgetL());
+      return new basic.Stack.new({children: _renderBox(), $creationLocationd_0dea112b090073317d4: C[16] || CT.C16});
+    }
+  };
+  (bounding_box.BoundingBox.new = function(results, previewH, previewW, screenH, screenW, opts) {
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[results$] = results;
+    this[previewH$] = previewH;
+    this[previewW$] = previewW;
+    this[screenH$] = screenH;
+    this[screenW$] = screenW;
+    bounding_box.BoundingBox.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = bounding_box.BoundingBox.prototype;
+  dart.addTypeTests(bounding_box.BoundingBox);
+  dart.addTypeCaches(bounding_box.BoundingBox);
+  dart.setMethodSignature(bounding_box.BoundingBox, () => ({
+    __proto__: dart.getMethods(bounding_box.BoundingBox.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(bounding_box.BoundingBox, I[0]);
+  dart.setFieldSignature(bounding_box.BoundingBox, () => ({
+    __proto__: dart.getFields(bounding_box.BoundingBox.__proto__),
+    results: dart.finalFieldType(dart.legacy(core.List)),
+    previewH: dart.finalFieldType(dart.legacy(core.int)),
+    previewW: dart.finalFieldType(dart.legacy(core.int)),
+    screenH: dart.finalFieldType(dart.legacy(core.double)),
+    screenW: dart.finalFieldType(dart.legacy(core.double))
+  }));
+  bounding_box.getBoundingBox = function getBoundingBox() {
+    return async.async(T.ListL(), function* getBoundingBox() {
+      return [globals.x, globals.y, globals.w, globals.h, globals.detectedClass];
+    });
+  };
+  dart.trackLibraries("packages/eyeofgod/tflite_helpers/bounding_box.dart", {
+    "package:eyeofgod/tflite_helpers/bounding_box.dart": bounding_box
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["bounding_box.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAasB;;;;;;IACV;;;;;;IACA;;;;;;IACG;;;;;;IACA;;;;;;UAWa;AACxB,YAAa;AACI,QAAf,WAAM;AACS,QAAf,WAAM;AACS,QAAf,WAAM;AACQ,QAAd,WAAM;AACQ,QAAd,WAAM;AACN,cAAO,AAAQ,AAwDZ,qCAxDgB,QAAC;AACd,mBAAe,WAAR,WAAF,EAAE,WAAC,mBAAQ;AAChB,mBAAe,WAAR,WAAF,EAAE,WAAC,mBAAQ;AAChB,mBAAe,WAAR,WAAF,EAAE,WAAC,mBAAQ;AAChB,mBAAe,WAAR,WAAF,EAAE,WAAC,mBAAQ;AAChB;AAAQ;AACW,UAAvB,WAAM;AACgC,UAAtC,WAA0B,iBAAlB,WAAF,EAAE,WAAC;AACkC,UAAnC,wBAAkB,WAAF,EAAE,WAAC;AAG3B,cAAY,AAAU,aAAlB,6BAAU,gBAAmB,aAAT,8BAAW;AACK,YAAtC,SAAiB,AAAW,aAAnB,6BAAU,8BAAW;AACd,YAAhB,SAAS;AACL,uBAA0B,WAAX,WAAP,MAAM,QAAG,sBAAW,MAAM;AACF,YAA5B,YAAoB,WAAZ,WAAH,EAAE,QAAQ,WAAL,IAAI,QAAG,aAAK,MAAM;AACb,YAAf,YAAO,WAAH,EAAE,QAAG,MAAM;AACvB,2BAAO,WAAH,EAAE,QAAQ,WAAL,IAAI,QAAG,QAAW,AAA6B,YAA3B,WAAF,iBAAqB,WAAN,WAAJ,WAAL,IAAI,QAAG,WAAI,EAAE,UAAI,MAAM;AACjC,YAAf,YAAO,WAAH,EAAE,QAAG,MAAM;AACA,YAAf,YAAO,WAAH,EAAE,QAAG,MAAM;;AAEe,YAAtC,SAAiB,AAAW,aAAnB,6BAAU,8BAAW;AACd,YAAhB,SAAS;AACL,uBAA0B,WAAX,WAAP,MAAM,QAAG,sBAAW,MAAM;AACf,YAAf,YAAO,WAAH,EAAE,QAAG,MAAM;AACA,YAAf,YAAO,WAAH,EAAE,QAAG,MAAM;AACa,YAA5B,YAAoB,WAAZ,WAAH,EAAE,QAAQ,WAAL,IAAI,QAAG,aAAK,MAAM;AACb,YAAf,YAAO,WAAH,EAAE,QAAG,MAAM;AAGvB,2BAAO,WAAH,EAAE,QAAQ,WAAL,IAAI,QAAG,QAAW,AAA6B,YAA3B,WAAF,iBAAqB,WAAN,WAAJ,WAAL,IAAI,QAAG,WAAI,EAAE,UAAI,MAAM;;AAG1D,gBAAO,iCACC,sBAAS,oBAAW,kBACrB,sBAAS,oBAAW,mCACV,mCACC,mBACT,sCACe,sCAAU,WAAW,mBAC7B,8CACK,8BACA,sBAAS,IAAI,KAAK,KAAK,aAC7B,gBAGJ,kBAC0E,SAA1E,WAAF,EAAE,WAAC,qBAAiB,eAAmC,WAAP,WAAtB,WAAF,EAAE,WAAC,6BAAuB,2BAAqB,OAAG,aACtE,qCACQ,sBAAS,IAAI,KAAK,KAAK,gBAC1B,kBACa;;;;AAQnC,YAAO,gCACK,UAAU;IAExB;;2CA7EO,SACA,UACA,UACA,SACA;;IAJA;IACA;IACA;IACA;IACA;AALP;;EAMC;;;;;;;;;;;;;;;;;AArBwB;AAKzB,YAAQ,EAAS,WAAW,WAAW,WAAW,WAAW;IAC/D","file":"../../../../../../packages/eyeofgod/tflite_helpers/bounding_box.dart.lib.js"}');
+  // Exports:
+  return {
+    tflite_helpers__bounding_box: bounding_box
+  };
+}));
+
+//# sourceMappingURL=bounding_box.dart.lib.js.map

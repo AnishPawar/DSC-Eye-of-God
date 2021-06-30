@@ -1,0 +1,11 @@
+com/aloisdeniel/geocoder/GeocoderPlugin.java
+ com.aloisdeniel.geocoder.GeocoderPlugin
+ com.aloisdeniel.geocoder.GeocoderPlugin$1
+ com.aloisdeniel.geocoder.GeocoderPlugin$2
+ com.aloisdeniel.geocoder.GeocoderPlugin$MethodResultWrapper
+ com.aloisdeniel.geocoder.GeocoderPlugin$MethodResultWrapper$1
+ com.aloisdeniel.geocoder.GeocoderPlugin$MethodResultWrapper$2
+ com.aloisdeniel.geocoder.GeocoderPlugin$MethodResultWrapper$3
+ com.aloisdeniel.geocoder.NotAvailableException
+com/yourcompany/geocoder/BuildConfig.java
+ com.yourcompany.geocoder.BuildConfig

@@ -1,0 +1,719 @@
+define(['dart_sdk', 'packages/flutter/src/services/system_channels.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter_tts__flutter_tts_dart(dart_sdk, packages__flutter__src__services__system_channels$46dart, packages__flutter__src__foundation__debug$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const _js_helper = dart_sdk._js_helper;
+  const io = dart_sdk.io;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const message_codec = packages__flutter__src__services__system_channels$46dart.src__services__message_codec;
+  const platform_channel = packages__flutter__src__services__system_channels$46dart.src__services__platform_channel;
+  const message_codecs = packages__flutter__src__services__system_channels$46dart.src__services__message_codecs;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  var flutter_tts = Object.create(dart.library);
+  var $_get = dartx._get;
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  var $toString = dartx.toString;
+  var $firstWhere = dartx.firstWhere;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    TextToSpeechPlatformL: () => (T.TextToSpeechPlatformL = dart.constFn(dart.legacy(flutter_tts.TextToSpeechPlatform)))(),
+    IosTextToSpeechAudioCategoryL: () => (T.IosTextToSpeechAudioCategoryL = dart.constFn(dart.legacy(flutter_tts.IosTextToSpeechAudioCategory)))(),
+    IosTextToSpeechAudioCategoryOptionsL: () => (T.IosTextToSpeechAudioCategoryOptionsL = dart.constFn(dart.legacy(flutter_tts.IosTextToSpeechAudioCategoryOptions)))(),
+    IdentityMapOfString$dynamic: () => (T.IdentityMapOfString$dynamic = dart.constFn(_js_helper.IdentityMap$(core.String, dart.dynamic)))(),
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    StringN: () => (T.StringN = dart.constFn(dart.nullable(core.String)))(),
+    IosTextToSpeechAudioCategoryOptionsToStringN: () => (T.IosTextToSpeechAudioCategoryOptionsToStringN = dart.constFn(dart.fnType(T.StringN(), [flutter_tts.IosTextToSpeechAudioCategoryOptions])))(),
+    TextToSpeechPlatformTobool: () => (T.TextToSpeechPlatformTobool = dart.constFn(dart.fnType(core.bool, [flutter_tts.TextToSpeechPlatform])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: flutter_tts.TextToSpeechPlatform.prototype,
+        [_name$]: "TextToSpeechPlatform.android",
+        index: 0
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: flutter_tts.TextToSpeechPlatform.prototype,
+        [_name$]: "TextToSpeechPlatform.ios",
+        index: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.constList([C[0] || CT.C0, C[1] || CT.C1], T.TextToSpeechPlatformL());
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: flutter_tts.IosTextToSpeechAudioCategory.prototype,
+        [_name$]: "IosTextToSpeechAudioCategory.ambientSolo",
+        index: 0
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: flutter_tts.IosTextToSpeechAudioCategory.prototype,
+        [_name$]: "IosTextToSpeechAudioCategory.ambient",
+        index: 1
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: flutter_tts.IosTextToSpeechAudioCategory.prototype,
+        [_name$]: "IosTextToSpeechAudioCategory.playback",
+        index: 2
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: flutter_tts.IosTextToSpeechAudioCategory.prototype,
+        [_name$]: "IosTextToSpeechAudioCategory.playAndRecord",
+        index: 3
+      });
+    },
+    get C7() {
+      return C[7] = dart.constList([C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5, C[6] || CT.C6], T.IosTextToSpeechAudioCategoryL());
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: flutter_tts.IosTextToSpeechAudioCategoryOptions.prototype,
+        [_name$]: "IosTextToSpeechAudioCategoryOptions.mixWithOthers",
+        index: 0
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: flutter_tts.IosTextToSpeechAudioCategoryOptions.prototype,
+        [_name$]: "IosTextToSpeechAudioCategoryOptions.duckOthers",
+        index: 1
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: flutter_tts.IosTextToSpeechAudioCategoryOptions.prototype,
+        [_name$]: "IosTextToSpeechAudioCategoryOptions.interruptSpokenAudioAndMixWithOthers",
+        index: 2
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: flutter_tts.IosTextToSpeechAudioCategoryOptions.prototype,
+        [_name$]: "IosTextToSpeechAudioCategoryOptions.allowBluetooth",
+        index: 3
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: flutter_tts.IosTextToSpeechAudioCategoryOptions.prototype,
+        [_name$]: "IosTextToSpeechAudioCategoryOptions.allowBluetoothA2DP",
+        index: 4
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: flutter_tts.IosTextToSpeechAudioCategoryOptions.prototype,
+        [_name$]: "IosTextToSpeechAudioCategoryOptions.allowAirPlay",
+        index: 5
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: flutter_tts.IosTextToSpeechAudioCategoryOptions.prototype,
+        [_name$]: "IosTextToSpeechAudioCategoryOptions.defaultToSpeaker",
+        index: 6
+      });
+    },
+    get C15() {
+      return C[15] = dart.constList([C[8] || CT.C8, C[9] || CT.C9, C[10] || CT.C10, C[11] || CT.C11, C[12] || CT.C12, C[13] || CT.C13, C[14] || CT.C14], T.IosTextToSpeechAudioCategoryOptionsL());
+    },
+    get C16() {
+      return C[16] = dart.constMap(T.IosTextToSpeechAudioCategoryL(), T.StringL(), [C[3] || CT.C3, "iosAudioCategoryAmbientSolo", C[4] || CT.C4, "iosAudioCategoryAmbient", C[5] || CT.C5, "iosAudioCategoryPlayback"]);
+    },
+    get C17() {
+      return C[17] = dart.constMap(T.IosTextToSpeechAudioCategoryOptionsL(), T.StringL(), [C[8] || CT.C8, "iosAudioCategoryOptionsMixWithOthers", C[9] || CT.C9, "iosAudioCategoryOptionsDuckOthers", C[10] || CT.C10, "iosAudioCategoryOptionsInterruptSpokenAudioAndMixWithOthers", C[11] || CT.C11, "iosAudioCategoryOptionsAllowBluetooth", C[12] || CT.C12, "iosAudioCategoryOptionsAllowBluetoothA2DP", C[13] || CT.C13, "iosAudioCategoryOptionsAllowAirPlay", C[14] || CT.C14, "iosAudioCategoryOptionsDefaultToSpeaker"]);
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: message_codecs.StandardMessageCodec.prototype
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: message_codecs.StandardMethodCodec.prototype,
+        [StandardMethodCodec_messageCodec]: C[20] || CT.C20
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: platform_channel.MethodChannel.prototype,
+        [MethodChannel__binaryMessenger]: null,
+        [MethodChannel_codec]: C[19] || CT.C19,
+        [MethodChannel_name]: "flutter_tts"
+      });
+    }
+  }, false);
+  var C = Array(21).fill(void 0);
+  var I = [
+    "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_tts-3.0.0/lib/flutter_tts.dart",
+    "package:flutter_tts/flutter_tts.dart"
+  ];
+  var _name$ = dart.privateName(flutter_tts, "_name");
+  flutter_tts.TextToSpeechPlatform = class TextToSpeechPlatform extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (flutter_tts.TextToSpeechPlatform.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 34, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 34, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = flutter_tts.TextToSpeechPlatform.prototype;
+  dart.addTypeTests(flutter_tts.TextToSpeechPlatform);
+  dart.addTypeCaches(flutter_tts.TextToSpeechPlatform);
+  dart.setLibraryUri(flutter_tts.TextToSpeechPlatform, I[1]);
+  dart.setFieldSignature(flutter_tts.TextToSpeechPlatform, () => ({
+    __proto__: dart.getFields(flutter_tts.TextToSpeechPlatform.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(flutter_tts.TextToSpeechPlatform, ['toString']);
+  flutter_tts.TextToSpeechPlatform.android = C[0] || CT.C0;
+  flutter_tts.TextToSpeechPlatform.ios = C[1] || CT.C1;
+  flutter_tts.TextToSpeechPlatform.values = C[2] || CT.C2;
+  flutter_tts.IosTextToSpeechAudioCategory = class IosTextToSpeechAudioCategory extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (flutter_tts.IosTextToSpeechAudioCategory.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 36, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 36, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = flutter_tts.IosTextToSpeechAudioCategory.prototype;
+  dart.addTypeTests(flutter_tts.IosTextToSpeechAudioCategory);
+  dart.addTypeCaches(flutter_tts.IosTextToSpeechAudioCategory);
+  dart.setLibraryUri(flutter_tts.IosTextToSpeechAudioCategory, I[1]);
+  dart.setFieldSignature(flutter_tts.IosTextToSpeechAudioCategory, () => ({
+    __proto__: dart.getFields(flutter_tts.IosTextToSpeechAudioCategory.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(flutter_tts.IosTextToSpeechAudioCategory, ['toString']);
+  flutter_tts.IosTextToSpeechAudioCategory.ambientSolo = C[3] || CT.C3;
+  flutter_tts.IosTextToSpeechAudioCategory.ambient = C[4] || CT.C4;
+  flutter_tts.IosTextToSpeechAudioCategory.playback = C[5] || CT.C5;
+  flutter_tts.IosTextToSpeechAudioCategory.playAndRecord = C[6] || CT.C6;
+  flutter_tts.IosTextToSpeechAudioCategory.values = C[7] || CT.C7;
+  flutter_tts.IosTextToSpeechAudioCategoryOptions = class IosTextToSpeechAudioCategoryOptions extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (flutter_tts.IosTextToSpeechAudioCategoryOptions.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 56, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 56, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = flutter_tts.IosTextToSpeechAudioCategoryOptions.prototype;
+  dart.addTypeTests(flutter_tts.IosTextToSpeechAudioCategoryOptions);
+  dart.addTypeCaches(flutter_tts.IosTextToSpeechAudioCategoryOptions);
+  dart.setLibraryUri(flutter_tts.IosTextToSpeechAudioCategoryOptions, I[1]);
+  dart.setFieldSignature(flutter_tts.IosTextToSpeechAudioCategoryOptions, () => ({
+    __proto__: dart.getFields(flutter_tts.IosTextToSpeechAudioCategoryOptions.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(flutter_tts.IosTextToSpeechAudioCategoryOptions, ['toString']);
+  flutter_tts.IosTextToSpeechAudioCategoryOptions.mixWithOthers = C[8] || CT.C8;
+  flutter_tts.IosTextToSpeechAudioCategoryOptions.duckOthers = C[9] || CT.C9;
+  flutter_tts.IosTextToSpeechAudioCategoryOptions.interruptSpokenAudioAndMixWithOthers = C[10] || CT.C10;
+  flutter_tts.IosTextToSpeechAudioCategoryOptions.allowBluetooth = C[11] || CT.C11;
+  flutter_tts.IosTextToSpeechAudioCategoryOptions.allowBluetoothA2DP = C[12] || CT.C12;
+  flutter_tts.IosTextToSpeechAudioCategoryOptions.allowAirPlay = C[13] || CT.C13;
+  flutter_tts.IosTextToSpeechAudioCategoryOptions.defaultToSpeaker = C[14] || CT.C14;
+  flutter_tts.IosTextToSpeechAudioCategoryOptions.values = C[15] || CT.C15;
+  var min$ = dart.privateName(flutter_tts, "SpeechRateValidRange.min");
+  var normal$ = dart.privateName(flutter_tts, "SpeechRateValidRange.normal");
+  var max$ = dart.privateName(flutter_tts, "SpeechRateValidRange.max");
+  var platform$ = dart.privateName(flutter_tts, "SpeechRateValidRange.platform");
+  flutter_tts.SpeechRateValidRange = class SpeechRateValidRange extends core.Object {
+    get min() {
+      return this[min$];
+    }
+    set min(value) {
+      super.min = value;
+    }
+    get normal() {
+      return this[normal$];
+    }
+    set normal(value) {
+      super.normal = value;
+    }
+    get max() {
+      return this[max$];
+    }
+    set max(value) {
+      super.max = value;
+    }
+    get platform() {
+      return this[platform$];
+    }
+    set platform(value) {
+      super.platform = value;
+    }
+  };
+  (flutter_tts.SpeechRateValidRange.new = function(min, normal, max, platform) {
+    if (min == null) dart.nullFailed(I[0], 93, 29, "min");
+    if (normal == null) dart.nullFailed(I[0], 93, 39, "normal");
+    if (max == null) dart.nullFailed(I[0], 93, 52, "max");
+    if (platform == null) dart.nullFailed(I[0], 93, 62, "platform");
+    this[min$] = min;
+    this[normal$] = normal;
+    this[max$] = max;
+    this[platform$] = platform;
+    ;
+  }).prototype = flutter_tts.SpeechRateValidRange.prototype;
+  dart.addTypeTests(flutter_tts.SpeechRateValidRange);
+  dart.addTypeCaches(flutter_tts.SpeechRateValidRange);
+  dart.setLibraryUri(flutter_tts.SpeechRateValidRange, I[1]);
+  dart.setFieldSignature(flutter_tts.SpeechRateValidRange, () => ({
+    __proto__: dart.getFields(flutter_tts.SpeechRateValidRange.__proto__),
+    min: dart.finalFieldType(core.double),
+    normal: dart.finalFieldType(core.double),
+    max: dart.finalFieldType(core.double),
+    platform: dart.finalFieldType(flutter_tts.TextToSpeechPlatform)
+  }));
+  var startHandler = dart.privateName(flutter_tts, "FlutterTts.startHandler");
+  var completionHandler = dart.privateName(flutter_tts, "FlutterTts.completionHandler");
+  var pauseHandler = dart.privateName(flutter_tts, "FlutterTts.pauseHandler");
+  var continueHandler = dart.privateName(flutter_tts, "FlutterTts.continueHandler");
+  var cancelHandler = dart.privateName(flutter_tts, "FlutterTts.cancelHandler");
+  var progressHandler = dart.privateName(flutter_tts, "FlutterTts.progressHandler");
+  var errorHandler = dart.privateName(flutter_tts, "FlutterTts.errorHandler");
+  var MethodChannel__binaryMessenger = dart.privateName(platform_channel, "MethodChannel._binaryMessenger");
+  var StandardMethodCodec_messageCodec = dart.privateName(message_codecs, "StandardMethodCodec.messageCodec");
+  var MethodChannel_codec = dart.privateName(platform_channel, "MethodChannel.codec");
+  var MethodChannel_name = dart.privateName(platform_channel, "MethodChannel.name");
+  flutter_tts.FlutterTts = class FlutterTts extends core.Object {
+    get startHandler() {
+      return this[startHandler];
+    }
+    set startHandler(value) {
+      this[startHandler] = value;
+    }
+    get completionHandler() {
+      return this[completionHandler];
+    }
+    set completionHandler(value) {
+      this[completionHandler] = value;
+    }
+    get pauseHandler() {
+      return this[pauseHandler];
+    }
+    set pauseHandler(value) {
+      this[pauseHandler] = value;
+    }
+    get continueHandler() {
+      return this[continueHandler];
+    }
+    set continueHandler(value) {
+      this[continueHandler] = value;
+    }
+    get cancelHandler() {
+      return this[cancelHandler];
+    }
+    set cancelHandler(value) {
+      this[cancelHandler] = value;
+    }
+    get progressHandler() {
+      return this[progressHandler];
+    }
+    set progressHandler(value) {
+      this[progressHandler] = value;
+    }
+    get errorHandler() {
+      return this[errorHandler];
+    }
+    set errorHandler(value) {
+      this[errorHandler] = value;
+    }
+    awaitSpeakCompletion(awaitCompletion) {
+      if (awaitCompletion == null) dart.nullFailed(I[0], 113, 45, "awaitCompletion");
+      return async.async(dart.dynamic, function* awaitSpeakCompletion() {
+        return flutter_tts.FlutterTts._channel.invokeMethod(dart.dynamic, "awaitSpeakCompletion", awaitCompletion);
+      });
+    }
+    speak(text) {
+      if (text == null) dart.nullFailed(I[0], 117, 32, "text");
+      return async.async(dart.dynamic, function* speak() {
+        return flutter_tts.FlutterTts._channel.invokeMethod(dart.dynamic, "speak", text);
+      });
+    }
+    pause() {
+      return async.async(dart.dynamic, function* pause() {
+        return flutter_tts.FlutterTts._channel.invokeMethod(dart.dynamic, "pause");
+      });
+    }
+    synthesizeToFile(text, fileName) {
+      if (text == null) dart.nullFailed(I[0], 126, 43, "text");
+      if (fileName == null) dart.nullFailed(I[0], 126, 56, "fileName");
+      return async.async(dart.dynamic, function* synthesizeToFile() {
+        return flutter_tts.FlutterTts._channel.invokeMethod(dart.dynamic, "synthesizeToFile", new (T.IdentityMapOfString$dynamic()).from(["text", text, "fileName", fileName]));
+      });
+    }
+    setLanguage(language) {
+      if (language == null) dart.nullFailed(I[0], 133, 38, "language");
+      return async.async(dart.dynamic, function* setLanguage() {
+        return flutter_tts.FlutterTts._channel.invokeMethod(dart.dynamic, "setLanguage", language);
+      });
+    }
+    setSpeechRate(rate) {
+      if (rate == null) dart.nullFailed(I[0], 138, 40, "rate");
+      return async.async(dart.dynamic, function* setSpeechRate() {
+        return flutter_tts.FlutterTts._channel.invokeMethod(dart.dynamic, "setSpeechRate", rate);
+      });
+    }
+    setVolume(volume) {
+      if (volume == null) dart.nullFailed(I[0], 143, 36, "volume");
+      return async.async(dart.dynamic, function* setVolume() {
+        return flutter_tts.FlutterTts._channel.invokeMethod(dart.dynamic, "setVolume", volume);
+      });
+    }
+    setSharedInstance(sharedSession) {
+      if (sharedSession == null) dart.nullFailed(I[0], 148, 42, "sharedSession");
+      return async.async(dart.dynamic, function* setSharedInstance() {
+        return flutter_tts.FlutterTts._channel.invokeMethod(dart.dynamic, "setSharedInstance", sharedSession);
+      });
+    }
+    setIosAudioCategory(category, options) {
+      if (category == null) dart.nullFailed(I[0], 153, 68, "category");
+      if (options == null) dart.nullFailed(I[0], 154, 49, "options");
+      return async.async(dart.dynamic, function* setIosAudioCategory() {
+        let categoryToString = C[16] || CT.C16;
+        let optionsToString = C[17] || CT.C17;
+        if (!dart.test(io.Platform.isIOS)) return;
+        try {
+          return flutter_tts.FlutterTts._channel.invokeMethod(dart.dynamic, "setIosAudioCategory", new (T.IdentityMapOfString$dynamic()).from(["iosAudioCategoryKey", categoryToString[$_get](category), "iosAudioCategoryOptionsKey", options[$map](T.StringN(), dart.fn(o => {
+              if (o == null) dart.nullFailed(I[0], 182, 26, "o");
+              return optionsToString[$_get](o);
+            }, T.IosTextToSpeechAudioCategoryOptionsToStringN()))[$toList]()]));
+        } catch (e$) {
+          let e = dart.getThrown(e$);
+          if (message_codec.PlatformException.is(e)) {
+            core.print("setIosAudioCategory error, category: " + dart.str(category) + ", error: " + dart.str(e.message));
+          } else
+            throw e$;
+        }
+      });
+    }
+    setPitch(pitch) {
+      if (pitch == null) dart.nullFailed(I[0], 192, 35, "pitch");
+      return async.async(dart.dynamic, function* setPitch() {
+        return flutter_tts.FlutterTts._channel.invokeMethod(dart.dynamic, "setPitch", pitch);
+      });
+    }
+    setVoice(voice) {
+      if (voice == null) dart.nullFailed(I[0], 197, 48, "voice");
+      return async.async(dart.dynamic, function* setVoice() {
+        return flutter_tts.FlutterTts._channel.invokeMethod(dart.dynamic, "setVoice", voice);
+      });
+    }
+    stop() {
+      return async.async(dart.dynamic, function* stop() {
+        return flutter_tts.FlutterTts._channel.invokeMethod(dart.dynamic, "stop");
+      });
+    }
+    get getLanguages() {
+      return async.async(dart.dynamic, function* getLanguages() {
+        let languages = (yield flutter_tts.FlutterTts._channel.invokeMethod(dart.dynamic, "getLanguages"));
+        return languages;
+      });
+    }
+    get getEngines() {
+      return async.async(dart.dynamic, function* getEngines() {
+        let engines = (yield flutter_tts.FlutterTts._channel.invokeMethod(dart.dynamic, "getEngines"));
+        return engines;
+      });
+    }
+    get getVoices() {
+      return async.async(dart.dynamic, function* getVoices() {
+        let voices = (yield flutter_tts.FlutterTts._channel.invokeMethod(dart.dynamic, "getVoices"));
+        return voices;
+      });
+    }
+    isLanguageAvailable(language) {
+      if (language == null) dart.nullFailed(I[0], 229, 46, "language");
+      return async.async(dart.dynamic, function* isLanguageAvailable() {
+        return flutter_tts.FlutterTts._channel.invokeMethod(dart.dynamic, "isLanguageAvailable", language);
+      });
+    }
+    isLanguageInstalled(language) {
+      if (language == null) dart.nullFailed(I[0], 235, 46, "language");
+      return flutter_tts.FlutterTts._channel.invokeMethod(dart.dynamic, "isLanguageInstalled", language);
+    }
+    areLanguagesInstalled(languages) {
+      if (languages == null) dart.nullFailed(I[0], 241, 54, "languages");
+      return flutter_tts.FlutterTts._channel.invokeMethod(dart.dynamic, "areLanguagesInstalled", languages);
+    }
+    get getSpeechRateValidRange() {
+      return async.async(flutter_tts.SpeechRateValidRange, function* getSpeechRateValidRange() {
+        let validRange = core.Map.as(yield flutter_tts.FlutterTts._channel.invokeMethod(dart.dynamic, "getSpeechRateValidRange"));
+        let min = core.double.parse(dart.toString(validRange[$_get]("min")));
+        let normal = core.double.parse(dart.toString(validRange[$_get]("normal")));
+        let max = core.double.parse(dart.toString(validRange[$_get]("max")));
+        let platformStr = dart.toString(validRange[$_get]("platform"));
+        let platform = flutter_tts.TextToSpeechPlatform.values[$firstWhere](dart.fn(e => {
+          if (e == null) dart.nullFailed(I[0], 252, 22, "e");
+          return diagnostics.describeEnum(e) == platformStr;
+        }, T.TextToSpeechPlatformTobool()));
+        return new flutter_tts.SpeechRateValidRange.new(min, normal, max, platform);
+      });
+    }
+    setSilence(timems) {
+      if (timems == null) dart.nullFailed(I[0], 260, 34, "timems");
+      return async.async(dart.dynamic, function* setSilence() {
+        return flutter_tts.FlutterTts._channel.invokeMethod(dart.dynamic, "setSilence", timems);
+      });
+    }
+    setQueueMode(queueMode) {
+      if (queueMode == null) dart.nullFailed(I[0], 268, 36, "queueMode");
+      return async.async(dart.dynamic, function* setQueueMode() {
+        return flutter_tts.FlutterTts._channel.invokeMethod(dart.dynamic, "setQueueMode", queueMode);
+      });
+    }
+    setStartHandler(callback) {
+      if (callback == null) dart.nullFailed(I[0], 271, 37, "callback");
+      this.startHandler = callback;
+    }
+    setCompletionHandler(callback) {
+      if (callback == null) dart.nullFailed(I[0], 275, 42, "callback");
+      this.completionHandler = callback;
+    }
+    setContinueHandler(callback) {
+      if (callback == null) dart.nullFailed(I[0], 279, 40, "callback");
+      this.continueHandler = callback;
+    }
+    setPauseHandler(callback) {
+      if (callback == null) dart.nullFailed(I[0], 283, 37, "callback");
+      this.pauseHandler = callback;
+    }
+    setCancelHandler(callback) {
+      if (callback == null) dart.nullFailed(I[0], 287, 38, "callback");
+      this.cancelHandler = callback;
+    }
+    setProgressHandler(callback) {
+      if (callback == null) dart.nullFailed(I[0], 291, 43, "callback");
+      this.progressHandler = callback;
+    }
+    setErrorHandler(handler) {
+      if (handler == null) dart.nullFailed(I[0], 295, 37, "handler");
+      this.errorHandler = handler;
+    }
+    platformCallHandler(call) {
+      if (call == null) dart.nullFailed(I[0], 300, 41, "call");
+      return async.async(dart.dynamic, (function* platformCallHandler() {
+        switch (call.method) {
+          case "speak.onStart":
+          {
+            if (this.startHandler != null) {
+              dart.nullCheck(this.startHandler)();
+            }
+            break;
+          }
+          case "synth.onStart":
+          {
+            if (this.startHandler != null) {
+              dart.nullCheck(this.startHandler)();
+            }
+            break;
+          }
+          case "speak.onComplete":
+          {
+            if (this.completionHandler != null) {
+              dart.nullCheck(this.completionHandler)();
+            }
+            break;
+          }
+          case "synth.onComplete":
+          {
+            if (this.completionHandler != null) {
+              dart.nullCheck(this.completionHandler)();
+            }
+            break;
+          }
+          case "speak.onPause":
+          {
+            if (this.pauseHandler != null) {
+              dart.nullCheck(this.pauseHandler)();
+            }
+            break;
+          }
+          case "speak.onContinue":
+          {
+            if (this.continueHandler != null) {
+              dart.nullCheck(this.continueHandler)();
+            }
+            break;
+          }
+          case "speak.onCancel":
+          {
+            if (this.cancelHandler != null) {
+              dart.nullCheck(this.cancelHandler)();
+            }
+            break;
+          }
+          case "speak.onError":
+          {
+            if (this.errorHandler != null) {
+              dart.nullCheck(this.errorHandler)(call.arguments);
+            }
+            break;
+          }
+          case "speak.onProgress":
+          {
+            if (this.progressHandler != null) {
+              let args = core.Map.as(call.arguments);
+              dart.nullCheck(this.progressHandler)(dart.toString(args[$_get]("text")), core.int.parse(dart.toString(args[$_get]("start"))), core.int.parse(dart.toString(args[$_get]("end"))), dart.toString(args[$_get]("word")));
+            }
+            break;
+          }
+          case "synth.onError":
+          {
+            if (this.errorHandler != null) {
+              dart.nullCheck(this.errorHandler)(call.arguments);
+            }
+            break;
+          }
+          default:
+          {
+            core.print("Unknowm method " + dart.str(call.method));
+          }
+        }
+      }).bind(this));
+    }
+  };
+  (flutter_tts.FlutterTts.new = function() {
+    this[startHandler] = null;
+    this[completionHandler] = null;
+    this[pauseHandler] = null;
+    this[continueHandler] = null;
+    this[cancelHandler] = null;
+    this[progressHandler] = null;
+    this[errorHandler] = null;
+    flutter_tts.FlutterTts._channel.setMethodCallHandler(dart.bind(this, 'platformCallHandler'));
+  }).prototype = flutter_tts.FlutterTts.prototype;
+  dart.addTypeTests(flutter_tts.FlutterTts);
+  dart.addTypeCaches(flutter_tts.FlutterTts);
+  dart.setMethodSignature(flutter_tts.FlutterTts, () => ({
+    __proto__: dart.getMethods(flutter_tts.FlutterTts.__proto__),
+    awaitSpeakCompletion: dart.fnType(async.Future, [core.bool]),
+    speak: dart.fnType(async.Future, [core.String]),
+    pause: dart.fnType(async.Future, []),
+    synthesizeToFile: dart.fnType(async.Future, [core.String, core.String]),
+    setLanguage: dart.fnType(async.Future, [core.String]),
+    setSpeechRate: dart.fnType(async.Future, [core.double]),
+    setVolume: dart.fnType(async.Future, [core.double]),
+    setSharedInstance: dart.fnType(async.Future, [core.bool]),
+    setIosAudioCategory: dart.fnType(async.Future, [flutter_tts.IosTextToSpeechAudioCategory, core.List$(flutter_tts.IosTextToSpeechAudioCategoryOptions)]),
+    setPitch: dart.fnType(async.Future, [core.double]),
+    setVoice: dart.fnType(async.Future, [core.Map$(core.String, core.String)]),
+    stop: dart.fnType(async.Future, []),
+    isLanguageAvailable: dart.fnType(async.Future, [core.String]),
+    isLanguageInstalled: dart.fnType(async.Future, [core.String]),
+    areLanguagesInstalled: dart.fnType(async.Future, [core.List$(core.String)]),
+    setSilence: dart.fnType(async.Future, [core.int]),
+    setQueueMode: dart.fnType(async.Future, [core.int]),
+    setStartHandler: dart.fnType(dart.void, [dart.fnType(dart.void, [])]),
+    setCompletionHandler: dart.fnType(dart.void, [dart.fnType(dart.void, [])]),
+    setContinueHandler: dart.fnType(dart.void, [dart.fnType(dart.void, [])]),
+    setPauseHandler: dart.fnType(dart.void, [dart.fnType(dart.void, [])]),
+    setCancelHandler: dart.fnType(dart.void, [dart.fnType(dart.void, [])]),
+    setProgressHandler: dart.fnType(dart.void, [dart.fnType(dart.void, [core.String, core.int, core.int, core.String])]),
+    setErrorHandler: dart.fnType(dart.void, [dart.fnType(dart.void, [dart.dynamic])]),
+    platformCallHandler: dart.fnType(async.Future, [message_codec.MethodCall])
+  }));
+  dart.setGetterSignature(flutter_tts.FlutterTts, () => ({
+    __proto__: dart.getGetters(flutter_tts.FlutterTts.__proto__),
+    getLanguages: async.Future,
+    getEngines: async.Future,
+    getVoices: async.Future,
+    getSpeechRateValidRange: async.Future$(flutter_tts.SpeechRateValidRange)
+  }));
+  dart.setLibraryUri(flutter_tts.FlutterTts, I[1]);
+  dart.setFieldSignature(flutter_tts.FlutterTts, () => ({
+    __proto__: dart.getFields(flutter_tts.FlutterTts.__proto__),
+    startHandler: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
+    completionHandler: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
+    pauseHandler: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
+    continueHandler: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
+    cancelHandler: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
+    progressHandler: dart.fieldType(dart.nullable(dart.fnType(dart.void, [core.String, core.int, core.int, core.String]))),
+    errorHandler: dart.fieldType(dart.nullable(dart.fnType(dart.void, [dart.dynamic])))
+  }));
+  dart.defineLazy(flutter_tts.FlutterTts, {
+    /*flutter_tts.FlutterTts._channel*/get _channel() {
+      return C[18] || CT.C18;
+    }
+  }, false);
+  dart.defineLazy(flutter_tts, {
+    /*flutter_tts.iosAudioCategoryOptionsKey*/get iosAudioCategoryOptionsKey() {
+      return "iosAudioCategoryOptionsKey";
+    },
+    /*flutter_tts.iosAudioCategoryKey*/get iosAudioCategoryKey() {
+      return "iosAudioCategoryKey";
+    },
+    /*flutter_tts.iosAudioCategoryAmbientSolo*/get iosAudioCategoryAmbientSolo() {
+      return "iosAudioCategoryAmbientSolo";
+    },
+    /*flutter_tts.iosAudioCategoryAmbient*/get iosAudioCategoryAmbient() {
+      return "iosAudioCategoryAmbient";
+    },
+    /*flutter_tts.iosAudioCategoryPlayback*/get iosAudioCategoryPlayback() {
+      return "iosAudioCategoryPlayback";
+    },
+    /*flutter_tts.iosAudioCategoryPlaybackAndRecord*/get iosAudioCategoryPlaybackAndRecord() {
+      return "iosAudioCategoryPlaybackAndRecord";
+    },
+    /*flutter_tts.iosAudioCategoryOptionsMixWithOthers*/get iosAudioCategoryOptionsMixWithOthers() {
+      return "iosAudioCategoryOptionsMixWithOthers";
+    },
+    /*flutter_tts.iosAudioCategoryOptionsDuckOthers*/get iosAudioCategoryOptionsDuckOthers() {
+      return "iosAudioCategoryOptionsDuckOthers";
+    },
+    /*flutter_tts.iosAudioCategoryOptionsInterruptSpokenAudioAndMixWithOthers*/get iosAudioCategoryOptionsInterruptSpokenAudioAndMixWithOthers() {
+      return "iosAudioCategoryOptionsInterruptSpokenAudioAndMixWithOthers";
+    },
+    /*flutter_tts.iosAudioCategoryOptionsAllowBluetooth*/get iosAudioCategoryOptionsAllowBluetooth() {
+      return "iosAudioCategoryOptionsAllowBluetooth";
+    },
+    /*flutter_tts.iosAudioCategoryOptionsAllowBluetoothA2DP*/get iosAudioCategoryOptionsAllowBluetoothA2DP() {
+      return "iosAudioCategoryOptionsAllowBluetoothA2DP";
+    },
+    /*flutter_tts.iosAudioCategoryOptionsAllowAirPlay*/get iosAudioCategoryOptionsAllowAirPlay() {
+      return "iosAudioCategoryOptionsAllowAirPlay";
+    },
+    /*flutter_tts.iosAudioCategoryOptionsDefaultToSpeaker*/get iosAudioCategoryOptionsDefaultToSpeaker() {
+      return "iosAudioCategoryOptionsDefaultToSpeaker";
+    }
+  }, false);
+  dart.trackLibraries("packages/flutter_tts/flutter_tts.dart", {
+    "package:flutter_tts/flutter_tts.dart": flutter_tts
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["flutter_tts.dart"],"names":[],"mappings":"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","file":"../../../../../../../../D:/packages/flutter_tts/flutter_tts.dart.lib.js"}');
+  // Exports:
+  return {
+    flutter_tts: flutter_tts
+  };
+}));
+
+//# sourceMappingURL=flutter_tts.dart.lib.js.map

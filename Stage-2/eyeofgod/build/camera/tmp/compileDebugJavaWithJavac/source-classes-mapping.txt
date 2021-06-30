@@ -1,0 +1,30 @@
+io/flutter/plugins/camera/BuildConfig.java
+ io.flutter.plugins.camera.BuildConfig
+io/flutter/plugins/camera/Camera.java
+ io.flutter.plugins.camera.Camera
+ io.flutter.plugins.camera.Camera$1
+ io.flutter.plugins.camera.Camera$2
+ io.flutter.plugins.camera.Camera$3
+ io.flutter.plugins.camera.Camera$4
+ io.flutter.plugins.camera.Camera$5
+ io.flutter.plugins.camera.Camera$ResolutionPreset
+io/flutter/plugins/camera/MethodCallHandlerImpl.java
+ io.flutter.plugins.camera.MethodCallHandlerImpl
+io/flutter/plugins/camera/DartMessenger.java
+ io.flutter.plugins.camera.DartMessenger
+ io.flutter.plugins.camera.DartMessenger$1
+ io.flutter.plugins.camera.DartMessenger$EventType
+io/flutter/plugins/camera/CameraPermissions.java
+ io.flutter.plugins.camera.CameraPermissions
+ io.flutter.plugins.camera.CameraPermissions$CameraRequestPermissionsListener
+ io.flutter.plugins.camera.CameraPermissions$PermissionsRegistry
+ io.flutter.plugins.camera.CameraPermissions$ResultCallback
+io/flutter/plugins/camera/CameraUtils.java
+ io.flutter.plugins.camera.CameraUtils
+ io.flutter.plugins.camera.CameraUtils$1
+ io.flutter.plugins.camera.CameraUtils$CompareSizesByArea
+io/flutter/plugins/camera/CameraPlugin.java
+ io.flutter.plugins.camera.CameraPlugin
+io/flutter/plugins/camera/media/MediaRecorderBuilder.java
+ io.flutter.plugins.camera.media.MediaRecorderBuilder
+ io.flutter.plugins.camera.media.MediaRecorderBuilder$MediaRecorderFactory

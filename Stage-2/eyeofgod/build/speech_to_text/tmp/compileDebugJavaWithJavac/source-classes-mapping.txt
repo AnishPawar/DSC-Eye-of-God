@@ -1,0 +1,2 @@
+com/csdcorp/speech_to_text/BuildConfig.java
+ com.csdcorp.speech_to_text.BuildConfig

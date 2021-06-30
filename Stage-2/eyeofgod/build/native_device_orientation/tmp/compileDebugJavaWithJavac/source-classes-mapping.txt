@@ -1,0 +1,21 @@
+com/github/rmtmckenzie/native_device_orientation/BuildConfig.java
+ com.github.rmtmckenzie.native_device_orientation.BuildConfig
+com/github/rmtmckenzie/native_device_orientation/SensorOrientationListener.java
+ com.github.rmtmckenzie.native_device_orientation.SensorOrientationListener
+ com.github.rmtmckenzie.native_device_orientation.SensorOrientationListener$1
+com/github/rmtmckenzie/native_device_orientation/OrientationReader.java
+ com.github.rmtmckenzie.native_device_orientation.OrientationReader
+ com.github.rmtmckenzie.native_device_orientation.OrientationReader$1
+ com.github.rmtmckenzie.native_device_orientation.OrientationReader$Orientation
+com/github/rmtmckenzie/native_device_orientation/OrientationListener.java
+ com.github.rmtmckenzie.native_device_orientation.OrientationListener
+ com.github.rmtmckenzie.native_device_orientation.OrientationListener$1
+com/github/rmtmckenzie/native_device_orientation/IOrientationListener.java
+ com.github.rmtmckenzie.native_device_orientation.IOrientationListener
+ com.github.rmtmckenzie.native_device_orientation.IOrientationListener$OrientationCallback
+com/github/rmtmckenzie/native_device_orientation/NativeDeviceOrientationPlugin.java
+ com.github.rmtmckenzie.native_device_orientation.NativeDeviceOrientationPlugin
+ com.github.rmtmckenzie.native_device_orientation.NativeDeviceOrientationPlugin$MethodCallHandler
+ com.github.rmtmckenzie.native_device_orientation.NativeDeviceOrientationPlugin$MethodCallHandler$1
+ com.github.rmtmckenzie.native_device_orientation.NativeDeviceOrientationPlugin$StreamHandler
+ com.github.rmtmckenzie.native_device_orientation.NativeDeviceOrientationPlugin$StreamHandler$1

@@ -1,0 +1,181 @@
+define(['dart_sdk', 'packages/latlong/latlong.dart'], (function load__packages__geodesy__src__geodesy_dart(dart_sdk, packages__latlong__latlong$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const math = dart_sdk.math;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const latlong = packages__latlong__latlong$46dart.latlong;
+  var geodesy = Object.create(dart.library);
+  var $modulo = dartx['%'];
+  var $isNaN = dartx.isNaN;
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  var $add = dartx.add;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    LatLngL: () => (T.LatLngL = dart.constFn(dart.legacy(latlong.LatLng)))(),
+    JSArrayOfLatLngL: () => (T.JSArrayOfLatLngL = dart.constFn(_interceptors.JSArray$(T.LatLngL())))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = ["package:geodesy/src/geodesy.dart"];
+  var _RADIUS = dart.privateName(geodesy, "_RADIUS");
+  var _PI = dart.privateName(geodesy, "_PI");
+  geodesy.Geodesy = class Geodesy extends core.Object {
+    destinationPointByDistanceAndBearing(l, distance, bearing, radius = null) {
+      let t0;
+      radius = (t0 = radius, t0 == null ? this[_RADIUS] : t0);
+      let angularDistanceRadius = dart.notNull(distance) / dart.notNull(radius);
+      let bearingRadians = latlong.degToRadian(bearing);
+      let latRadians = latlong.degToRadian(l.latitude);
+      let lngRadians = latlong.degToRadian(l.longitude);
+      let sinLatRadians = math.sin(latRadians);
+      let cosLatRadians = math.cos(latRadians);
+      let sinAngularDistanceRadius = math.sin(angularDistanceRadius);
+      let cosAngularDistanceRadius = math.cos(angularDistanceRadius);
+      let sinBearingRadians = math.sin(bearingRadians);
+      let cosBearingRadians = math.cos(bearingRadians);
+      let sinLatRadians2 = sinLatRadians * cosAngularDistanceRadius + cosLatRadians * sinAngularDistanceRadius * cosBearingRadians;
+      let latRadians2 = math.asin(sinLatRadians2);
+      let y = sinBearingRadians * sinAngularDistanceRadius * cosLatRadians;
+      let x = cosAngularDistanceRadius - sinLatRadians * sinLatRadians2;
+      let lngRadians2 = dart.notNull(lngRadians) + math.atan2(y, x);
+      return new latlong.LatLng.new(latlong.radianToDeg(latRadians2), (dart.notNull(latlong.radianToDeg(lngRadians2)) + 540)[$modulo](360) - 180);
+    }
+    midPointBetweenTwoGeoPoints(l1, l2) {
+      let l1LatRadians = latlong.degToRadian(l1.latitude);
+      let l1LngRadians = latlong.degToRadian(l1.longitude);
+      let l2LatRadians = latlong.degToRadian(l2.latitude);
+      let lngRadiansDiff = latlong.degToRadian(dart.notNull(l2.longitude) - dart.notNull(l1.longitude));
+      let vectorX = math.cos(l2LatRadians) * math.cos(lngRadiansDiff);
+      let vectorY = math.cos(l2LatRadians) * math.sin(lngRadiansDiff);
+      let x = math.sqrt((math.cos(l1LatRadians) + vectorX) * (math.cos(l1LatRadians) + vectorX) + vectorY * vectorY);
+      let y = math.sin(l1LatRadians) + math.sin(l2LatRadians);
+      let latRadians = math.atan2(y, x);
+      let lngRadians = dart.notNull(l1LngRadians) + math.atan2(vectorY, math.cos(l1LatRadians) + vectorX);
+      return new latlong.LatLng.new(latlong.radianToDeg(latRadians), (dart.notNull(latlong.radianToDeg(lngRadians)) + 540)[$modulo](360) - 180);
+    }
+    intersectionByPaths(l1, l2, b1, b2) {
+      let l1LatRadians = latlong.degToRadian(l1.latitude);
+      let l1LngRadians = latlong.degToRadian(l1.longitude);
+      let l2LatRadians = latlong.degToRadian(l2.latitude);
+      let l2LngRadians = latlong.degToRadian(l2.longitude);
+      let b1Radians = latlong.degToRadian(b1);
+      let b2Radians = latlong.degToRadian(b2);
+      let latRadiansDiff = dart.notNull(l2LatRadians) - dart.notNull(l1LatRadians);
+      let lngRadiansDiff = dart.notNull(l2LngRadians) - dart.notNull(l1LngRadians);
+      let angularDistance = 2 * math.asin(math.sqrt(math.sin(latRadiansDiff / 2) * math.sin(latRadiansDiff / 2) + math.cos(l1LatRadians) * math.cos(l2LatRadians) * math.sin(lngRadiansDiff / 2) * math.sin(lngRadiansDiff / 2)));
+      if (angularDistance === 0) return null;
+      let initBearingX = math.acos((math.sin(l2LatRadians) - math.sin(l1LatRadians) * math.cos(angularDistance)) / (math.sin(angularDistance) * math.cos(l1LatRadians)));
+      if (initBearingX[$isNaN]) initBearingX = 0;
+      let initBearingY = math.acos((math.sin(l1LatRadians) - math.sin(l2LatRadians) * math.cos(angularDistance)) / (math.sin(angularDistance) * math.cos(l2LatRadians)));
+      let finalBearingX = math.sin(dart.notNull(l2LngRadians) - dart.notNull(l1LngRadians)) > 0 ? initBearingX : 2 * dart.notNull(this[_PI]) - initBearingX;
+      let finalBearingY = math.sin(dart.notNull(l2LngRadians) - dart.notNull(l1LngRadians)) > 0 ? 2 * dart.notNull(this[_PI]) - initBearingY : initBearingY;
+      let angle1 = dart.notNull(b1Radians) - finalBearingX;
+      let angle2 = finalBearingY - dart.notNull(b2Radians);
+      if (math.sin(angle1) === 0 && math.sin(angle2) === 0) return null;
+      if (math.sin(angle1) * math.sin(angle2) < 0) return null;
+      let angle3 = math.acos(-math.cos(angle1) * math.cos(angle2) + math.sin(angle1) * math.sin(angle2) * math.cos(angularDistance));
+      let dst13 = math.atan2(math.sin(angularDistance) * math.sin(angle1) * math.sin(angle2), math.cos(angle2) + math.cos(angle1) * math.cos(angle3));
+      let lat3 = math.asin(math.sin(l1LatRadians) * math.cos(dst13) + math.cos(l1LatRadians) * math.sin(dst13) * math.cos(b1Radians));
+      let lngRadiansDiff13 = math.atan2(math.sin(b1Radians) * math.sin(dst13) * math.cos(l1LatRadians), math.cos(dst13) - math.sin(l1LatRadians) * math.sin(lat3));
+      let l3LngRadians = dart.notNull(l1LngRadians) + lngRadiansDiff13;
+      return new latlong.LatLng.new(latlong.radianToDeg(lat3), (dart.notNull(latlong.radianToDeg(l3LngRadians)) + 540)[$modulo](360) - 180);
+    }
+    distanceBetweenTwoGeoPoints(l1, l2, radius = null) {
+      let t0;
+      radius = (t0 = radius, t0 == null ? this[_RADIUS] : t0);
+      let R = radius;
+      let l1LatRadians = latlong.degToRadian(l1.latitude);
+      let l1LngRadians = latlong.degToRadian(l1.longitude);
+      let l2LatRadians = latlong.degToRadian(l2.latitude);
+      let l2LngRadians = latlong.degToRadian(l2.longitude);
+      let latRadiansDiff = dart.notNull(l2LatRadians) - dart.notNull(l1LatRadians);
+      let lngRadiansDiff = dart.notNull(l2LngRadians) - dart.notNull(l1LngRadians);
+      let a = math.sin(latRadiansDiff / 2) * math.sin(latRadiansDiff / 2) + math.cos(l1LatRadians) * math.cos(l2LatRadians) * math.sin(lngRadiansDiff / 2) * math.sin(lngRadiansDiff / 2);
+      let c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a));
+      let distance = dart.notNull(R) * c;
+      return distance;
+    }
+    bearingBetweenTwoGeoPoints(l1, l2) {
+      let l1LatRadians = latlong.degToRadian(l1.latitude);
+      let l2LatRadians = latlong.degToRadian(l2.latitude);
+      let lngRadiansDiff = latlong.degToRadian(dart.notNull(l2.longitude) - dart.notNull(l1.longitude));
+      let y = math.sin(lngRadiansDiff) * math.cos(l2LatRadians);
+      let x = math.cos(l1LatRadians) * math.sin(l2LatRadians) - math.sin(l1LatRadians) * math.cos(l2LatRadians) * math.cos(lngRadiansDiff);
+      let radians = math.atan2(y, x);
+      return (dart.notNull(latlong.radianToDeg(radians)) + 360)[$modulo](360);
+    }
+    finalBearingBetweenTwoGeoPoints(l1, l2) {
+      return (dart.notNull(this.bearingBetweenTwoGeoPoints(l2, l1)) + 180)[$modulo](360);
+    }
+    crossTrackDistanceTo(l1, start, end, radius = null) {
+      let t0;
+      let R = (t0 = radius, t0 == null ? this[_RADIUS] : t0);
+      let distStartL1 = dart.notNull(this.distanceBetweenTwoGeoPoints(start, l1, R)) / dart.notNull(R);
+      let radiansStartL1 = latlong.degToRadian(this.bearingBetweenTwoGeoPoints(start, l1));
+      let radiansEndL1 = latlong.degToRadian(this.bearingBetweenTwoGeoPoints(start, end));
+      let x = math.asin(math.sin(distStartL1) * math.sin(dart.notNull(radiansStartL1) - dart.notNull(radiansEndL1)));
+      return x * dart.notNull(R);
+    }
+    isGeoPointInBoudingBox(l, topLeft, bottomRight) {
+      return dart.notNull(topLeft.latitude) <= dart.notNull(l.latitude) && dart.notNull(l.latitude) <= dart.notNull(bottomRight.latitude) && dart.notNull(topLeft.longitude) <= dart.notNull(l.longitude) && dart.notNull(l.longitude) <= dart.notNull(bottomRight.longitude) ? true : false;
+    }
+    isGeoPointInPolygon(l, polygon) {
+      let t0;
+      let isInPolygon = false;
+      for (let i = 0, j = dart.notNull(polygon[$length]) - 1; i < dart.notNull(polygon[$length]); j = (t0 = i, i = t0 + 1, t0)) {
+        if ((dart.notNull(polygon[$_get](i).latitude) <= dart.notNull(l.latitude) && dart.notNull(l.latitude) < dart.notNull(polygon[$_get](j).latitude) || dart.notNull(polygon[$_get](j).latitude) <= dart.notNull(l.latitude) && dart.notNull(l.latitude) < dart.notNull(polygon[$_get](i).latitude)) && dart.notNull(l.longitude) < (dart.notNull(polygon[$_get](j).longitude) - dart.notNull(polygon[$_get](i).longitude)) * (dart.notNull(l.latitude) - dart.notNull(polygon[$_get](i).latitude)) / (dart.notNull(polygon[$_get](j).latitude) - dart.notNull(polygon[$_get](i).latitude)) + dart.notNull(polygon[$_get](i).longitude)) isInPolygon = !isInPolygon;
+      }
+      return isInPolygon;
+    }
+    pointsInRange(point, pointsToCheck, distance) {
+      let geoFencedPoints = T.JSArrayOfLatLngL().of([]);
+      for (let p of pointsToCheck) {
+        let distanceFromCenter = this.distanceBetweenTwoGeoPoints(point, p);
+        if (dart.notNull(distanceFromCenter) <= dart.notNull(distance)) {
+          geoFencedPoints[$add](p);
+        }
+      }
+      return geoFencedPoints;
+    }
+  };
+  (geodesy.Geodesy.new = function() {
+    this[_RADIUS] = 6371000.0;
+    this[_PI] = 3.141592653589793;
+    ;
+  }).prototype = geodesy.Geodesy.prototype;
+  dart.addTypeTests(geodesy.Geodesy);
+  dart.addTypeCaches(geodesy.Geodesy);
+  dart.setMethodSignature(geodesy.Geodesy, () => ({
+    __proto__: dart.getMethods(geodesy.Geodesy.__proto__),
+    destinationPointByDistanceAndBearing: dart.fnType(dart.legacy(latlong.LatLng), [dart.legacy(latlong.LatLng), dart.legacy(core.num), dart.legacy(core.num)], [dart.legacy(core.num)]),
+    midPointBetweenTwoGeoPoints: dart.fnType(dart.legacy(latlong.LatLng), [dart.legacy(latlong.LatLng), dart.legacy(latlong.LatLng)]),
+    intersectionByPaths: dart.fnType(dart.legacy(latlong.LatLng), [dart.legacy(latlong.LatLng), dart.legacy(latlong.LatLng), dart.legacy(core.num), dart.legacy(core.num)]),
+    distanceBetweenTwoGeoPoints: dart.fnType(dart.legacy(core.num), [dart.legacy(latlong.LatLng), dart.legacy(latlong.LatLng)], [dart.legacy(core.num)]),
+    bearingBetweenTwoGeoPoints: dart.fnType(dart.legacy(core.num), [dart.legacy(latlong.LatLng), dart.legacy(latlong.LatLng)]),
+    finalBearingBetweenTwoGeoPoints: dart.fnType(dart.legacy(core.num), [dart.legacy(latlong.LatLng), dart.legacy(latlong.LatLng)]),
+    crossTrackDistanceTo: dart.fnType(dart.legacy(core.num), [dart.legacy(latlong.LatLng), dart.legacy(latlong.LatLng), dart.legacy(latlong.LatLng)], [dart.legacy(core.num)]),
+    isGeoPointInBoudingBox: dart.fnType(dart.legacy(core.bool), [dart.legacy(latlong.LatLng), dart.legacy(latlong.LatLng), dart.legacy(latlong.LatLng)]),
+    isGeoPointInPolygon: dart.fnType(dart.legacy(core.bool), [dart.legacy(latlong.LatLng), dart.legacy(core.List$(dart.legacy(latlong.LatLng)))]),
+    pointsInRange: dart.fnType(dart.legacy(core.List$(dart.legacy(latlong.LatLng))), [dart.legacy(latlong.LatLng), dart.legacy(core.List$(dart.legacy(latlong.LatLng))), dart.legacy(core.num)])
+  }));
+  dart.setLibraryUri(geodesy.Geodesy, I[0]);
+  dart.setFieldSignature(geodesy.Geodesy, () => ({
+    __proto__: dart.getFields(geodesy.Geodesy.__proto__),
+    [_RADIUS]: dart.finalFieldType(dart.legacy(core.num)),
+    [_PI]: dart.finalFieldType(dart.legacy(core.num))
+  }));
+  dart.trackLibraries("packages/geodesy/src/geodesy.dart", {
+    "package:geodesy/src/geodesy.dart": geodesy
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["geodesy.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;yCAUa,GAAO,UAAc,SACvB;;AACmB,MAA1B,UAAgB,KAAP,MAAM,EAAN,aAAU;AAEf,kCAAiC,aAAT,QAAQ,iBAAG,MAAM;AACzC,2BAAiB,oBAAY,OAAO;AAEpC,uBAAa,oBAAY,AAAE,CAAD;AAC1B,uBAAa,oBAAY,AAAE,CAAD;AAE1B,0BAAgB,SAAS,UAAU;AACnC,0BAAgB,SAAS,UAAU;AACnC,qCAA2B,SAAS,qBAAqB;AACzD,qCAA2B,SAAS,qBAAqB;AACzD,8BAAoB,SAAS,cAAc;AAC3C,8BAAoB,SAAS,cAAc;AAE3C,2BAAiB,AAAc,AAA2B,aAA5B,GAAG,wBAAwB,GACzD,AAAc,AAA2B,aAA5B,GAAG,wBAAwB,GAAG,iBAAiB;AAC5D,wBAAc,UAAU,cAAc;AACtC,cAAI,AAAkB,AAA2B,iBAA5B,GAAG,wBAAwB,GAAG,aAAa;AAChE,cAAI,AAAyB,wBAAD,GAAG,AAAc,aAAD,GAAG,cAAc;AAC7D,wBAAyB,aAAX,UAAU,IAAG,WAAW,CAAC,EAAE,CAAC;AAC9C,YAAO,wBAAO,oBAAY,WAAW,GACU,AAAM,CAAb,aAAnC,oBAAY,WAAW,KAAc,cAAO,OAAM;IACzD;gCAG0C,IAAW;AAC/C,yBAAe,oBAAY,AAAG,EAAD;AAC7B,yBAAe,oBAAY,AAAG,EAAD;AAC7B,yBAAe,oBAAY,AAAG,EAAD;AAC7B,2BAAiB,oBAAyB,aAAb,AAAG,EAAD,2BAAa,AAAG,EAAD;AAE9C,oBAAU,AAAuB,SAAd,YAAY,IAAI,SAAS,cAAc;AAC1D,oBAAU,AAAuB,SAAd,YAAY,IAAI,SAAS,cAAc;AAE1D,cAAI,UAA6C,AACV,CADxB,AAAuB,SAAd,YAAY,IAAI,OAAO,KAC1C,AAAuB,SAAd,YAAY,IAAI,OAAO,IACrC,AAAQ,OAAD,GAAG,OAAO;AACjB,cAAI,AAAuB,SAAd,YAAY,IAAI,SAAS,YAAY;AAClD,uBAAa,WAAW,CAAC,EAAE,CAAC;AAC5B,uBACa,aAAb,YAAY,IAAG,WAAW,OAAO,EAAE,AAAuB,SAAd,YAAY,IAAI,OAAO;AAEvE,YAAO,wBAAO,oBAAY,UAAU,GACU,AAAM,CAAb,aAAlC,oBAAY,UAAU,KAAc,cAAO,OAAM;IACxD;wBAGkC,IAAW,IAAQ,IAAQ;AACvD,yBAAe,oBAAY,AAAG,EAAD;AAC7B,yBAAe,oBAAY,AAAG,EAAD;AAC7B,yBAAe,oBAAY,AAAG,EAAD;AAC7B,yBAAe,oBAAY,AAAG,EAAD;AAC7B,sBAAY,oBAAY,EAAE;AAC1B,sBAAY,oBAAY,EAAE;AAC1B,2BAA8B,aAAb,YAAY,iBAAG,YAAY;AAC5C,2BAA8B,aAAb,YAAY,iBAAG,YAAY;AAE5C,4BAAkB,AAAE,IACpB,UAAU,UACN,AAA6B,AAA+B,SAAnD,AAAe,cAAD,GAAG,KAAK,SAAS,AAAe,cAAD,GAAG,KACrD,AAAuB,AACI,AACM,SAFxB,YAAY,IACjB,SAAS,YAAY,IACrB,SAAS,AAAe,cAAD,GAAG,KAC1B,SAAS,AAAe,cAAD,GAAG;AAC1C,UAAI,AAAgB,eAAD,KAAI,GAAG,MAAO;AAE7B,yBAAe,UACyC,CAD9B,AAAuB,SAAd,YAAY,IAC3C,AAAuB,SAAd,YAAY,IAAI,SAAS,eAAe,MACpD,AAA0B,SAAjB,eAAe,IAAI,SAAS,YAAY;AACtD,UAAI,AAAa,YAAD,UAAQ,AAAgB,eAAD;AACnC,yBAAe,UACyC,CAD9B,AAAuB,SAAd,YAAY,IAC3C,AAAuB,SAAd,YAAY,IAAI,SAAS,eAAe,MACpD,AAA0B,SAAjB,eAAe,IAAI,SAAS,YAAY;AAElD,0BAAgB,AAAsC,SAAhB,aAAb,YAAY,iBAAG,YAAY,KAAI,IACtD,YAAY,GACZ,AAAE,AAAM,iBAAJ,aAAM,YAAY;AACxB,0BAAgB,AAAsC,SAAhB,aAAb,YAAY,iBAAG,YAAY,KAAI,IACtD,AAAE,AAAM,iBAAJ,aAAM,YAAY,GACtB,YAAY;AAEd,mBAAmB,aAAV,SAAS,IAAG,aAAa;AAClC,mBAAS,AAAc,aAAD,gBAAG,SAAS;AAEtC,UAAI,AAAiB,SAAR,MAAM,MAAK,KAAK,AAAiB,SAAR,MAAM,MAAK,GAAG,MAAO;AAC3D,UAAI,AAAiB,AAAmB,SAA3B,MAAM,IAAI,SAAS,MAAM,IAAI,GAAG,MAAO;AAEhD,mBAAS,UAAU,AAAkB,AAAmB,CAApC,SAAS,MAAM,IAAI,SAAS,MAAM,IACtD,AAAiB,AAAmB,SAA3B,MAAM,IAAI,SAAS,MAAM,IAAI,SAAS,eAAe;AAC9D,kBAAQ,WACR,AAA0B,AAAmB,SAApC,eAAe,IAAI,SAAS,MAAM,IAAI,SAAS,MAAM,GAC9D,AAAiB,SAAR,MAAM,IAAI,AAAiB,SAAR,MAAM,IAAI,SAAS,MAAM;AACrD,iBAAO,UAAU,AAAuB,AAAkB,SAAhC,YAAY,IAAI,SAAS,KAAK,IACxD,AAAuB,AAAkB,SAAhC,YAAY,IAAI,SAAS,KAAK,IAAI,SAAS,SAAS;AAC7D,6BAAmB,WACnB,AAAoB,AAAkB,SAA7B,SAAS,IAAI,SAAS,KAAK,IAAI,SAAS,YAAY,GAC7D,AAAgB,SAAP,KAAK,IAAI,AAAuB,SAAd,YAAY,IAAI,SAAS,IAAI;AACxD,yBAA4B,aAAb,YAAY,IAAG,gBAAgB;AAElD,YAAO,wBAAO,oBAAY,IAAI,GACkB,AAAM,CAAb,aAApC,oBAAY,YAAY,KAAc,cAAO,OAAM;IAC1D;gCAGuC,IAAW,IAAS;;AAC/B,MAA1B,UAAgB,KAAP,MAAM,EAAN,aAAU;AACf,cAAI,MAAM;AACV,yBAAe,oBAAY,AAAG,EAAD;AAC7B,yBAAe,oBAAY,AAAG,EAAD;AAC7B,yBAAe,oBAAY,AAAG,EAAD;AAC7B,yBAAe,oBAAY,AAAG,EAAD;AAC7B,2BAA8B,aAAb,YAAY,iBAAG,YAAY;AAC5C,2BAA8B,aAAb,YAAY,iBAAG,YAAY;AAE5C,cAAI,AAA6B,AAA+B,SAAnD,AAAe,cAAD,GAAG,KAAK,SAAS,AAAe,cAAD,GAAG,KAC7D,AAAuB,AACI,AACM,SAFxB,YAAY,IACjB,SAAS,YAAY,IACrB,SAAS,AAAe,cAAD,GAAG,KAC1B,SAAS,AAAe,cAAD,GAAG;AAC9B,cAAI,AAAE,IAAE,WAAW,UAAU,CAAC,GAAG,UAAU,AAAE,IAAE,CAAC;AAChD,qBAAa,aAAF,CAAC,IAAG,CAAC;AAEpB,YAAO,SAAQ;IACjB;+BAGsC,IAAW;AAC3C,yBAAe,oBAAY,AAAG,EAAD;AAC7B,yBAAe,oBAAY,AAAG,EAAD;AAC7B,2BAAiB,oBAAyB,aAAb,AAAG,EAAD,2BAAa,AAAG,EAAD;AAC9C,cAAI,AAAyB,SAAhB,cAAc,IAAI,SAAS,YAAY;AACpD,cAAI,AAAuB,AAAyB,SAAvC,YAAY,IAAI,SAAS,YAAY,IAClD,AAAuB,AACI,SADlB,YAAY,IACjB,SAAS,YAAY,IACrB,SAAS,cAAc;AAC3B,oBAAU,WAAW,CAAC,EAAE,CAAC;AAE7B,YAA8C,EAAP,aAA/B,oBAAY,OAAO,KAAc,cAAO;IAClD;oCAG2C,IAAW;AACpD,YAAkD,EAAP,aAAnC,gCAA2B,EAAE,EAAE,EAAE,KAAI,cAAO;IACtD;yBAIgC,IAAW,OAAc,KAAU;;AAC7D,eAAW,KAAP,MAAM,EAAN,aAAU;AAEd,wBAAwD,aAA1C,iCAA4B,KAAK,EAAE,EAAE,EAAE,CAAC,kBAAI,CAAC;AAC3D,2BACA,oBAAY,gCAA2B,KAAK,EAAE,EAAE;AAChD,yBACA,oBAAY,gCAA2B,KAAK,EAAE,GAAG;AAEjD,cAAI,UACE,AAAsB,SAAb,WAAW,IAAI,SAAwB,aAAf,cAAc,iBAAG,YAAY;AAExE,YAAO,AAAE,EAAD,gBAAG,CAAC;IACd;2BAGmC,GAAU,SAAgB;AAC3D,YAAwB,AAEiB,cAFlC,AAAQ,OAAD,2BAAa,AAAE,CAAD,cACT,aAAX,AAAE,CAAD,2BAAa,AAAY,WAAD,cACP,aAAlB,AAAQ,OAAD,4BAAc,AAAE,CAAD,eACV,aAAZ,AAAE,CAAD,4BAAc,AAAY,WAAD,cAC5B,OACA;IACR;wBAIgC,GAAgB;;AAC1C,wBAAc;AAElB,eAAS,IAAI,GAAG,IAAmB,aAAf,AAAQ,OAAD,aAAU,GAAG,AAAE,CAAD,gBAAG,AAAQ,OAAD,YAAS,KAAK,KAAD,CAAC;AAC/D,aAA2B,aAApB,AAAO,AAAI,OAAJ,QAAC,CAAC,4BAAc,AAAE,CAAD,cACP,aAAX,AAAE,CAAD,0BAAY,AAAO,AAAI,OAAJ,QAAC,CAAC,eACL,aAApB,AAAO,AAAI,OAAJ,QAAC,CAAC,4BAAc,AAAE,CAAD,cACV,aAAX,AAAE,CAAD,0BAAY,AAAO,AAAI,OAAJ,QAAC,CAAC,gBAClB,aAAZ,AAAE,CAAD,cACgD,AACH,AACS,CAF9B,aAArB,AAAO,AAAI,OAAJ,QAAC,CAAC,4BAAc,AAAO,AAAI,OAAJ,QAAC,CAAC,iBACb,aAAX,AAAE,CAAD,0BAAY,AAAO,AAAI,OAAJ,QAAC,CAAC,gBACF,aAApB,AAAO,AAAI,OAAJ,QAAC,CAAC,2BAAa,AAAO,AAAI,OAAJ,QAAC,CAAC,4BACpC,AAAO,AAAI,OAAJ,QAAC,CAAC,cAAc,AAA0B,cAAZ,CAAC,WAAW;;AAE/D,YAAO,YAAW;IACpB;kBAOW,OAAoB,eAAmB;AAC1C,4BAA0B;AAChC,eAAW,IAAK,cAAa;AACrB,iCAAqB,iCAA4B,KAAK,EAAE,CAAC;AAC/D,YAAuB,aAAnB,kBAAkB,kBAAI,QAAQ;AACV,UAAtB,AAAgB,eAAD,OAAK,CAAC;;;AAGzB,YAAO,gBAAe;IACxB;;;IArNU,gBAAU;IACV;;EAqNZ","file":"../../../../../../../../../D:/packages/geodesy/src/geodesy.dart.lib.js"}');
+  // Exports:
+  return {
+    src__geodesy: geodesy
+  };
+}));
+
+//# sourceMappingURL=geodesy.dart.lib.js.map

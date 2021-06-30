@@ -1,0 +1,928 @@
+define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/events/map_event.dart', 'packages/flutter/src/services/system_channels.dart', 'packages/google_maps_flutter_platform_interface/src/types/ui.dart', 'packages/google_maps_flutter_platform_interface/src/types/location.dart', 'packages/google_maps_flutter_platform_interface/src/types/screen_coordinate.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/foundation/basic_types.dart', 'packages/flutter/src/gestures/recognizer.dart'], (function load__packages__google_maps_flutter__google_maps_flutter_dart(dart_sdk, packages__google_maps_flutter_platform_interface__src__events__map_event$46dart, packages__flutter__src__services__system_channels$46dart, packages__google_maps_flutter_platform_interface__src__types__ui$46dart, packages__google_maps_flutter_platform_interface__src__types__location$46dart, packages__google_maps_flutter_platform_interface__src__types__screen_coordinate$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__foundation__basic_types$46dart, packages__flutter__src__gestures__recognizer$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const typed_data = dart_sdk.typed_data;
+  const _js_helper = dart_sdk._js_helper;
+  const io = dart_sdk.io;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const method_channel_google_maps_flutter = packages__google_maps_flutter_platform_interface__src__events__map_event$46dart.src__method_channel__method_channel_google_maps_flutter;
+  const map_event = packages__google_maps_flutter_platform_interface__src__events__map_event$46dart.src__events__map_event;
+  const google_maps_flutter_platform = packages__google_maps_flutter_platform_interface__src__events__map_event$46dart.src__platform_interface__google_maps_flutter_platform;
+  const platform_channel = packages__flutter__src__services__system_channels$46dart.src__services__platform_channel;
+  const marker_updates = packages__google_maps_flutter_platform_interface__src__types__ui$46dart.src__types__marker_updates;
+  const polygon_updates = packages__google_maps_flutter_platform_interface__src__types__ui$46dart.src__types__polygon_updates;
+  const polyline_updates = packages__google_maps_flutter_platform_interface__src__types__ui$46dart.src__types__polyline_updates;
+  const circle_updates = packages__google_maps_flutter_platform_interface__src__types__ui$46dart.src__types__circle_updates;
+  const camera = packages__google_maps_flutter_platform_interface__src__types__ui$46dart.src__types__camera;
+  const marker = packages__google_maps_flutter_platform_interface__src__types__ui$46dart.src__types__marker;
+  const ui = packages__google_maps_flutter_platform_interface__src__types__ui$46dart.src__types__ui;
+  const polygon = packages__google_maps_flutter_platform_interface__src__types__ui$46dart.src__types__polygon;
+  const polyline = packages__google_maps_flutter_platform_interface__src__types__ui$46dart.src__types__polyline;
+  const circle = packages__google_maps_flutter_platform_interface__src__types__ui$46dart.src__types__circle;
+  const marker$ = packages__google_maps_flutter_platform_interface__src__types__ui$46dart.src__types__utils__marker;
+  const polygon$ = packages__google_maps_flutter_platform_interface__src__types__ui$46dart.src__types__utils__polygon;
+  const polyline$ = packages__google_maps_flutter_platform_interface__src__types__ui$46dart.src__types__utils__polyline;
+  const circle$ = packages__google_maps_flutter_platform_interface__src__types__ui$46dart.src__types__utils__circle;
+  const location = packages__google_maps_flutter_platform_interface__src__types__location$46dart.src__types__location;
+  const screen_coordinate = packages__google_maps_flutter_platform_interface__src__types__screen_coordinate$46dart.src__types__screen_coordinate;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const basic_types = packages__flutter__src__foundation__basic_types$46dart.src__foundation__basic_types;
+  const recognizer = packages__flutter__src__gestures__recognizer$46dart.src__gestures__recognizer;
+  var google_maps_flutter = Object.create(dart.library);
+  var $isEmpty = dartx.isEmpty;
+  var $values = dartx.values;
+  var $toSet = dartx.toSet;
+  var $_get = dartx._get;
+  var $_set = dartx._set;
+  var $removeWhere = dartx.removeWhere;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    GoogleMapControllerL: () => (T.GoogleMapControllerL = dart.constFn(dart.legacy(google_maps_flutter.GoogleMapController)))(),
+    MethodChannelGoogleMapsFlutterL: () => (T.MethodChannelGoogleMapsFlutterL = dart.constFn(dart.legacy(method_channel_google_maps_flutter.MethodChannelGoogleMapsFlutter)))(),
+    CameraMoveStartedEventL: () => (T.CameraMoveStartedEventL = dart.constFn(dart.legacy(map_event.CameraMoveStartedEvent)))(),
+    CameraMoveStartedEventLTovoid: () => (T.CameraMoveStartedEventLTovoid = dart.constFn(dart.fnType(dart.void, [T.CameraMoveStartedEventL()])))(),
+    CameraMoveEventL: () => (T.CameraMoveEventL = dart.constFn(dart.legacy(map_event.CameraMoveEvent)))(),
+    CameraMoveEventLTovoid: () => (T.CameraMoveEventLTovoid = dart.constFn(dart.fnType(dart.void, [T.CameraMoveEventL()])))(),
+    CameraIdleEventL: () => (T.CameraIdleEventL = dart.constFn(dart.legacy(map_event.CameraIdleEvent)))(),
+    CameraIdleEventLTovoid: () => (T.CameraIdleEventLTovoid = dart.constFn(dart.fnType(dart.void, [T.CameraIdleEventL()])))(),
+    MarkerTapEventL: () => (T.MarkerTapEventL = dart.constFn(dart.legacy(map_event.MarkerTapEvent)))(),
+    MarkerTapEventLTovoid: () => (T.MarkerTapEventLTovoid = dart.constFn(dart.fnType(dart.void, [T.MarkerTapEventL()])))(),
+    MarkerDragEndEventL: () => (T.MarkerDragEndEventL = dart.constFn(dart.legacy(map_event.MarkerDragEndEvent)))(),
+    MarkerDragEndEventLTovoid: () => (T.MarkerDragEndEventLTovoid = dart.constFn(dart.fnType(dart.void, [T.MarkerDragEndEventL()])))(),
+    InfoWindowTapEventL: () => (T.InfoWindowTapEventL = dart.constFn(dart.legacy(map_event.InfoWindowTapEvent)))(),
+    InfoWindowTapEventLTovoid: () => (T.InfoWindowTapEventLTovoid = dart.constFn(dart.fnType(dart.void, [T.InfoWindowTapEventL()])))(),
+    PolylineTapEventL: () => (T.PolylineTapEventL = dart.constFn(dart.legacy(map_event.PolylineTapEvent)))(),
+    PolylineTapEventLTovoid: () => (T.PolylineTapEventLTovoid = dart.constFn(dart.fnType(dart.void, [T.PolylineTapEventL()])))(),
+    PolygonTapEventL: () => (T.PolygonTapEventL = dart.constFn(dart.legacy(map_event.PolygonTapEvent)))(),
+    PolygonTapEventLTovoid: () => (T.PolygonTapEventLTovoid = dart.constFn(dart.fnType(dart.void, [T.PolygonTapEventL()])))(),
+    CircleTapEventL: () => (T.CircleTapEventL = dart.constFn(dart.legacy(map_event.CircleTapEvent)))(),
+    CircleTapEventLTovoid: () => (T.CircleTapEventLTovoid = dart.constFn(dart.fnType(dart.void, [T.CircleTapEventL()])))(),
+    MapTapEventL: () => (T.MapTapEventL = dart.constFn(dart.legacy(map_event.MapTapEvent)))(),
+    MapTapEventLTovoid: () => (T.MapTapEventLTovoid = dart.constFn(dart.fnType(dart.void, [T.MapTapEventL()])))(),
+    MapLongPressEventL: () => (T.MapLongPressEventL = dart.constFn(dart.legacy(map_event.MapLongPressEvent)))(),
+    MapLongPressEventLTovoid: () => (T.MapLongPressEventLTovoid = dart.constFn(dart.fnType(dart.void, [T.MapLongPressEventL()])))(),
+    CompleterOfGoogleMapControllerL: () => (T.CompleterOfGoogleMapControllerL = dart.constFn(async.Completer$(T.GoogleMapControllerL())))(),
+    MarkerIdL: () => (T.MarkerIdL = dart.constFn(dart.legacy(marker.MarkerId)))(),
+    MarkerL: () => (T.MarkerL = dart.constFn(dart.legacy(marker.Marker)))(),
+    LinkedMapOfMarkerIdL$MarkerL: () => (T.LinkedMapOfMarkerIdL$MarkerL = dart.constFn(_js_helper.LinkedMap$(T.MarkerIdL(), T.MarkerL())))(),
+    PolygonIdL: () => (T.PolygonIdL = dart.constFn(dart.legacy(polygon.PolygonId)))(),
+    PolygonL: () => (T.PolygonL = dart.constFn(dart.legacy(polygon.Polygon)))(),
+    LinkedMapOfPolygonIdL$PolygonL: () => (T.LinkedMapOfPolygonIdL$PolygonL = dart.constFn(_js_helper.LinkedMap$(T.PolygonIdL(), T.PolygonL())))(),
+    PolylineIdL: () => (T.PolylineIdL = dart.constFn(dart.legacy(polyline.PolylineId)))(),
+    PolylineL: () => (T.PolylineL = dart.constFn(dart.legacy(polyline.Polyline)))(),
+    LinkedMapOfPolylineIdL$PolylineL: () => (T.LinkedMapOfPolylineIdL$PolylineL = dart.constFn(_js_helper.LinkedMap$(T.PolylineIdL(), T.PolylineL())))(),
+    CircleIdL: () => (T.CircleIdL = dart.constFn(dart.legacy(circle.CircleId)))(),
+    CircleL: () => (T.CircleL = dart.constFn(dart.legacy(circle.Circle)))(),
+    LinkedMapOfCircleIdL$CircleL: () => (T.LinkedMapOfCircleIdL$CircleL = dart.constFn(_js_helper.LinkedMap$(T.CircleIdL(), T.CircleL())))(),
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    IdentityMapOfStringL$dynamic: () => (T.IdentityMapOfStringL$dynamic = dart.constFn(_js_helper.IdentityMap$(T.StringL(), dart.dynamic)))(),
+    GoogleMapL: () => (T.GoogleMapL = dart.constFn(dart.legacy(google_maps_flutter.GoogleMap)))(),
+    StringLAnddynamicTovoid: () => (T.StringLAnddynamicTovoid = dart.constFn(dart.fnType(dart.void, [T.StringL(), dart.dynamic])))(),
+    doubleL: () => (T.doubleL = dart.constFn(dart.legacy(core.double)))(),
+    JSArrayOfdoubleL: () => (T.JSArrayOfdoubleL = dart.constFn(_interceptors.JSArray$(T.doubleL())))(),
+    boolL: () => (T.boolL = dart.constFn(dart.legacy(core.bool)))(),
+    StringLAnddynamicToboolL: () => (T.StringLAnddynamicToboolL = dart.constFn(dart.fnType(T.boolL(), [T.StringL(), dart.dynamic])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: ui.CameraTargetBounds.prototype,
+        [CameraTargetBounds_bounds]: null
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: ui.MapType.prototype,
+        [_name]: "MapType.normal",
+        index: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: ui.MinMaxZoomPreference.prototype,
+        [MinMaxZoomPreference_maxZoom]: null,
+        [MinMaxZoomPreference_minZoom]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 0,
+        [EdgeInsets_right]: 0,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 0
+      });
+    }
+  }, false);
+  var C = Array(4).fill(void 0);
+  var I = [
+    "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter-0.5.33/lib/src/controller.dart",
+    "package:google_maps_flutter/google_maps_flutter.dart",
+    "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter-0.5.33/lib/src/google_map.dart"
+  ];
+  var mapId$ = dart.privateName(google_maps_flutter, "GoogleMapController.mapId");
+  var _googleMapState$ = dart.privateName(google_maps_flutter, "_googleMapState");
+  var _connectStreams = dart.privateName(google_maps_flutter, "_connectStreams");
+  var _updateMapOptions = dart.privateName(google_maps_flutter, "_updateMapOptions");
+  var _updateMarkers = dart.privateName(google_maps_flutter, "_updateMarkers");
+  var _updatePolygons = dart.privateName(google_maps_flutter, "_updatePolygons");
+  var _updatePolylines = dart.privateName(google_maps_flutter, "_updatePolylines");
+  var _updateCircles = dart.privateName(google_maps_flutter, "_updateCircles");
+  google_maps_flutter.GoogleMapController = class GoogleMapController extends core.Object {
+    get mapId() {
+      return this[mapId$];
+    }
+    set mapId(value) {
+      super.mapId = value;
+    }
+    static init(id, initialCameraPosition, googleMapState) {
+      return async.async(T.GoogleMapControllerL(), function* init() {
+        if (!(id != null)) dart.assertFailed(null, I[0], 32, 12, "id != null");
+        yield google_maps_flutter._googleMapsFlutterPlatform.init(id);
+        return new google_maps_flutter.GoogleMapController.__(initialCameraPosition, googleMapState, {mapId: id});
+      });
+    }
+    get channel() {
+      if (T.MethodChannelGoogleMapsFlutterL().is(google_maps_flutter._googleMapsFlutterPlatform)) {
+        return T.MethodChannelGoogleMapsFlutterL().as(google_maps_flutter._googleMapsFlutterPlatform).channel(this.mapId);
+      }
+      return null;
+    }
+    [_connectStreams](mapId) {
+      if (this[_googleMapState$].widget.onCameraMoveStarted != null) {
+        google_maps_flutter._googleMapsFlutterPlatform.onCameraMoveStarted({mapId: mapId}).listen(dart.fn(_ => this[_googleMapState$].widget.onCameraMoveStarted(), T.CameraMoveStartedEventLTovoid()));
+      }
+      if (this[_googleMapState$].widget.onCameraMove != null) {
+        google_maps_flutter._googleMapsFlutterPlatform.onCameraMove({mapId: mapId}).listen(dart.fn(e => {
+          let t1, t0;
+          t0 = this[_googleMapState$].widget;
+          t1 = e.value;
+          return t0.onCameraMove(t1);
+        }, T.CameraMoveEventLTovoid()));
+      }
+      if (this[_googleMapState$].widget.onCameraIdle != null) {
+        google_maps_flutter._googleMapsFlutterPlatform.onCameraIdle({mapId: mapId}).listen(dart.fn(_ => this[_googleMapState$].widget.onCameraIdle(), T.CameraIdleEventLTovoid()));
+      }
+      google_maps_flutter._googleMapsFlutterPlatform.onMarkerTap({mapId: mapId}).listen(dart.fn(e => this[_googleMapState$].onMarkerTap(e.value), T.MarkerTapEventLTovoid()));
+      google_maps_flutter._googleMapsFlutterPlatform.onMarkerDragEnd({mapId: mapId}).listen(dart.fn(e => this[_googleMapState$].onMarkerDragEnd(e.value, e.position), T.MarkerDragEndEventLTovoid()));
+      google_maps_flutter._googleMapsFlutterPlatform.onInfoWindowTap({mapId: mapId}).listen(dart.fn(e => this[_googleMapState$].onInfoWindowTap(e.value), T.InfoWindowTapEventLTovoid()));
+      google_maps_flutter._googleMapsFlutterPlatform.onPolylineTap({mapId: mapId}).listen(dart.fn(e => this[_googleMapState$].onPolylineTap(e.value), T.PolylineTapEventLTovoid()));
+      google_maps_flutter._googleMapsFlutterPlatform.onPolygonTap({mapId: mapId}).listen(dart.fn(e => this[_googleMapState$].onPolygonTap(e.value), T.PolygonTapEventLTovoid()));
+      google_maps_flutter._googleMapsFlutterPlatform.onCircleTap({mapId: mapId}).listen(dart.fn(e => this[_googleMapState$].onCircleTap(e.value), T.CircleTapEventLTovoid()));
+      google_maps_flutter._googleMapsFlutterPlatform.onTap({mapId: mapId}).listen(dart.fn(e => this[_googleMapState$].onTap(e.position), T.MapTapEventLTovoid()));
+      google_maps_flutter._googleMapsFlutterPlatform.onLongPress({mapId: mapId}).listen(dart.fn(e => this[_googleMapState$].onLongPress(e.position), T.MapLongPressEventLTovoid()));
+    }
+    [_updateMapOptions](optionsUpdate) {
+      if (!(optionsUpdate != null)) dart.assertFailed(null, I[0], 102, 12, "optionsUpdate != null");
+      return google_maps_flutter._googleMapsFlutterPlatform.updateMapOptions(optionsUpdate, {mapId: this.mapId});
+    }
+    [_updateMarkers](markerUpdates) {
+      if (!(markerUpdates != null)) dart.assertFailed(null, I[0], 114, 12, "markerUpdates != null");
+      return google_maps_flutter._googleMapsFlutterPlatform.updateMarkers(markerUpdates, {mapId: this.mapId});
+    }
+    [_updatePolygons](polygonUpdates) {
+      if (!(polygonUpdates != null)) dart.assertFailed(null, I[0], 126, 12, "polygonUpdates != null");
+      return google_maps_flutter._googleMapsFlutterPlatform.updatePolygons(polygonUpdates, {mapId: this.mapId});
+    }
+    [_updatePolylines](polylineUpdates) {
+      if (!(polylineUpdates != null)) dart.assertFailed(null, I[0], 138, 12, "polylineUpdates != null");
+      return google_maps_flutter._googleMapsFlutterPlatform.updatePolylines(polylineUpdates, {mapId: this.mapId});
+    }
+    [_updateCircles](circleUpdates) {
+      if (!(circleUpdates != null)) dart.assertFailed(null, I[0], 150, 12, "circleUpdates != null");
+      return google_maps_flutter._googleMapsFlutterPlatform.updateCircles(circleUpdates, {mapId: this.mapId});
+    }
+    animateCamera(cameraUpdate) {
+      return google_maps_flutter._googleMapsFlutterPlatform.animateCamera(cameraUpdate, {mapId: this.mapId});
+    }
+    moveCamera(cameraUpdate) {
+      return google_maps_flutter._googleMapsFlutterPlatform.moveCamera(cameraUpdate, {mapId: this.mapId});
+    }
+    setMapStyle(mapStyle) {
+      return google_maps_flutter._googleMapsFlutterPlatform.setMapStyle(mapStyle, {mapId: this.mapId});
+    }
+    getVisibleRegion() {
+      return google_maps_flutter._googleMapsFlutterPlatform.getVisibleRegion({mapId: this.mapId});
+    }
+    getScreenCoordinate(latLng) {
+      return google_maps_flutter._googleMapsFlutterPlatform.getScreenCoordinate(latLng, {mapId: this.mapId});
+    }
+    getLatLng(screenCoordinate) {
+      return google_maps_flutter._googleMapsFlutterPlatform.getLatLng(screenCoordinate, {mapId: this.mapId});
+    }
+    showMarkerInfoWindow(markerId) {
+      if (!(markerId != null)) dart.assertFailed(null, I[0], 219, 12, "markerId != null");
+      return google_maps_flutter._googleMapsFlutterPlatform.showMarkerInfoWindow(markerId, {mapId: this.mapId});
+    }
+    hideMarkerInfoWindow(markerId) {
+      if (!(markerId != null)) dart.assertFailed(null, I[0], 233, 12, "markerId != null");
+      return google_maps_flutter._googleMapsFlutterPlatform.hideMarkerInfoWindow(markerId, {mapId: this.mapId});
+    }
+    isMarkerInfoWindowShown(markerId) {
+      if (!(markerId != null)) dart.assertFailed(null, I[0], 247, 12, "markerId != null");
+      return google_maps_flutter._googleMapsFlutterPlatform.isMarkerInfoWindowShown(markerId, {mapId: this.mapId});
+    }
+    getZoomLevel() {
+      return google_maps_flutter._googleMapsFlutterPlatform.getZoomLevel({mapId: this.mapId});
+    }
+    takeSnapshot() {
+      return google_maps_flutter._googleMapsFlutterPlatform.takeSnapshot({mapId: this.mapId});
+    }
+    dispose() {
+      google_maps_flutter._googleMapsFlutterPlatform.dispose({mapId: this.mapId});
+    }
+  };
+  (google_maps_flutter.GoogleMapController.__ = function(initialCameraPosition, _googleMapState, opts) {
+    let mapId = opts && 'mapId' in opts ? opts.mapId : null;
+    this[_googleMapState$] = _googleMapState;
+    this[mapId$] = mapId;
+    if (!(google_maps_flutter._googleMapsFlutterPlatform != null)) dart.assertFailed(null, I[0], 19, 15, "_googleMapsFlutterPlatform != null");
+    this[_connectStreams](this.mapId);
+  }).prototype = google_maps_flutter.GoogleMapController.prototype;
+  dart.addTypeTests(google_maps_flutter.GoogleMapController);
+  dart.addTypeCaches(google_maps_flutter.GoogleMapController);
+  dart.setMethodSignature(google_maps_flutter.GoogleMapController, () => ({
+    __proto__: dart.getMethods(google_maps_flutter.GoogleMapController.__proto__),
+    [_connectStreams]: dart.fnType(dart.void, [dart.legacy(core.int)]),
+    [_updateMapOptions]: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(core.Map$(dart.legacy(core.String), dart.dynamic))]),
+    [_updateMarkers]: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(marker_updates.MarkerUpdates)]),
+    [_updatePolygons]: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(polygon_updates.PolygonUpdates)]),
+    [_updatePolylines]: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(polyline_updates.PolylineUpdates)]),
+    [_updateCircles]: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(circle_updates.CircleUpdates)]),
+    animateCamera: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(camera.CameraUpdate)]),
+    moveCamera: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(camera.CameraUpdate)]),
+    setMapStyle: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(core.String)]),
+    getVisibleRegion: dart.fnType(dart.legacy(async.Future$(dart.legacy(location.LatLngBounds))), []),
+    getScreenCoordinate: dart.fnType(dart.legacy(async.Future$(dart.legacy(screen_coordinate.ScreenCoordinate))), [dart.legacy(location.LatLng)]),
+    getLatLng: dart.fnType(dart.legacy(async.Future$(dart.legacy(location.LatLng))), [dart.legacy(screen_coordinate.ScreenCoordinate)]),
+    showMarkerInfoWindow: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(marker.MarkerId)]),
+    hideMarkerInfoWindow: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(marker.MarkerId)]),
+    isMarkerInfoWindowShown: dart.fnType(dart.legacy(async.Future$(dart.legacy(core.bool))), [dart.legacy(marker.MarkerId)]),
+    getZoomLevel: dart.fnType(dart.legacy(async.Future$(dart.legacy(core.double))), []),
+    takeSnapshot: dart.fnType(dart.legacy(async.Future$(dart.legacy(typed_data.Uint8List))), []),
+    dispose: dart.fnType(dart.void, [])
+  }));
+  dart.setGetterSignature(google_maps_flutter.GoogleMapController, () => ({
+    __proto__: dart.getGetters(google_maps_flutter.GoogleMapController.__proto__),
+    channel: dart.legacy(platform_channel.MethodChannel)
+  }));
+  dart.setLibraryUri(google_maps_flutter.GoogleMapController, I[1]);
+  dart.setFieldSignature(google_maps_flutter.GoogleMapController, () => ({
+    __proto__: dart.getFields(google_maps_flutter.GoogleMapController.__proto__),
+    mapId: dart.finalFieldType(dart.legacy(core.int)),
+    [_googleMapState$]: dart.finalFieldType(dart.legacy(google_maps_flutter._GoogleMapState))
+  }));
+  var onMapCreated$ = dart.privateName(google_maps_flutter, "GoogleMap.onMapCreated");
+  var initialCameraPosition$ = dart.privateName(google_maps_flutter, "GoogleMap.initialCameraPosition");
+  var compassEnabled$ = dart.privateName(google_maps_flutter, "GoogleMap.compassEnabled");
+  var mapToolbarEnabled$ = dart.privateName(google_maps_flutter, "GoogleMap.mapToolbarEnabled");
+  var cameraTargetBounds$ = dart.privateName(google_maps_flutter, "GoogleMap.cameraTargetBounds");
+  var mapType$ = dart.privateName(google_maps_flutter, "GoogleMap.mapType");
+  var minMaxZoomPreference$ = dart.privateName(google_maps_flutter, "GoogleMap.minMaxZoomPreference");
+  var rotateGesturesEnabled$ = dart.privateName(google_maps_flutter, "GoogleMap.rotateGesturesEnabled");
+  var scrollGesturesEnabled$ = dart.privateName(google_maps_flutter, "GoogleMap.scrollGesturesEnabled");
+  var zoomControlsEnabled$ = dart.privateName(google_maps_flutter, "GoogleMap.zoomControlsEnabled");
+  var zoomGesturesEnabled$ = dart.privateName(google_maps_flutter, "GoogleMap.zoomGesturesEnabled");
+  var liteModeEnabled$ = dart.privateName(google_maps_flutter, "GoogleMap.liteModeEnabled");
+  var tiltGesturesEnabled$ = dart.privateName(google_maps_flutter, "GoogleMap.tiltGesturesEnabled");
+  var padding$ = dart.privateName(google_maps_flutter, "GoogleMap.padding");
+  var markers$ = dart.privateName(google_maps_flutter, "GoogleMap.markers");
+  var polygons$ = dart.privateName(google_maps_flutter, "GoogleMap.polygons");
+  var polylines$ = dart.privateName(google_maps_flutter, "GoogleMap.polylines");
+  var circles$ = dart.privateName(google_maps_flutter, "GoogleMap.circles");
+  var onCameraMoveStarted$ = dart.privateName(google_maps_flutter, "GoogleMap.onCameraMoveStarted");
+  var onCameraMove$ = dart.privateName(google_maps_flutter, "GoogleMap.onCameraMove");
+  var onCameraIdle$ = dart.privateName(google_maps_flutter, "GoogleMap.onCameraIdle");
+  var onTap$ = dart.privateName(google_maps_flutter, "GoogleMap.onTap");
+  var onLongPress$ = dart.privateName(google_maps_flutter, "GoogleMap.onLongPress");
+  var myLocationEnabled$ = dart.privateName(google_maps_flutter, "GoogleMap.myLocationEnabled");
+  var myLocationButtonEnabled$ = dart.privateName(google_maps_flutter, "GoogleMap.myLocationButtonEnabled");
+  var indoorViewEnabled$ = dart.privateName(google_maps_flutter, "GoogleMap.indoorViewEnabled");
+  var trafficEnabled$ = dart.privateName(google_maps_flutter, "GoogleMap.trafficEnabled");
+  var buildingsEnabled$ = dart.privateName(google_maps_flutter, "GoogleMap.buildingsEnabled");
+  var gestureRecognizers$ = dart.privateName(google_maps_flutter, "GoogleMap.gestureRecognizers");
+  var CameraTargetBounds_bounds = dart.privateName(ui, "CameraTargetBounds.bounds");
+  var _name = dart.privateName(ui, "_name");
+  var MinMaxZoomPreference_maxZoom = dart.privateName(ui, "MinMaxZoomPreference.maxZoom");
+  var MinMaxZoomPreference_minZoom = dart.privateName(ui, "MinMaxZoomPreference.minZoom");
+  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
+  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
+  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
+  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
+  google_maps_flutter.GoogleMap = class GoogleMap extends framework.StatefulWidget {
+    get onMapCreated() {
+      return this[onMapCreated$];
+    }
+    set onMapCreated(value) {
+      super.onMapCreated = value;
+    }
+    get initialCameraPosition() {
+      return this[initialCameraPosition$];
+    }
+    set initialCameraPosition(value) {
+      super.initialCameraPosition = value;
+    }
+    get compassEnabled() {
+      return this[compassEnabled$];
+    }
+    set compassEnabled(value) {
+      super.compassEnabled = value;
+    }
+    get mapToolbarEnabled() {
+      return this[mapToolbarEnabled$];
+    }
+    set mapToolbarEnabled(value) {
+      super.mapToolbarEnabled = value;
+    }
+    get cameraTargetBounds() {
+      return this[cameraTargetBounds$];
+    }
+    set cameraTargetBounds(value) {
+      super.cameraTargetBounds = value;
+    }
+    get mapType() {
+      return this[mapType$];
+    }
+    set mapType(value) {
+      super.mapType = value;
+    }
+    get minMaxZoomPreference() {
+      return this[minMaxZoomPreference$];
+    }
+    set minMaxZoomPreference(value) {
+      super.minMaxZoomPreference = value;
+    }
+    get rotateGesturesEnabled() {
+      return this[rotateGesturesEnabled$];
+    }
+    set rotateGesturesEnabled(value) {
+      super.rotateGesturesEnabled = value;
+    }
+    get scrollGesturesEnabled() {
+      return this[scrollGesturesEnabled$];
+    }
+    set scrollGesturesEnabled(value) {
+      super.scrollGesturesEnabled = value;
+    }
+    get zoomControlsEnabled() {
+      return this[zoomControlsEnabled$];
+    }
+    set zoomControlsEnabled(value) {
+      super.zoomControlsEnabled = value;
+    }
+    get zoomGesturesEnabled() {
+      return this[zoomGesturesEnabled$];
+    }
+    set zoomGesturesEnabled(value) {
+      super.zoomGesturesEnabled = value;
+    }
+    get liteModeEnabled() {
+      return this[liteModeEnabled$];
+    }
+    set liteModeEnabled(value) {
+      super.liteModeEnabled = value;
+    }
+    get tiltGesturesEnabled() {
+      return this[tiltGesturesEnabled$];
+    }
+    set tiltGesturesEnabled(value) {
+      super.tiltGesturesEnabled = value;
+    }
+    get padding() {
+      return this[padding$];
+    }
+    set padding(value) {
+      super.padding = value;
+    }
+    get markers() {
+      return this[markers$];
+    }
+    set markers(value) {
+      super.markers = value;
+    }
+    get polygons() {
+      return this[polygons$];
+    }
+    set polygons(value) {
+      super.polygons = value;
+    }
+    get polylines() {
+      return this[polylines$];
+    }
+    set polylines(value) {
+      super.polylines = value;
+    }
+    get circles() {
+      return this[circles$];
+    }
+    set circles(value) {
+      super.circles = value;
+    }
+    get onCameraMoveStarted() {
+      return this[onCameraMoveStarted$];
+    }
+    set onCameraMoveStarted(value) {
+      super.onCameraMoveStarted = value;
+    }
+    get onCameraMove() {
+      return this[onCameraMove$];
+    }
+    set onCameraMove(value) {
+      super.onCameraMove = value;
+    }
+    get onCameraIdle() {
+      return this[onCameraIdle$];
+    }
+    set onCameraIdle(value) {
+      super.onCameraIdle = value;
+    }
+    get onTap() {
+      return this[onTap$];
+    }
+    set onTap(value) {
+      super.onTap = value;
+    }
+    get onLongPress() {
+      return this[onLongPress$];
+    }
+    set onLongPress(value) {
+      super.onLongPress = value;
+    }
+    get myLocationEnabled() {
+      return this[myLocationEnabled$];
+    }
+    set myLocationEnabled(value) {
+      super.myLocationEnabled = value;
+    }
+    get myLocationButtonEnabled() {
+      return this[myLocationButtonEnabled$];
+    }
+    set myLocationButtonEnabled(value) {
+      super.myLocationButtonEnabled = value;
+    }
+    get indoorViewEnabled() {
+      return this[indoorViewEnabled$];
+    }
+    set indoorViewEnabled(value) {
+      super.indoorViewEnabled = value;
+    }
+    get trafficEnabled() {
+      return this[trafficEnabled$];
+    }
+    set trafficEnabled(value) {
+      super.trafficEnabled = value;
+    }
+    get buildingsEnabled() {
+      return this[buildingsEnabled$];
+    }
+    set buildingsEnabled(value) {
+      super.buildingsEnabled = value;
+    }
+    get gestureRecognizers() {
+      return this[gestureRecognizers$];
+    }
+    set gestureRecognizers(value) {
+      super.gestureRecognizers = value;
+    }
+    createState() {
+      return new google_maps_flutter._GoogleMapState.new();
+    }
+  };
+  (google_maps_flutter.GoogleMap.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let initialCameraPosition = opts && 'initialCameraPosition' in opts ? opts.initialCameraPosition : null;
+    let onMapCreated = opts && 'onMapCreated' in opts ? opts.onMapCreated : null;
+    let gestureRecognizers = opts && 'gestureRecognizers' in opts ? opts.gestureRecognizers : null;
+    let compassEnabled = opts && 'compassEnabled' in opts ? opts.compassEnabled : true;
+    let mapToolbarEnabled = opts && 'mapToolbarEnabled' in opts ? opts.mapToolbarEnabled : true;
+    let cameraTargetBounds = opts && 'cameraTargetBounds' in opts ? opts.cameraTargetBounds : C[0] || CT.C0;
+    let mapType = opts && 'mapType' in opts ? opts.mapType : C[1] || CT.C1;
+    let minMaxZoomPreference = opts && 'minMaxZoomPreference' in opts ? opts.minMaxZoomPreference : C[2] || CT.C2;
+    let rotateGesturesEnabled = opts && 'rotateGesturesEnabled' in opts ? opts.rotateGesturesEnabled : true;
+    let scrollGesturesEnabled = opts && 'scrollGesturesEnabled' in opts ? opts.scrollGesturesEnabled : true;
+    let zoomControlsEnabled = opts && 'zoomControlsEnabled' in opts ? opts.zoomControlsEnabled : true;
+    let zoomGesturesEnabled = opts && 'zoomGesturesEnabled' in opts ? opts.zoomGesturesEnabled : true;
+    let liteModeEnabled = opts && 'liteModeEnabled' in opts ? opts.liteModeEnabled : false;
+    let tiltGesturesEnabled = opts && 'tiltGesturesEnabled' in opts ? opts.tiltGesturesEnabled : true;
+    let myLocationEnabled = opts && 'myLocationEnabled' in opts ? opts.myLocationEnabled : false;
+    let myLocationButtonEnabled = opts && 'myLocationButtonEnabled' in opts ? opts.myLocationButtonEnabled : true;
+    let padding = opts && 'padding' in opts ? opts.padding : C[3] || CT.C3;
+    let indoorViewEnabled = opts && 'indoorViewEnabled' in opts ? opts.indoorViewEnabled : false;
+    let trafficEnabled = opts && 'trafficEnabled' in opts ? opts.trafficEnabled : false;
+    let buildingsEnabled = opts && 'buildingsEnabled' in opts ? opts.buildingsEnabled : true;
+    let markers = opts && 'markers' in opts ? opts.markers : null;
+    let polygons = opts && 'polygons' in opts ? opts.polygons : null;
+    let polylines = opts && 'polylines' in opts ? opts.polylines : null;
+    let circles = opts && 'circles' in opts ? opts.circles : null;
+    let onCameraMoveStarted = opts && 'onCameraMoveStarted' in opts ? opts.onCameraMoveStarted : null;
+    let onCameraMove = opts && 'onCameraMove' in opts ? opts.onCameraMove : null;
+    let onCameraIdle = opts && 'onCameraIdle' in opts ? opts.onCameraIdle : null;
+    let onTap = opts && 'onTap' in opts ? opts.onTap : null;
+    let onLongPress = opts && 'onLongPress' in opts ? opts.onLongPress : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[initialCameraPosition$] = initialCameraPosition;
+    this[onMapCreated$] = onMapCreated;
+    this[gestureRecognizers$] = gestureRecognizers;
+    this[compassEnabled$] = compassEnabled;
+    this[mapToolbarEnabled$] = mapToolbarEnabled;
+    this[cameraTargetBounds$] = cameraTargetBounds;
+    this[mapType$] = mapType;
+    this[minMaxZoomPreference$] = minMaxZoomPreference;
+    this[rotateGesturesEnabled$] = rotateGesturesEnabled;
+    this[scrollGesturesEnabled$] = scrollGesturesEnabled;
+    this[zoomControlsEnabled$] = zoomControlsEnabled;
+    this[zoomGesturesEnabled$] = zoomGesturesEnabled;
+    this[liteModeEnabled$] = liteModeEnabled;
+    this[tiltGesturesEnabled$] = tiltGesturesEnabled;
+    this[myLocationEnabled$] = myLocationEnabled;
+    this[myLocationButtonEnabled$] = myLocationButtonEnabled;
+    this[padding$] = padding;
+    this[indoorViewEnabled$] = indoorViewEnabled;
+    this[trafficEnabled$] = trafficEnabled;
+    this[buildingsEnabled$] = buildingsEnabled;
+    this[markers$] = markers;
+    this[polygons$] = polygons;
+    this[polylines$] = polylines;
+    this[circles$] = circles;
+    this[onCameraMoveStarted$] = onCameraMoveStarted;
+    this[onCameraMove$] = onCameraMove;
+    this[onCameraIdle$] = onCameraIdle;
+    this[onTap$] = onTap;
+    this[onLongPress$] = onLongPress;
+    if (!(initialCameraPosition != null)) dart.assertFailed(null, I[2], 57, 16, "initialCameraPosition != null");
+    google_maps_flutter.GoogleMap.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = google_maps_flutter.GoogleMap.prototype;
+  dart.addTypeTests(google_maps_flutter.GoogleMap);
+  dart.addTypeCaches(google_maps_flutter.GoogleMap);
+  dart.setMethodSignature(google_maps_flutter.GoogleMap, () => ({
+    __proto__: dart.getMethods(google_maps_flutter.GoogleMap.__proto__),
+    createState: dart.fnType(dart.legacy(framework.State$(dart.legacy(framework.StatefulWidget))), [])
+  }));
+  dart.setLibraryUri(google_maps_flutter.GoogleMap, I[1]);
+  dart.setFieldSignature(google_maps_flutter.GoogleMap, () => ({
+    __proto__: dart.getFields(google_maps_flutter.GoogleMap.__proto__),
+    onMapCreated: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(google_maps_flutter.GoogleMapController)]))),
+    initialCameraPosition: dart.finalFieldType(dart.legacy(camera.CameraPosition)),
+    compassEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    mapToolbarEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    cameraTargetBounds: dart.finalFieldType(dart.legacy(ui.CameraTargetBounds)),
+    mapType: dart.finalFieldType(dart.legacy(ui.MapType)),
+    minMaxZoomPreference: dart.finalFieldType(dart.legacy(ui.MinMaxZoomPreference)),
+    rotateGesturesEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    scrollGesturesEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    zoomControlsEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    zoomGesturesEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    liteModeEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    tiltGesturesEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    padding: dart.finalFieldType(dart.legacy(edge_insets.EdgeInsets)),
+    markers: dart.finalFieldType(dart.legacy(core.Set$(dart.legacy(marker.Marker)))),
+    polygons: dart.finalFieldType(dart.legacy(core.Set$(dart.legacy(polygon.Polygon)))),
+    polylines: dart.finalFieldType(dart.legacy(core.Set$(dart.legacy(polyline.Polyline)))),
+    circles: dart.finalFieldType(dart.legacy(core.Set$(dart.legacy(circle.Circle)))),
+    onCameraMoveStarted: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, []))),
+    onCameraMove: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(camera.CameraPosition)]))),
+    onCameraIdle: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, []))),
+    onTap: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(location.LatLng)]))),
+    onLongPress: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(location.LatLng)]))),
+    myLocationEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    myLocationButtonEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    indoorViewEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    trafficEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    buildingsEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    gestureRecognizers: dart.finalFieldType(dart.legacy(core.Set$(dart.legacy(basic_types.Factory$(dart.legacy(recognizer.OneSequenceGestureRecognizer))))))
+  }));
+  var _webOnlyMapCreationId = dart.privateName(google_maps_flutter, "_webOnlyMapCreationId");
+  var _controller = dart.privateName(google_maps_flutter, "_controller");
+  var _markers = dart.privateName(google_maps_flutter, "_markers");
+  var _polygons = dart.privateName(google_maps_flutter, "_polygons");
+  var _polylines = dart.privateName(google_maps_flutter, "_polylines");
+  var _circles = dart.privateName(google_maps_flutter, "_circles");
+  var _googleMapOptions = dart.privateName(google_maps_flutter, "_googleMapOptions");
+  var _updateOptions = dart.privateName(google_maps_flutter, "_updateOptions");
+  const dispose = Symbol("dispose");
+  google_maps_flutter._GoogleMapState = class _GoogleMapState extends framework.State$(dart.legacy(google_maps_flutter.GoogleMap)) {
+    build(context) {
+      let t0;
+      let creationParams = new (T.IdentityMapOfStringL$dynamic()).from(["initialCameraPosition", (t0 = this.widget.initialCameraPosition, t0 == null ? null : t0.toMap()), "options", this[_googleMapOptions].toMap(), "markersToAdd", marker$.serializeMarkerSet(this.widget.markers), "polygonsToAdd", polygon$.serializePolygonSet(this.widget.polygons), "polylinesToAdd", polyline$.serializePolylineSet(this.widget.polylines), "circlesToAdd", circle$.serializeCircleSet(this.widget.circles), "_webOnlyMapCreationId", this[_webOnlyMapCreationId]]);
+      return google_maps_flutter._googleMapsFlutterPlatform.buildView(creationParams, this.widget.gestureRecognizers, dart.bind(this, 'onPlatformViewCreated'));
+    }
+    initState() {
+      super.initState();
+      this[_googleMapOptions] = google_maps_flutter._GoogleMapOptions.fromWidget(this.widget);
+      this[_markers] = marker$.keyByMarkerId(this.widget.markers);
+      this[_polygons] = polygon$.keyByPolygonId(this.widget.polygons);
+      this[_polylines] = polyline$.keyByPolylineId(this.widget.polylines);
+      this[_circles] = circle$.keyByCircleId(this.widget.circles);
+    }
+    dispose() {
+      return async.async(dart.void, (function* dispose$() {
+        this[dispose]();
+        let controller = (yield this[_controller].future);
+        controller.dispose();
+      }).bind(this));
+    }
+    didUpdateWidget(oldWidget) {
+      T.GoogleMapL().as(oldWidget);
+      super.didUpdateWidget(oldWidget);
+      this[_updateOptions]();
+      this[_updateMarkers]();
+      this[_updatePolygons]();
+      this[_updatePolylines]();
+      this[_updateCircles]();
+    }
+    [_updateOptions]() {
+      return async.async(dart.void, (function* _updateOptions() {
+        let newOptions = google_maps_flutter._GoogleMapOptions.fromWidget(this.widget);
+        let updates = this[_googleMapOptions].updatesMap(newOptions);
+        if (dart.test(updates[$isEmpty])) {
+          return;
+        }
+        let controller = (yield this[_controller].future);
+        controller[_updateMapOptions](updates);
+        this[_googleMapOptions] = newOptions;
+      }).bind(this));
+    }
+    [_updateMarkers]() {
+      return async.async(dart.void, (function* _updateMarkers$() {
+        let controller = (yield this[_controller].future);
+        controller[_updateMarkers](new marker_updates.MarkerUpdates.from(this[_markers][$values][$toSet](), this.widget.markers));
+        this[_markers] = marker$.keyByMarkerId(this.widget.markers);
+      }).bind(this));
+    }
+    [_updatePolygons]() {
+      return async.async(dart.void, (function* _updatePolygons$() {
+        let controller = (yield this[_controller].future);
+        controller[_updatePolygons](new polygon_updates.PolygonUpdates.from(this[_polygons][$values][$toSet](), this.widget.polygons));
+        this[_polygons] = polygon$.keyByPolygonId(this.widget.polygons);
+      }).bind(this));
+    }
+    [_updatePolylines]() {
+      return async.async(dart.void, (function* _updatePolylines$() {
+        let controller = (yield this[_controller].future);
+        controller[_updatePolylines](new polyline_updates.PolylineUpdates.from(this[_polylines][$values][$toSet](), this.widget.polylines));
+        this[_polylines] = polyline$.keyByPolylineId(this.widget.polylines);
+      }).bind(this));
+    }
+    [_updateCircles]() {
+      return async.async(dart.void, (function* _updateCircles$() {
+        let controller = (yield this[_controller].future);
+        controller[_updateCircles](new circle_updates.CircleUpdates.from(this[_circles][$values][$toSet](), this.widget.circles));
+        this[_circles] = circle$.keyByCircleId(this.widget.circles);
+      }).bind(this));
+    }
+    onPlatformViewCreated(id) {
+      return async.async(dart.void, (function* onPlatformViewCreated() {
+        let t1, t0;
+        let controller = (yield google_maps_flutter.GoogleMapController.init(id, this.widget.initialCameraPosition, this));
+        this[_controller].complete(controller);
+        if (this.widget.onMapCreated != null) {
+          t0 = this.widget;
+          t1 = controller;
+          t0.onMapCreated(t1);
+        }
+      }).bind(this));
+    }
+    onMarkerTap(markerId) {
+      let t0;
+      if (!(markerId != null)) dart.assertFailed(null, I[2], 329, 12, "markerId != null");
+      if ((t0 = this[_markers][$_get](markerId), t0 == null ? null : t0.onTap) != null) {
+        this[_markers][$_get](markerId).onTap();
+      }
+    }
+    onMarkerDragEnd(markerId, position) {
+      let t0, t1, t0$;
+      if (!(markerId != null)) dart.assertFailed(null, I[2], 336, 12, "markerId != null");
+      if ((t0 = this[_markers][$_get](markerId), t0 == null ? null : t0.onDragEnd) != null) {
+        t0$ = this[_markers][$_get](markerId);
+        t1 = position;
+        t0$.onDragEnd(t1);
+      }
+    }
+    onPolygonTap(polygonId) {
+      if (!(polygonId != null)) dart.assertFailed(null, I[2], 343, 12, "polygonId != null");
+      this[_polygons][$_get](polygonId).onTap();
+    }
+    onPolylineTap(polylineId) {
+      let t0;
+      if (!(polylineId != null)) dart.assertFailed(null, I[2], 348, 12, "polylineId != null");
+      if ((t0 = this[_polylines][$_get](polylineId), t0 == null ? null : t0.onTap) != null) {
+        this[_polylines][$_get](polylineId).onTap();
+      }
+    }
+    onCircleTap(circleId) {
+      if (!(circleId != null)) dart.assertFailed(null, I[2], 355, 12, "circleId != null");
+      this[_circles][$_get](circleId).onTap();
+    }
+    onInfoWindowTap(markerId) {
+      let t0, t0$;
+      if (!(markerId != null)) dart.assertFailed(null, I[2], 360, 12, "markerId != null");
+      if ((t0$ = (t0 = this[_markers][$_get](markerId), t0 == null ? null : t0.infoWindow), t0$ == null ? null : t0$.onTap) != null) {
+        this[_markers][$_get](markerId).infoWindow.onTap();
+      }
+    }
+    onTap(position) {
+      let t1, t0;
+      if (!(position != null)) dart.assertFailed(null, I[2], 367, 12, "position != null");
+      if (this.widget.onTap != null) {
+        t0 = this.widget;
+        t1 = position;
+        t0.onTap(t1);
+      }
+    }
+    onLongPress(position) {
+      let t1, t0;
+      if (!(position != null)) dart.assertFailed(null, I[2], 374, 12, "position != null");
+      if (this.widget.onLongPress != null) {
+        t0 = this.widget;
+        t1 = position;
+        t0.onLongPress(t1);
+      }
+    }
+    [dispose]() {
+      return super.dispose();
+    }
+  };
+  (google_maps_flutter._GoogleMapState.new = function() {
+    let t0;
+    this[_webOnlyMapCreationId] = (t0 = google_maps_flutter._webOnlyMapId, google_maps_flutter._webOnlyMapId = dart.notNull(t0) + 1, t0);
+    this[_controller] = T.CompleterOfGoogleMapControllerL().new();
+    this[_markers] = new (T.LinkedMapOfMarkerIdL$MarkerL()).new();
+    this[_polygons] = new (T.LinkedMapOfPolygonIdL$PolygonL()).new();
+    this[_polylines] = new (T.LinkedMapOfPolylineIdL$PolylineL()).new();
+    this[_circles] = new (T.LinkedMapOfCircleIdL$CircleL()).new();
+    this[_googleMapOptions] = null;
+    google_maps_flutter._GoogleMapState.__proto__.new.call(this);
+    ;
+  }).prototype = google_maps_flutter._GoogleMapState.prototype;
+  dart.addTypeTests(google_maps_flutter._GoogleMapState);
+  dart.addTypeCaches(google_maps_flutter._GoogleMapState);
+  dart.setMethodSignature(google_maps_flutter._GoogleMapState, () => ({
+    __proto__: dart.getMethods(google_maps_flutter._GoogleMapState.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)]),
+    didUpdateWidget: dart.fnType(dart.void, [dart.legacy(core.Object)]),
+    [_updateOptions]: dart.fnType(dart.void, []),
+    [_updateMarkers]: dart.fnType(dart.void, []),
+    [_updatePolygons]: dart.fnType(dart.void, []),
+    [_updatePolylines]: dart.fnType(dart.void, []),
+    [_updateCircles]: dart.fnType(dart.void, []),
+    onPlatformViewCreated: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(core.int)]),
+    onMarkerTap: dart.fnType(dart.void, [dart.legacy(marker.MarkerId)]),
+    onMarkerDragEnd: dart.fnType(dart.void, [dart.legacy(marker.MarkerId), dart.legacy(location.LatLng)]),
+    onPolygonTap: dart.fnType(dart.void, [dart.legacy(polygon.PolygonId)]),
+    onPolylineTap: dart.fnType(dart.void, [dart.legacy(polyline.PolylineId)]),
+    onCircleTap: dart.fnType(dart.void, [dart.legacy(circle.CircleId)]),
+    onInfoWindowTap: dart.fnType(dart.void, [dart.legacy(marker.MarkerId)]),
+    onTap: dart.fnType(dart.void, [dart.legacy(location.LatLng)]),
+    onLongPress: dart.fnType(dart.void, [dart.legacy(location.LatLng)])
+  }));
+  dart.setLibraryUri(google_maps_flutter._GoogleMapState, I[1]);
+  dart.setFieldSignature(google_maps_flutter._GoogleMapState, () => ({
+    __proto__: dart.getFields(google_maps_flutter._GoogleMapState.__proto__),
+    [_webOnlyMapCreationId]: dart.finalFieldType(dart.legacy(core.int)),
+    [_controller]: dart.finalFieldType(dart.legacy(async.Completer$(dart.legacy(google_maps_flutter.GoogleMapController)))),
+    [_markers]: dart.fieldType(dart.legacy(core.Map$(dart.legacy(marker.MarkerId), dart.legacy(marker.Marker)))),
+    [_polygons]: dart.fieldType(dart.legacy(core.Map$(dart.legacy(polygon.PolygonId), dart.legacy(polygon.Polygon)))),
+    [_polylines]: dart.fieldType(dart.legacy(core.Map$(dart.legacy(polyline.PolylineId), dart.legacy(polyline.Polyline)))),
+    [_circles]: dart.fieldType(dart.legacy(core.Map$(dart.legacy(circle.CircleId), dart.legacy(circle.Circle)))),
+    [_googleMapOptions]: dart.fieldType(dart.legacy(google_maps_flutter._GoogleMapOptions))
+  }));
+  google_maps_flutter._GoogleMapOptions = class _GoogleMapOptions extends core.Object {
+    static fromWidget(map) {
+      return new google_maps_flutter._GoogleMapOptions.new({compassEnabled: map.compassEnabled, mapToolbarEnabled: map.mapToolbarEnabled, cameraTargetBounds: map.cameraTargetBounds, mapType: map.mapType, minMaxZoomPreference: map.minMaxZoomPreference, rotateGesturesEnabled: map.rotateGesturesEnabled, scrollGesturesEnabled: map.scrollGesturesEnabled, tiltGesturesEnabled: map.tiltGesturesEnabled, trackCameraPosition: map.onCameraMove != null, zoomControlsEnabled: map.zoomControlsEnabled, zoomGesturesEnabled: map.zoomGesturesEnabled, liteModeEnabled: map.liteModeEnabled, myLocationEnabled: map.myLocationEnabled, myLocationButtonEnabled: map.myLocationButtonEnabled, padding: map.padding, indoorViewEnabled: map.indoorViewEnabled, trafficEnabled: map.trafficEnabled, buildingsEnabled: map.buildingsEnabled});
+    }
+    toMap() {
+      let t0, t0$, t0$0, t0$1, t0$2, t0$3, t0$4;
+      let optionsMap = new (T.IdentityMapOfStringL$dynamic()).new();
+      function addIfNonNull(fieldName, value) {
+        if (value != null) {
+          optionsMap[$_set](fieldName, value);
+        }
+      }
+      dart.fn(addIfNonNull, T.StringLAnddynamicTovoid());
+      addIfNonNull("compassEnabled", this.compassEnabled);
+      addIfNonNull("mapToolbarEnabled", this.mapToolbarEnabled);
+      addIfNonNull("cameraTargetBounds", (t0 = this.cameraTargetBounds, t0 == null ? null : t0.toJson()));
+      addIfNonNull("mapType", (t0$ = this.mapType, t0$ == null ? null : t0$.index));
+      addIfNonNull("minMaxZoomPreference", (t0$0 = this.minMaxZoomPreference, t0$0 == null ? null : t0$0.toJson()));
+      addIfNonNull("rotateGesturesEnabled", this.rotateGesturesEnabled);
+      addIfNonNull("scrollGesturesEnabled", this.scrollGesturesEnabled);
+      addIfNonNull("tiltGesturesEnabled", this.tiltGesturesEnabled);
+      addIfNonNull("zoomControlsEnabled", this.zoomControlsEnabled);
+      addIfNonNull("zoomGesturesEnabled", this.zoomGesturesEnabled);
+      addIfNonNull("liteModeEnabled", this.liteModeEnabled);
+      addIfNonNull("trackCameraPosition", this.trackCameraPosition);
+      addIfNonNull("myLocationEnabled", this.myLocationEnabled);
+      addIfNonNull("myLocationButtonEnabled", this.myLocationButtonEnabled);
+      addIfNonNull("padding", T.JSArrayOfdoubleL().of([(t0$1 = this.padding, t0$1 == null ? null : t0$1.top), (t0$2 = this.padding, t0$2 == null ? null : t0$2.left), (t0$3 = this.padding, t0$3 == null ? null : t0$3.bottom), (t0$4 = this.padding, t0$4 == null ? null : t0$4.right)]));
+      addIfNonNull("indoorEnabled", this.indoorViewEnabled);
+      addIfNonNull("trafficEnabled", this.trafficEnabled);
+      addIfNonNull("buildingsEnabled", this.buildingsEnabled);
+      return optionsMap;
+    }
+    updatesMap(newOptions) {
+      let t0;
+      let prevOptionsMap = this.toMap();
+      t0 = newOptions.toMap();
+      return (() => {
+        t0[$removeWhere](dart.fn((key, value) => dart.equals(prevOptionsMap[$_get](key), value), T.StringLAnddynamicToboolL()));
+        return t0;
+      })();
+    }
+  };
+  (google_maps_flutter._GoogleMapOptions.new = function(opts) {
+    let compassEnabled = opts && 'compassEnabled' in opts ? opts.compassEnabled : null;
+    let mapToolbarEnabled = opts && 'mapToolbarEnabled' in opts ? opts.mapToolbarEnabled : null;
+    let cameraTargetBounds = opts && 'cameraTargetBounds' in opts ? opts.cameraTargetBounds : null;
+    let mapType = opts && 'mapType' in opts ? opts.mapType : null;
+    let minMaxZoomPreference = opts && 'minMaxZoomPreference' in opts ? opts.minMaxZoomPreference : null;
+    let rotateGesturesEnabled = opts && 'rotateGesturesEnabled' in opts ? opts.rotateGesturesEnabled : null;
+    let scrollGesturesEnabled = opts && 'scrollGesturesEnabled' in opts ? opts.scrollGesturesEnabled : null;
+    let tiltGesturesEnabled = opts && 'tiltGesturesEnabled' in opts ? opts.tiltGesturesEnabled : null;
+    let trackCameraPosition = opts && 'trackCameraPosition' in opts ? opts.trackCameraPosition : null;
+    let zoomControlsEnabled = opts && 'zoomControlsEnabled' in opts ? opts.zoomControlsEnabled : null;
+    let zoomGesturesEnabled = opts && 'zoomGesturesEnabled' in opts ? opts.zoomGesturesEnabled : null;
+    let liteModeEnabled = opts && 'liteModeEnabled' in opts ? opts.liteModeEnabled : null;
+    let myLocationEnabled = opts && 'myLocationEnabled' in opts ? opts.myLocationEnabled : null;
+    let myLocationButtonEnabled = opts && 'myLocationButtonEnabled' in opts ? opts.myLocationButtonEnabled : null;
+    let padding = opts && 'padding' in opts ? opts.padding : null;
+    let indoorViewEnabled = opts && 'indoorViewEnabled' in opts ? opts.indoorViewEnabled : null;
+    let trafficEnabled = opts && 'trafficEnabled' in opts ? opts.trafficEnabled : null;
+    let buildingsEnabled = opts && 'buildingsEnabled' in opts ? opts.buildingsEnabled : null;
+    this.compassEnabled = compassEnabled;
+    this.mapToolbarEnabled = mapToolbarEnabled;
+    this.cameraTargetBounds = cameraTargetBounds;
+    this.mapType = mapType;
+    this.minMaxZoomPreference = minMaxZoomPreference;
+    this.rotateGesturesEnabled = rotateGesturesEnabled;
+    this.scrollGesturesEnabled = scrollGesturesEnabled;
+    this.tiltGesturesEnabled = tiltGesturesEnabled;
+    this.trackCameraPosition = trackCameraPosition;
+    this.zoomControlsEnabled = zoomControlsEnabled;
+    this.zoomGesturesEnabled = zoomGesturesEnabled;
+    this.liteModeEnabled = liteModeEnabled;
+    this.myLocationEnabled = myLocationEnabled;
+    this.myLocationButtonEnabled = myLocationButtonEnabled;
+    this.padding = padding;
+    this.indoorViewEnabled = indoorViewEnabled;
+    this.trafficEnabled = trafficEnabled;
+    this.buildingsEnabled = buildingsEnabled;
+    if (!(this.liteModeEnabled == null || !dart.test(this.liteModeEnabled) || dart.test(this.liteModeEnabled) && dart.test(io.Platform.isAndroid))) dart.assertFailed(null, I[2], 406, 12, "liteModeEnabled == null ||\n        !liteModeEnabled ||\n        (liteModeEnabled && Platform.isAndroid)");
+  }).prototype = google_maps_flutter._GoogleMapOptions.prototype;
+  dart.addTypeTests(google_maps_flutter._GoogleMapOptions);
+  dart.addTypeCaches(google_maps_flutter._GoogleMapOptions);
+  dart.setMethodSignature(google_maps_flutter._GoogleMapOptions, () => ({
+    __proto__: dart.getMethods(google_maps_flutter._GoogleMapOptions.__proto__),
+    toMap: dart.fnType(dart.legacy(core.Map$(dart.legacy(core.String), dart.dynamic)), []),
+    updatesMap: dart.fnType(dart.legacy(core.Map$(dart.legacy(core.String), dart.dynamic)), [dart.legacy(google_maps_flutter._GoogleMapOptions)])
+  }));
+  dart.setLibraryUri(google_maps_flutter._GoogleMapOptions, I[1]);
+  dart.setFieldSignature(google_maps_flutter._GoogleMapOptions, () => ({
+    __proto__: dart.getFields(google_maps_flutter._GoogleMapOptions.__proto__),
+    compassEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    mapToolbarEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    cameraTargetBounds: dart.finalFieldType(dart.legacy(ui.CameraTargetBounds)),
+    mapType: dart.finalFieldType(dart.legacy(ui.MapType)),
+    minMaxZoomPreference: dart.finalFieldType(dart.legacy(ui.MinMaxZoomPreference)),
+    rotateGesturesEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    scrollGesturesEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    tiltGesturesEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    trackCameraPosition: dart.finalFieldType(dart.legacy(core.bool)),
+    zoomControlsEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    zoomGesturesEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    liteModeEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    myLocationEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    myLocationButtonEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    padding: dart.finalFieldType(dart.legacy(edge_insets.EdgeInsets)),
+    indoorViewEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    trafficEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    buildingsEnabled: dart.finalFieldType(dart.legacy(core.bool))
+  }));
+  dart.defineLazy(google_maps_flutter, {
+    /*google_maps_flutter._googleMapsFlutterPlatform*/get _googleMapsFlutterPlatform() {
+      return google_maps_flutter_platform.GoogleMapsFlutterPlatform.instance;
+    },
+    /*google_maps_flutter._webOnlyMapId*/get _webOnlyMapId() {
+      return 0;
+    },
+    set _webOnlyMapId(_) {}
+  }, true);
+  dart.trackLibraries("packages/google_maps_flutter/google_maps_flutter.dart", {
+    "package:google_maps_flutter/google_maps_flutter.dart": google_maps_flutter
+  }, {
+    "package:google_maps_flutter/google_maps_flutter.dart": ["src/controller.dart", "src/google_map.dart"]
+  }, '{"version":3,"sourceRoot":"","sources":["src/controller.dart","src/google_map.dart"],"names":[],"mappings":"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","file":"../../../../../../../../D:/packages/google_maps_flutter/google_maps_flutter.dart.lib.js"}');
+  // Exports:
+  return {
+    google_maps_flutter: google_maps_flutter
+  };
+}));
+
+//# sourceMappingURL=google_maps_flutter.dart.lib.js.map

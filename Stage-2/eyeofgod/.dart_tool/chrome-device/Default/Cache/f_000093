@@ -1,0 +1,814 @@
+define(['dart_sdk', 'packages/html/src/utils.dart', 'packages/source_span/src/location_mixin.dart'], (function load__packages__html__src__encoding_parser_dart(dart_sdk, packages__html__src__utils$46dart, packages__source_span__src__location_mixin$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const collection = dart_sdk.collection;
+  const convert = dart_sdk.convert;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const constants = packages__html__src__utils$46dart.src__constants;
+  const utils = packages__html__src__utils$46dart.src__utils;
+  const file = packages__source_span__src__location_mixin$46dart.src__file;
+  var encoding_parser = Object.create(dart.library);
+  var html_input_stream = Object.create(dart.library);
+  var $_get = dartx._get;
+  var $substring = dartx.substring;
+  var $indexOf = dartx.indexOf;
+  var $toLowerCase = dartx.toLowerCase;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $join = dartx.join;
+  var $add = dartx.add;
+  var $codeUnits = dartx.codeUnits;
+  var $length = dartx.length;
+  var $contains = dartx.contains;
+  var $sublist = dartx.sublist;
+  var $replaceAll = dartx.replaceAll;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    StringN: () => (T.StringN = dart.constFn(dart.nullable(core.String)))(),
+    StringNTobool: () => (T.StringNTobool = dart.constFn(dart.fnType(core.bool, [T.StringN()])))(),
+    JSArrayOf_DispatchEntry: () => (T.JSArrayOf_DispatchEntry = dart.constFn(_interceptors.JSArray$(encoding_parser._DispatchEntry)))(),
+    StringTobool: () => (T.StringTobool = dart.constFn(dart.fnType(core.bool, [core.String])))(),
+    JSArrayOfString: () => (T.JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))(),
+    ListQueueOfString: () => (T.ListQueueOfString = dart.constFn(collection.ListQueue$(core.String)))(),
+    JSArrayOfint: () => (T.JSArrayOfint = dart.constFn(_interceptors.JSArray$(core.int)))(),
+    ListOfint: () => (T.ListOfint = dart.constFn(core.List$(core.int)))(),
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.fn(constants.isWhitespace, T.StringNTobool());
+    },
+    get C1() {
+      return C[1] = dart.fn(encoding_parser._isSpaceOrAngleBracket, T.StringTobool());
+    },
+    get C2() {
+      return C[2] = dart.constList(["utf-16", "utf-16-be", "utf-16-le"], T.StringL());
+    }
+  }, false);
+  var C = Array(3).fill(void 0);
+  var I = [
+    "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/html-0.15.0/lib/src/encoding_parser.dart",
+    "package:html/src/encoding_parser.dart",
+    "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/html-0.15.0/lib/src/html_input_stream.dart",
+    "package:html/src/html_input_stream.dart"
+  ];
+  var __position = dart.privateName(encoding_parser, "__position");
+  var _bytes$ = dart.privateName(encoding_parser, "_bytes");
+  var _length = dart.privateName(encoding_parser, "_length");
+  var _next = dart.privateName(encoding_parser, "_next");
+  var _previous = dart.privateName(encoding_parser, "_previous");
+  var _position = dart.privateName(encoding_parser, "_position");
+  var _currentByte = dart.privateName(encoding_parser, "_currentByte");
+  var _skipChars = dart.privateName(encoding_parser, "_skipChars");
+  var _skipUntil = dart.privateName(encoding_parser, "_skipUntil");
+  var _matchBytes = dart.privateName(encoding_parser, "_matchBytes");
+  var _jumpTo = dart.privateName(encoding_parser, "_jumpTo");
+  var _slice = dart.privateName(encoding_parser, "_slice");
+  encoding_parser.EncodingBytes = class EncodingBytes extends core.Object {
+    get [_length]() {
+      return this[_bytes$].length;
+    }
+    [_next]() {
+      let p = this[__position] = dart.notNull(this[__position]) + 1;
+      if (p >= dart.notNull(this[_length])) {
+        dart.throw(new core.StateError.new("No more elements"));
+      } else if (p < 0) {
+        dart.throw(new core.RangeError.new(p));
+      }
+      return this[_bytes$][$_get](p);
+    }
+    [_previous]() {
+      let p = this[__position];
+      if (dart.notNull(p) >= dart.notNull(this[_length])) {
+        dart.throw(new core.StateError.new("No more elements"));
+      } else if (dart.notNull(p) < 0) {
+        dart.throw(new core.RangeError.new(p));
+      }
+      this[__position] = p = dart.notNull(p) - 1;
+      return this[_bytes$][$_get](p);
+    }
+    set [_position](value) {
+      if (value == null) dart.nullFailed(I[0], 38, 21, "value");
+      if (dart.notNull(this[__position]) >= dart.notNull(this[_length])) {
+        dart.throw(new core.StateError.new("No more elements"));
+      }
+      this[__position] = value;
+    }
+    get [_position]() {
+      if (dart.notNull(this[__position]) >= dart.notNull(this[_length])) {
+        dart.throw(new core.StateError.new("No more elements"));
+      }
+      if (dart.notNull(this[__position]) >= 0) {
+        return this[__position];
+      } else {
+        return 0;
+      }
+    }
+    get [_currentByte]() {
+      return this[_bytes$][$_get](this[_position]);
+    }
+    [_skipChars](skipChars = null) {
+      skipChars == null ? skipChars = C[0] || CT.C0 : null;
+      let p = this[_position];
+      while (dart.notNull(p) < dart.notNull(this[_length])) {
+        let c = this[_bytes$][$_get](p);
+        if (!dart.test(skipChars(c))) {
+          this[__position] = p;
+          return c;
+        }
+        p = dart.notNull(p) + 1;
+      }
+      this[__position] = p;
+      return null;
+    }
+    [_skipUntil](untilChars) {
+      if (untilChars == null) dart.nullFailed(I[0], 74, 37, "untilChars");
+      let p = this[_position];
+      while (dart.notNull(p) < dart.notNull(this[_length])) {
+        let c = this[_bytes$][$_get](p);
+        if (dart.test(untilChars(c))) {
+          this[__position] = p;
+          return c;
+        }
+        p = dart.notNull(p) + 1;
+      }
+      return null;
+    }
+    [_matchBytes](bytes) {
+      if (bytes == null) dart.nullFailed(I[0], 90, 27, "bytes");
+      let p = this[_position];
+      if (this[_bytes$].length < dart.notNull(p) + bytes.length) {
+        return false;
+      }
+      let data = this[_bytes$][$substring](p, dart.notNull(p) + bytes.length);
+      if (data === bytes) {
+        this[_position] = dart.notNull(this[_position]) + bytes.length;
+        return true;
+      }
+      return false;
+    }
+    [_jumpTo](bytes) {
+      if (bytes == null) dart.nullFailed(I[0], 105, 23, "bytes");
+      let newPosition = this[_bytes$][$indexOf](bytes, this[_position]);
+      if (newPosition >= 0) {
+        this[__position] = newPosition + bytes.length - 1;
+        return true;
+      } else {
+        dart.throw(new core.StateError.new("No more elements"));
+      }
+    }
+    [_slice](start, end = null) {
+      if (start == null) dart.nullFailed(I[0], 115, 21, "start");
+      end == null ? end = this[_length] : null;
+      if (dart.notNull(end) < 0) end = dart.notNull(end) + dart.notNull(this[_length]);
+      return this[_bytes$][$substring](start, end);
+    }
+  };
+  (encoding_parser.EncodingBytes.new = function(_bytes) {
+    if (_bytes == null) dart.nullFailed(I[0], 13, 22, "_bytes");
+    this[__position] = -1;
+    this[_bytes$] = _bytes;
+    ;
+  }).prototype = encoding_parser.EncodingBytes.prototype;
+  dart.addTypeTests(encoding_parser.EncodingBytes);
+  dart.addTypeCaches(encoding_parser.EncodingBytes);
+  dart.setMethodSignature(encoding_parser.EncodingBytes, () => ({
+    __proto__: dart.getMethods(encoding_parser.EncodingBytes.__proto__),
+    [_next]: dart.fnType(core.String, []),
+    [_previous]: dart.fnType(core.String, []),
+    [_skipChars]: dart.fnType(dart.nullable(core.String), [], [dart.nullable(dart.fnType(core.bool, [core.String]))]),
+    [_skipUntil]: dart.fnType(dart.nullable(core.String), [dart.fnType(core.bool, [core.String])]),
+    [_matchBytes]: dart.fnType(core.bool, [core.String]),
+    [_jumpTo]: dart.fnType(core.bool, [core.String]),
+    [_slice]: dart.fnType(core.String, [core.int], [dart.nullable(core.int)])
+  }));
+  dart.setGetterSignature(encoding_parser.EncodingBytes, () => ({
+    __proto__: dart.getGetters(encoding_parser.EncodingBytes.__proto__),
+    [_length]: core.int,
+    [_position]: core.int,
+    [_currentByte]: core.String
+  }));
+  dart.setSetterSignature(encoding_parser.EncodingBytes, () => ({
+    __proto__: dart.getSetters(encoding_parser.EncodingBytes.__proto__),
+    [_position]: core.int
+  }));
+  dart.setLibraryUri(encoding_parser.EncodingBytes, I[1]);
+  dart.setFieldSignature(encoding_parser.EncodingBytes, () => ({
+    __proto__: dart.getFields(encoding_parser.EncodingBytes.__proto__),
+    [_bytes$]: dart.finalFieldType(core.String),
+    [__position]: dart.fieldType(core.int)
+  }));
+  encoding_parser._DispatchEntry = class _DispatchEntry extends core.Object {};
+  (encoding_parser._DispatchEntry.new = function(pattern, handler) {
+    if (pattern == null) dart.nullFailed(I[0], 128, 23, "pattern");
+    if (handler == null) dart.nullFailed(I[0], 128, 37, "handler");
+    this.pattern = pattern;
+    this.handler = handler;
+    ;
+  }).prototype = encoding_parser._DispatchEntry.prototype;
+  dart.addTypeTests(encoding_parser._DispatchEntry);
+  dart.addTypeCaches(encoding_parser._DispatchEntry);
+  dart.setLibraryUri(encoding_parser._DispatchEntry, I[1]);
+  dart.setFieldSignature(encoding_parser._DispatchEntry, () => ({
+    __proto__: dart.getFields(encoding_parser._DispatchEntry.__proto__),
+    pattern: dart.finalFieldType(core.String),
+    handler: dart.finalFieldType(dart.fnType(core.bool, []))
+  }));
+  var _encoding = dart.privateName(encoding_parser, "_encoding");
+  var _data = dart.privateName(encoding_parser, "_data");
+  var _handleComment = dart.privateName(encoding_parser, "_handleComment");
+  var _handleMeta = dart.privateName(encoding_parser, "_handleMeta");
+  var _handlePossibleEndTag = dart.privateName(encoding_parser, "_handlePossibleEndTag");
+  var _handleOther = dart.privateName(encoding_parser, "_handleOther");
+  var _handlePossibleStartTag = dart.privateName(encoding_parser, "_handlePossibleStartTag");
+  var _getAttribute = dart.privateName(encoding_parser, "_getAttribute");
+  var _handlePossibleTag = dart.privateName(encoding_parser, "_handlePossibleTag");
+  encoding_parser.EncodingParser = class EncodingParser extends core.Object {
+    getEncoding() {
+      let t0;
+      let methodDispatch = T.JSArrayOf_DispatchEntry().of([new encoding_parser._DispatchEntry.new("<!--", dart.bind(this, _handleComment)), new encoding_parser._DispatchEntry.new("<meta", dart.bind(this, _handleMeta)), new encoding_parser._DispatchEntry.new("</", dart.bind(this, _handlePossibleEndTag)), new encoding_parser._DispatchEntry.new("<!", dart.bind(this, _handleOther)), new encoding_parser._DispatchEntry.new("<?", dart.bind(this, _handleOther)), new encoding_parser._DispatchEntry.new("<", dart.bind(this, _handlePossibleStartTag))]);
+      try {
+        for (;;) {
+          for (let dispatch of methodDispatch) {
+            if (dart.test(this[_data][_matchBytes](dispatch.pattern))) {
+              let keepParsing = dispatch.handler();
+              if (dart.test(keepParsing)) break;
+              return this[_encoding];
+            }
+          }
+          t0 = this[_data];
+          t0[_position] = dart.notNull(t0[_position]) + 1;
+        }
+      } catch (e) {
+        let _ = dart.getThrown(e);
+        if (core.StateError.is(_)) {
+        } else
+          throw e;
+      }
+      return this[_encoding];
+    }
+    [_handleComment]() {
+      return this[_data][_jumpTo]("-->");
+    }
+    [_handleMeta]() {
+      if (!dart.test(constants.isWhitespace(this[_data][_currentByte]))) {
+        return true;
+      }
+      while (true) {
+        let attr = this[_getAttribute]();
+        if (attr == null) return true;
+        if (attr[$_get](0) === "charset") {
+          let tentativeEncoding = attr[$_get](1);
+          let codec = html_input_stream.codecName(tentativeEncoding);
+          if (codec != null) {
+            this[_encoding] = codec;
+            return false;
+          }
+        } else if (attr[$_get](0) === "content") {
+          let contentParser = new encoding_parser.ContentAttrParser.new(new encoding_parser.EncodingBytes.new(attr[$_get](1)));
+          let tentativeEncoding = contentParser.parse();
+          let codec = html_input_stream.codecName(tentativeEncoding);
+          if (codec != null) {
+            this[_encoding] = codec;
+            return false;
+          }
+        }
+      }
+    }
+    [_handlePossibleStartTag]() {
+      return this[_handlePossibleTag](false);
+    }
+    [_handlePossibleEndTag]() {
+      this[_data][_next]();
+      return this[_handlePossibleTag](true);
+    }
+    [_handlePossibleTag](endTag) {
+      if (endTag == null) dart.nullFailed(I[0], 211, 32, "endTag");
+      if (!dart.test(constants.isLetter(this[_data][_currentByte]))) {
+        if (dart.test(endTag)) {
+          this[_data][_previous]();
+          this[_handleOther]();
+        }
+        return true;
+      }
+      let c = this[_data][_skipUntil](C[1] || CT.C1);
+      if (c === "<") {
+        this[_data][_previous]();
+      } else {
+        let attr = this[_getAttribute]();
+        while (attr != null) {
+          attr = this[_getAttribute]();
+        }
+      }
+      return true;
+    }
+    [_handleOther]() {
+      return this[_data][_jumpTo](">");
+    }
+    [_getAttribute]() {
+      let c = this[_data][_skipChars](dart.fn(x => {
+        if (x == null) dart.nullFailed(I[0], 244, 31, "x");
+        return x === "/" || dart.test(constants.isWhitespace(x));
+      }, T.StringTobool()));
+      if (c === ">" || c == null) {
+        return null;
+      }
+      let attrName = [];
+      let attrValue = [];
+      while (true) {
+        if (c == null) {
+          return null;
+        } else if (c === "=" && dart.test(attrName[$isNotEmpty])) {
+          break;
+        } else if (dart.test(constants.isWhitespace(c))) {
+          c = this[_data][_skipChars]();
+          c = this[_data][_next]();
+          break;
+        } else if (c === "/" || c === ">") {
+          return T.JSArrayOfString().of([attrName[$join](), ""]);
+        } else if (dart.test(constants.isLetter(c))) {
+          attrName[$add](c[$toLowerCase]());
+        } else {
+          attrName[$add](c);
+        }
+        c = this[_data][_next]();
+      }
+      if (c !== "=") {
+        this[_data][_previous]();
+        return T.JSArrayOfString().of([attrName[$join](), ""]);
+      }
+      this[_data][_next]();
+      c = this[_data][_skipChars]();
+      if (c === "'" || c === "\"") {
+        let quoteChar = c;
+        while (true) {
+          c = this[_data][_next]();
+          if (c == quoteChar) {
+            this[_data][_next]();
+            return T.JSArrayOfString().of([attrName[$join](), attrValue[$join]()]);
+          } else if (dart.test(constants.isLetter(c))) {
+            attrValue[$add](c[$toLowerCase]());
+          } else {
+            attrValue[$add](c);
+          }
+        }
+      } else if (c === ">") {
+        return T.JSArrayOfString().of([attrName[$join](), ""]);
+      } else if (c == null) {
+        return null;
+      } else if (dart.test(constants.isLetter(c))) {
+        attrValue[$add](c[$toLowerCase]());
+      } else {
+        attrValue[$add](c);
+      }
+      while (true) {
+        c = this[_data][_next]();
+        if (dart.test(encoding_parser._isSpaceOrAngleBracket(c))) {
+          return T.JSArrayOfString().of([attrName[$join](), attrValue[$join]()]);
+        } else if (dart.test(constants.isLetter(c))) {
+          attrValue[$add](c[$toLowerCase]());
+        } else {
+          attrValue[$add](c);
+        }
+      }
+    }
+  };
+  (encoding_parser.EncodingParser.new = function(bytes) {
+    if (bytes == null) dart.nullFailed(I[0], 137, 28, "bytes");
+    this[_encoding] = null;
+    this[_data] = new encoding_parser.EncodingBytes.new(core.String.fromCharCodes(bytes)[$toLowerCase]());
+    ;
+  }).prototype = encoding_parser.EncodingParser.prototype;
+  dart.addTypeTests(encoding_parser.EncodingParser);
+  dart.addTypeCaches(encoding_parser.EncodingParser);
+  dart.setMethodSignature(encoding_parser.EncodingParser, () => ({
+    __proto__: dart.getMethods(encoding_parser.EncodingParser.__proto__),
+    getEncoding: dart.fnType(dart.nullable(core.String), []),
+    [_handleComment]: dart.fnType(core.bool, []),
+    [_handleMeta]: dart.fnType(core.bool, []),
+    [_handlePossibleStartTag]: dart.fnType(core.bool, []),
+    [_handlePossibleEndTag]: dart.fnType(core.bool, []),
+    [_handlePossibleTag]: dart.fnType(core.bool, [core.bool]),
+    [_handleOther]: dart.fnType(core.bool, []),
+    [_getAttribute]: dart.fnType(dart.nullable(core.List$(core.String)), [])
+  }));
+  dart.setLibraryUri(encoding_parser.EncodingParser, I[1]);
+  dart.setFieldSignature(encoding_parser.EncodingParser, () => ({
+    __proto__: dart.getFields(encoding_parser.EncodingParser.__proto__),
+    [_data]: dart.finalFieldType(encoding_parser.EncodingBytes),
+    [_encoding]: dart.fieldType(dart.nullable(core.String))
+  }));
+  var data$ = dart.privateName(encoding_parser, "ContentAttrParser.data");
+  encoding_parser.ContentAttrParser = class ContentAttrParser extends core.Object {
+    get data() {
+      return this[data$];
+    }
+    set data(value) {
+      super.data = value;
+    }
+    parse() {
+      let t1, t1$, t1$0;
+      try {
+        this.data[_jumpTo]("charset");
+        t1 = this.data;
+        t1[_position] = dart.notNull(t1[_position]) + 1;
+        this.data[_skipChars]();
+        if (this.data[_currentByte] !== "=") {
+          return null;
+        }
+        t1$ = this.data;
+        t1$[_position] = dart.notNull(t1$[_position]) + 1;
+        this.data[_skipChars]();
+        if (this.data[_currentByte] === "\"" || this.data[_currentByte] === "'") {
+          let quoteMark = this.data[_currentByte];
+          t1$0 = this.data;
+          t1$0[_position] = dart.notNull(t1$0[_position]) + 1;
+          let oldPosition = this.data[_position];
+          if (dart.test(this.data[_jumpTo](quoteMark))) {
+            return this.data[_slice](oldPosition, this.data[_position]);
+          } else {
+            return null;
+          }
+        } else {
+          let oldPosition = this.data[_position];
+          try {
+            this.data[_skipUntil](C[0] || CT.C0);
+            return this.data[_slice](oldPosition, this.data[_position]);
+          } catch (e) {
+            let _ = dart.getThrown(e);
+            if (core.StateError.is(_)) {
+              return this.data[_slice](oldPosition);
+            } else
+              throw e;
+          }
+        }
+      } catch (e$) {
+        let _ = dart.getThrown(e$);
+        if (core.StateError.is(_)) {
+          return null;
+        } else
+          throw e$;
+      }
+    }
+  };
+  (encoding_parser.ContentAttrParser.new = function(data) {
+    if (data == null) dart.nullFailed(I[0], 327, 26, "data");
+    this[data$] = data;
+    ;
+  }).prototype = encoding_parser.ContentAttrParser.prototype;
+  dart.addTypeTests(encoding_parser.ContentAttrParser);
+  dart.addTypeCaches(encoding_parser.ContentAttrParser);
+  dart.setMethodSignature(encoding_parser.ContentAttrParser, () => ({
+    __proto__: dart.getMethods(encoding_parser.ContentAttrParser.__proto__),
+    parse: dart.fnType(dart.nullable(core.String), [])
+  }));
+  dart.setLibraryUri(encoding_parser.ContentAttrParser, I[1]);
+  dart.setFieldSignature(encoding_parser.ContentAttrParser, () => ({
+    __proto__: dart.getFields(encoding_parser.ContentAttrParser.__proto__),
+    data: dart.finalFieldType(encoding_parser.EncodingBytes)
+  }));
+  encoding_parser._isSpaceOrAngleBracket = function _isSpaceOrAngleBracket(char) {
+    if (char == null) dart.nullFailed(I[0], 369, 36, "char");
+    return char === ">" || char === "<" || dart.test(constants.isWhitespace(char));
+  };
+  var charEncodingName = dart.privateName(html_input_stream, "HtmlInputStream.charEncodingName");
+  var charEncodingCertain = dart.privateName(html_input_stream, "HtmlInputStream.charEncodingCertain");
+  var generateSpans$ = dart.privateName(html_input_stream, "HtmlInputStream.generateSpans");
+  var sourceUrl$ = dart.privateName(html_input_stream, "HtmlInputStream.sourceUrl");
+  var errors = dart.privateName(html_input_stream, "HtmlInputStream.errors");
+  var fileInfo = dart.privateName(html_input_stream, "HtmlInputStream.fileInfo");
+  var _rawBytes = dart.privateName(html_input_stream, "_rawBytes");
+  var _rawChars = dart.privateName(html_input_stream, "_rawChars");
+  var _chars = dart.privateName(html_input_stream, "_chars");
+  var _offset = dart.privateName(html_input_stream, "_offset");
+  var _isSurrogatePair = dart.privateName(html_input_stream, "_isSurrogatePair");
+  var _isLeadSurrogate = dart.privateName(html_input_stream, "_isLeadSurrogate");
+  var _isTrailSurrogate = dart.privateName(html_input_stream, "_isTrailSurrogate");
+  html_input_stream.HtmlInputStream = class HtmlInputStream extends core.Object {
+    get charEncodingName() {
+      return this[charEncodingName];
+    }
+    set charEncodingName(value) {
+      this[charEncodingName] = value;
+    }
+    get charEncodingCertain() {
+      return this[charEncodingCertain];
+    }
+    set charEncodingCertain(value) {
+      this[charEncodingCertain] = value;
+    }
+    get generateSpans() {
+      return this[generateSpans$];
+    }
+    set generateSpans(value) {
+      super.generateSpans = value;
+    }
+    get sourceUrl() {
+      return this[sourceUrl$];
+    }
+    set sourceUrl(value) {
+      super.sourceUrl = value;
+    }
+    get errors() {
+      return this[errors];
+    }
+    set errors(value) {
+      this[errors] = value;
+    }
+    get fileInfo() {
+      return this[fileInfo];
+    }
+    set fileInfo(value) {
+      this[fileInfo] = value;
+    }
+    reset() {
+      let t3;
+      this.errors = new (T.ListQueueOfString()).new();
+      this[_offset] = 0;
+      this[_chars] = T.JSArrayOfint().of([]);
+      let rawChars = (t3 = this[_rawChars], t3 == null ? this[_rawChars] = html_input_stream._decodeBytes(dart.nullCheck(this.charEncodingName), dart.nullCheck(this[_rawBytes])) : t3);
+      let skipNewline = false;
+      let wasSurrogatePair = false;
+      for (let i = 0; i < dart.notNull(rawChars[$length]); i = i + 1) {
+        let c = rawChars[$_get](i);
+        if (skipNewline) {
+          skipNewline = false;
+          if (c === 10) continue;
+        }
+        let isSurrogatePair = this[_isSurrogatePair](rawChars, i);
+        if (!dart.test(isSurrogatePair) && !dart.test(wasSurrogatePair)) {
+          if (dart.test(html_input_stream._invalidUnicode(c))) {
+            this.errors.add("invalid-codepoint");
+            if (55296 <= dart.notNull(c) && dart.notNull(c) <= 57343) {
+              c = 65533;
+            }
+          }
+        }
+        wasSurrogatePair = isSurrogatePair;
+        if (c === 13) {
+          skipNewline = true;
+          c = 10;
+        }
+        this[_chars][$add](c);
+      }
+      if (this[_rawBytes] != null) this[_rawChars] = null;
+      this.fileInfo = new file.SourceFile.decoded(this[_chars], {url: this.sourceUrl});
+    }
+    detectEncoding(parseMeta = true) {
+      if (parseMeta == null) dart.nullFailed(I[2], 130, 29, "parseMeta");
+      this.charEncodingName = this.detectBOM();
+      this.charEncodingCertain = true;
+      if (this.charEncodingName == null && dart.test(parseMeta)) {
+        this.charEncodingName = this.detectEncodingMeta();
+        this.charEncodingCertain = false;
+      }
+      if (this.charEncodingName == null) {
+        this.charEncodingCertain = false;
+        this.charEncodingName = "utf-8";
+      }
+      if (dart.nullCheck(this.charEncodingName)[$toLowerCase]() === "iso-8859-1") {
+        this.charEncodingName = "windows-1252";
+      }
+    }
+    changeEncoding(newEncoding) {
+      if (this[_rawBytes] == null) {
+        dart.throw(new core.StateError.new("cannot change encoding when parsing a String."));
+      }
+      newEncoding = html_input_stream.codecName(newEncoding);
+      if (dart.test((C[2] || CT.C2)[$contains](newEncoding))) {
+        newEncoding = "utf-8";
+      }
+      if (newEncoding == null) {
+        return;
+      } else if (newEncoding == this.charEncodingName) {
+        this.charEncodingCertain = true;
+      } else {
+        this.charEncodingName = newEncoding;
+        this.charEncodingCertain = true;
+        this[_rawChars] = null;
+        this.reset();
+        dart.throw(new constants.ReparseException.new("Encoding changed from " + dart.str(this.charEncodingName) + " to " + dart.str(newEncoding)));
+      }
+    }
+    detectBOM() {
+      if (dart.test(html_input_stream._hasUtf8Bom(dart.nullCheck(this[_rawBytes])))) {
+        return "utf-8";
+      }
+      return null;
+    }
+    detectEncodingMeta() {
+      let parser = new encoding_parser.EncodingParser.new(utils.slice(core.int, dart.nullCheck(this[_rawBytes]), 0, 512));
+      let encoding = parser.getEncoding();
+      if (dart.test((C[2] || CT.C2)[$contains](encoding))) {
+        encoding = "utf-8";
+      }
+      return encoding;
+    }
+    get position() {
+      return this[_offset];
+    }
+    char() {
+      let t3, t3$, t3$0;
+      if (dart.notNull(this[_offset]) >= dart.notNull(this[_chars][$length])) return constants.eof;
+      return dart.test(this[_isSurrogatePair](this[_chars], this[_offset])) ? core.String.fromCharCodes(T.JSArrayOfint().of([this[_chars][$_get]((t3 = this[_offset], this[_offset] = dart.notNull(t3) + 1, t3)), this[_chars][$_get]((t3$ = this[_offset], this[_offset] = dart.notNull(t3$) + 1, t3$))])) : core.String.fromCharCode(this[_chars][$_get]((t3$0 = this[_offset], this[_offset] = dart.notNull(t3$0) + 1, t3$0)));
+    }
+    peekChar() {
+      if (dart.notNull(this[_offset]) >= dart.notNull(this[_chars][$length])) return constants.eof;
+      return dart.test(this[_isSurrogatePair](this[_chars], this[_offset])) ? core.String.fromCharCodes(T.JSArrayOfint().of([this[_chars][$_get](this[_offset]), this[_chars][$_get](dart.notNull(this[_offset]) + 1)])) : core.String.fromCharCode(this[_chars][$_get](this[_offset]));
+    }
+    [_isSurrogatePair](chars, i) {
+      if (chars == null) dart.nullFailed(I[2], 223, 35, "chars");
+      if (i == null) dart.nullFailed(I[2], 223, 46, "i");
+      return dart.notNull(i) + 1 < dart.notNull(chars[$length]) && dart.test(this[_isLeadSurrogate](chars[$_get](i))) && dart.test(this[_isTrailSurrogate](chars[$_get](dart.notNull(i) + 1)));
+    }
+    [_isLeadSurrogate](code) {
+      if (code == null) dart.nullFailed(I[2], 230, 29, "code");
+      return (dart.notNull(code) & 64512) === 55296;
+    }
+    [_isTrailSurrogate](code) {
+      if (code == null) dart.nullFailed(I[2], 233, 30, "code");
+      return (dart.notNull(code) & 64512) === 56320;
+    }
+    charsUntil(characters, opposite = false) {
+      if (characters == null) dart.nullFailed(I[2], 237, 28, "characters");
+      if (opposite == null) dart.nullFailed(I[2], 237, 46, "opposite");
+      let start = this[_offset];
+      let c = null;
+      while ((c = this.peekChar()) != null && characters[$contains](dart.nullCheck(c)) === opposite) {
+        this[_offset] = dart.notNull(this[_offset]) + dart.notNull(c[$codeUnits][$length]);
+      }
+      return core.String.fromCharCodes(this[_chars][$sublist](start, this[_offset]));
+    }
+    unget(ch) {
+      if (ch != null) {
+        this[_offset] = dart.notNull(this[_offset]) - ch.length;
+        if (!(this.peekChar() == ch)) dart.assertFailed(null, I[2], 252, 14, "peekChar() == ch");
+      }
+    }
+  };
+  (html_input_stream.HtmlInputStream.new = function(source, encoding = null, parseMeta = true, generateSpans = false, sourceUrl = null) {
+    if (parseMeta == null) dart.nullFailed(I[2], 62, 12, "parseMeta");
+    if (generateSpans == null) dart.nullFailed(I[2], 63, 12, "generateSpans");
+    this[charEncodingCertain] = true;
+    this[_rawBytes] = null;
+    this[_rawChars] = null;
+    this[errors] = new (T.ListQueueOfString()).new();
+    this[fileInfo] = null;
+    this[_chars] = T.JSArrayOfint().of([]);
+    this[_offset] = 0;
+    this[generateSpans$] = generateSpans;
+    this[sourceUrl$] = sourceUrl;
+    this[charEncodingName] = html_input_stream.codecName(encoding);
+    if (typeof source == 'string') {
+      this[_rawChars] = source[$codeUnits];
+      this.charEncodingName = "utf-8";
+      this.charEncodingCertain = true;
+    } else if (T.ListOfint().is(source)) {
+      this[_rawBytes] = source;
+    } else {
+      dart.throw(new core.ArgumentError.value(source, "source", "Must be a String or List<int>."));
+    }
+    if (this.charEncodingName == null) {
+      this.detectEncoding(parseMeta);
+    }
+    this.reset();
+  }).prototype = html_input_stream.HtmlInputStream.prototype;
+  dart.addTypeTests(html_input_stream.HtmlInputStream);
+  dart.addTypeCaches(html_input_stream.HtmlInputStream);
+  dart.setMethodSignature(html_input_stream.HtmlInputStream, () => ({
+    __proto__: dart.getMethods(html_input_stream.HtmlInputStream.__proto__),
+    reset: dart.fnType(dart.void, []),
+    detectEncoding: dart.fnType(dart.void, [], [core.bool]),
+    changeEncoding: dart.fnType(dart.void, [dart.nullable(core.String)]),
+    detectBOM: dart.fnType(dart.nullable(core.String), []),
+    detectEncodingMeta: dart.fnType(dart.nullable(core.String), []),
+    char: dart.fnType(dart.nullable(core.String), []),
+    peekChar: dart.fnType(dart.nullable(core.String), []),
+    [_isSurrogatePair]: dart.fnType(core.bool, [core.List$(core.int), core.int]),
+    [_isLeadSurrogate]: dart.fnType(core.bool, [core.int]),
+    [_isTrailSurrogate]: dart.fnType(core.bool, [core.int]),
+    charsUntil: dart.fnType(core.String, [core.String], [core.bool]),
+    unget: dart.fnType(dart.void, [dart.nullable(core.String)])
+  }));
+  dart.setGetterSignature(html_input_stream.HtmlInputStream, () => ({
+    __proto__: dart.getGetters(html_input_stream.HtmlInputStream.__proto__),
+    position: core.int
+  }));
+  dart.setLibraryUri(html_input_stream.HtmlInputStream, I[3]);
+  dart.setFieldSignature(html_input_stream.HtmlInputStream, () => ({
+    __proto__: dart.getFields(html_input_stream.HtmlInputStream.__proto__),
+    charEncodingName: dart.fieldType(dart.nullable(core.String)),
+    charEncodingCertain: dart.fieldType(core.bool),
+    generateSpans: dart.finalFieldType(core.bool),
+    sourceUrl: dart.finalFieldType(dart.nullable(core.String)),
+    [_rawBytes]: dart.fieldType(dart.nullable(core.List$(core.int))),
+    [_rawChars]: dart.fieldType(dart.nullable(core.List$(core.int))),
+    errors: dart.fieldType(collection.Queue$(core.String)),
+    fileInfo: dart.fieldType(dart.nullable(file.SourceFile)),
+    [_chars]: dart.fieldType(core.List$(core.int)),
+    [_offset]: dart.fieldType(core.int)
+  }));
+  dart.defineLazy(html_input_stream.HtmlInputStream, {
+    /*html_input_stream.HtmlInputStream.numBytesMeta*/get numBytesMeta() {
+      return 512;
+    },
+    /*html_input_stream.HtmlInputStream.defaultEncoding*/get defaultEncoding() {
+      return "utf-8";
+    }
+  }, false);
+  html_input_stream._invalidUnicode = function _invalidUnicode(c) {
+    if (c == null) dart.nullFailed(I[2], 259, 26, "c");
+    if (1 <= dart.notNull(c) && dart.notNull(c) <= 8) return true;
+    if (14 <= dart.notNull(c) && dart.notNull(c) <= 31) return true;
+    if (127 <= dart.notNull(c) && dart.notNull(c) <= 159) return true;
+    if (55296 <= dart.notNull(c) && dart.notNull(c) <= 57343) return true;
+    if (64976 <= dart.notNull(c) && dart.notNull(c) <= 65007) return true;
+    switch (c) {
+      case 11:
+      case 65534:
+      case 65535:
+      case 131070:
+      case 131071:
+      case 196606:
+      case 196607:
+      case 262142:
+      case 262143:
+      case 327678:
+      case 327679:
+      case 393214:
+      case 393215:
+      case 458750:
+      case 458751:
+      case 524286:
+      case 524287:
+      case 589822:
+      case 589823:
+      case 655358:
+      case 655359:
+      case 720894:
+      case 720895:
+      case 786430:
+      case 786431:
+      case 851966:
+      case 851967:
+      case 917502:
+      case 917503:
+      case 983038:
+      case 983039:
+      case 1048574:
+      case 1048575:
+      case 1114110:
+      case 1114111:
+      {
+        return true;
+      }
+    }
+    return false;
+  };
+  html_input_stream.codecName = function codecName(encoding) {
+    let asciiPunctuation = core.RegExp.new("[\t-\r -/:-@[-`{-~]");
+    if (encoding == null) return null;
+    let canonicalName = encoding[$replaceAll](asciiPunctuation, "")[$toLowerCase]();
+    return constants.encodings[$_get](canonicalName);
+  };
+  html_input_stream._hasUtf8Bom = function _hasUtf8Bom(bytes, offset = 0, length = null) {
+    if (bytes == null) dart.nullFailed(I[2], 320, 28, "bytes");
+    if (offset == null) dart.nullFailed(I[2], 320, 40, "offset");
+    let end = length != null ? dart.notNull(offset) + dart.notNull(length) : bytes[$length];
+    return dart.notNull(offset) + 3 <= dart.notNull(end) && bytes[$_get](offset) === 239 && bytes[$_get](dart.notNull(offset) + 1) === 187 && bytes[$_get](dart.notNull(offset) + 2) === 191;
+  };
+  html_input_stream._decodeBytes = function _decodeBytes(encoding, bytes) {
+    if (encoding == null) dart.nullFailed(I[2], 331, 31, "encoding");
+    if (bytes == null) dart.nullFailed(I[2], 331, 51, "bytes");
+    switch (encoding) {
+      case "ascii":
+      {
+        return convert.ascii.decode(bytes)[$codeUnits];
+      }
+      case "utf-8":
+      {
+        return convert.utf8.decode(bytes)[$codeUnits];
+      }
+      default:
+      {
+        dart.throw(new core.ArgumentError.new("Encoding " + dart.str(encoding) + " not supported"));
+      }
+    }
+  };
+  dart.trackLibraries("packages/html/src/encoding_parser.dart", {
+    "package:html/src/encoding_parser.dart": encoding_parser,
+    "package:html/src/html_input_stream.dart": html_input_stream
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["encoding_parser.dart","html_input_stream.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../D:/packages/html/src/encoding_parser.dart.lib.js"}');
+  // Exports:
+  return {
+    src__encoding_parser: encoding_parser,
+    src__html_input_stream: html_input_stream
+  };
+}));
+
+//# sourceMappingURL=encoding_parser.dart.lib.js.map

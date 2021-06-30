@@ -1,0 +1,1304 @@
+define(['dart_sdk', 'packages/flutter/src/services/system_channels.dart'], (function load__packages__flutter_bluetooth_serial__flutter_bluetooth_serial_dart(dart_sdk, packages__flutter__src__services__system_channels$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _js_helper = dart_sdk._js_helper;
+  const async = dart_sdk.async;
+  const typed_data = dart_sdk.typed_data;
+  const _interceptors = dart_sdk._interceptors;
+  const convert = dart_sdk.convert;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const platform_channel = packages__flutter__src__services__system_channels$46dart.src__services__platform_channel;
+  const message_codec = packages__flutter__src__services__system_channels$46dart.src__services__message_codec;
+  const message_codecs = packages__flutter__src__services__system_channels$46dart.src__services__message_codecs;
+  var flutter_bluetooth_serial = Object.create(dart.library);
+  var $hashCode = dartx.hashCode;
+  var $toString = dartx.toString;
+  var $_equals = dartx._equals;
+  var $_get = dartx._get;
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    BluetoothStateL: () => (T.BluetoothStateL = dart.constFn(dart.legacy(flutter_bluetooth_serial.BluetoothState)))(),
+    BluetoothBondStateL: () => (T.BluetoothBondStateL = dart.constFn(dart.legacy(flutter_bluetooth_serial.BluetoothBondState)))(),
+    BluetoothDeviceTypeL: () => (T.BluetoothDeviceTypeL = dart.constFn(dart.legacy(flutter_bluetooth_serial.BluetoothDeviceType)))(),
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    intL: () => (T.intL = dart.constFn(dart.legacy(core.int)))(),
+    boolL: () => (T.boolL = dart.constFn(dart.legacy(core.bool)))(),
+    IdentityMapOfStringL$dynamic: () => (T.IdentityMapOfStringL$dynamic = dart.constFn(_js_helper.IdentityMap$(T.StringL(), dart.dynamic)))(),
+    BluetoothDeviceL: () => (T.BluetoothDeviceL = dart.constFn(dart.legacy(flutter_bluetooth_serial.BluetoothDevice)))(),
+    Uint8ListL: () => (T.Uint8ListL = dart.constFn(dart.legacy(typed_data.Uint8List)))(),
+    StreamControllerOfUint8ListL: () => (T.StreamControllerOfUint8ListL = dart.constFn(async.StreamController$(T.Uint8ListL())))(),
+    _BluetoothStreamSinkOfUint8ListL: () => (T._BluetoothStreamSinkOfUint8ListL = dart.constFn(flutter_bluetooth_serial._BluetoothStreamSink$(T.Uint8ListL())))(),
+    IdentityMapOfStringL$StringL: () => (T.IdentityMapOfStringL$StringL = dart.constFn(_js_helper.IdentityMap$(T.StringL(), T.StringL())))(),
+    BluetoothConnectionL: () => (T.BluetoothConnectionL = dart.constFn(dart.legacy(flutter_bluetooth_serial.BluetoothConnection)))(),
+    FutureL: () => (T.FutureL = dart.constFn(dart.legacy(async.Future)))(),
+    JSArrayOfFutureL: () => (T.JSArrayOfFutureL = dart.constFn(_interceptors.JSArray$(T.FutureL())))(),
+    FutureOfvoid: () => (T.FutureOfvoid = dart.constFn(async.Future$(dart.void)))(),
+    FutureOfNull: () => (T.FutureOfNull = dart.constFn(async.Future$(core.Null)))(),
+    FutureLOfNull: () => (T.FutureLOfNull = dart.constFn(dart.legacy(T.FutureOfNull())))(),
+    VoidToFutureLOfNull: () => (T.VoidToFutureLOfNull = dart.constFn(dart.fnType(T.FutureLOfNull(), [])))(),
+    ObjectL: () => (T.ObjectL = dart.constFn(dart.legacy(core.Object)))(),
+    IdentityMapOfStringL$ObjectL: () => (T.IdentityMapOfStringL$ObjectL = dart.constFn(_js_helper.IdentityMap$(T.StringL(), T.ObjectL())))(),
+    voidToFutureLOfNull: () => (T.voidToFutureLOfNull = dart.constFn(dart.fnType(T.FutureLOfNull(), [dart.void])))(),
+    dynamicToNull: () => (T.dynamicToNull = dart.constFn(dart.fnType(core.Null, [dart.dynamic])))(),
+    MapL: () => (T.MapL = dart.constFn(dart.legacy(core.Map)))(),
+    MethodCallL: () => (T.MethodCallL = dart.constFn(dart.legacy(message_codec.MethodCall)))(),
+    MethodCallLToFutureL: () => (T.MethodCallLToFutureL = dart.constFn(dart.fnType(T.FutureL(), [T.MethodCallL()])))(),
+    dynamicToBluetoothStateL: () => (T.dynamicToBluetoothStateL = dart.constFn(dart.fnType(T.BluetoothStateL(), [dart.dynamic])))(),
+    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    FutureOfObjectL: () => (T.FutureOfObjectL = dart.constFn(async.Future$(T.ObjectL())))(),
+    FutureLOfObjectL: () => (T.FutureLOfObjectL = dart.constFn(dart.legacy(T.FutureOfObjectL())))(),
+    BluetoothPairingRequestL: () => (T.BluetoothPairingRequestL = dart.constFn(dart.legacy(flutter_bluetooth_serial.BluetoothPairingRequest)))(),
+    BluetoothPairingRequestLToFutureLOfObjectL: () => (T.BluetoothPairingRequestLToFutureLOfObjectL = dart.constFn(dart.fnType(T.FutureLOfObjectL(), [T.BluetoothPairingRequestL()])))(),
+    ListL: () => (T.ListL = dart.constFn(dart.legacy(core.List)))(),
+    dynamicToBluetoothDeviceL: () => (T.dynamicToBluetoothDeviceL = dart.constFn(dart.fnType(T.BluetoothDeviceL(), [dart.dynamic])))(),
+    ListOfBluetoothDeviceL: () => (T.ListOfBluetoothDeviceL = dart.constFn(core.List$(T.BluetoothDeviceL())))(),
+    ListLOfBluetoothDeviceL: () => (T.ListLOfBluetoothDeviceL = dart.constFn(dart.legacy(T.ListOfBluetoothDeviceL())))(),
+    BluetoothDiscoveryResultL: () => (T.BluetoothDiscoveryResultL = dart.constFn(dart.legacy(flutter_bluetooth_serial.BluetoothDiscoveryResult)))(),
+    dynamicToBluetoothDiscoveryResultL: () => (T.dynamicToBluetoothDiscoveryResultL = dart.constFn(dart.fnType(T.BluetoothDiscoveryResultL(), [dart.dynamic])))(),
+    _AsyncStarImplOfBluetoothDiscoveryResultL: () => (T._AsyncStarImplOfBluetoothDiscoveryResultL = dart.constFn(async._AsyncStarImpl$(T.BluetoothDiscoveryResultL())))(),
+    IdentityMapOfStringL$intL: () => (T.IdentityMapOfStringL$intL = dart.constFn(_js_helper.IdentityMap$(T.StringL(), T.intL())))(),
+    FutureOfboolL: () => (T.FutureOfboolL = dart.constFn(async.Future$(T.boolL())))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: flutter_bluetooth_serial.BluetoothState.prototype,
+        [stringValue]: "STATE_OFF",
+        [underlyingValue]: 10
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: flutter_bluetooth_serial.BluetoothState.prototype,
+        [stringValue]: "STATE_TURNING_ON",
+        [underlyingValue]: 11
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: flutter_bluetooth_serial.BluetoothState.prototype,
+        [stringValue]: "STATE_ON",
+        [underlyingValue]: 12
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: flutter_bluetooth_serial.BluetoothState.prototype,
+        [stringValue]: "STATE_TURNING_OFF",
+        [underlyingValue]: 13
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: flutter_bluetooth_serial.BluetoothState.prototype,
+        [stringValue]: "STATE_BLE_TURNING_ON",
+        [underlyingValue]: 14
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: flutter_bluetooth_serial.BluetoothState.prototype,
+        [stringValue]: "STATE_BLE_ON",
+        [underlyingValue]: 15
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: flutter_bluetooth_serial.BluetoothState.prototype,
+        [stringValue]: "STATE_BLE_TURNING_OFF",
+        [underlyingValue]: 16
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: flutter_bluetooth_serial.BluetoothState.prototype,
+        [stringValue]: "ERROR",
+        [underlyingValue]: -1
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: flutter_bluetooth_serial.BluetoothState.prototype,
+        [stringValue]: "UNKNOWN",
+        [underlyingValue]: -2
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: flutter_bluetooth_serial.BluetoothBondState.prototype,
+        [stringValue$]: "unknown",
+        [underlyingValue$]: 0
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: flutter_bluetooth_serial.BluetoothBondState.prototype,
+        [stringValue$]: "none",
+        [underlyingValue$]: 10
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: flutter_bluetooth_serial.BluetoothBondState.prototype,
+        [stringValue$]: "bonding",
+        [underlyingValue$]: 11
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: flutter_bluetooth_serial.BluetoothBondState.prototype,
+        [stringValue$]: "bonded",
+        [underlyingValue$]: 12
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: flutter_bluetooth_serial.BluetoothDeviceType.prototype,
+        [stringValue$0]: "unknown",
+        [underlyingValue$0]: 0
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: flutter_bluetooth_serial.BluetoothDeviceType.prototype,
+        [stringValue$0]: "classic",
+        [underlyingValue$0]: 1
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: flutter_bluetooth_serial.BluetoothDeviceType.prototype,
+        [stringValue$0]: "le",
+        [underlyingValue$0]: 2
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: flutter_bluetooth_serial.BluetoothDeviceType.prototype,
+        [stringValue$0]: "dual",
+        [underlyingValue$0]: 3
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: flutter_bluetooth_serial.PairingVariant.prototype,
+        [underlyingValue$1]: -1
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: flutter_bluetooth_serial.PairingVariant.prototype,
+        [underlyingValue$1]: 0
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: flutter_bluetooth_serial.PairingVariant.prototype,
+        [underlyingValue$1]: 1
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: flutter_bluetooth_serial.PairingVariant.prototype,
+        [underlyingValue$1]: 2
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: flutter_bluetooth_serial.PairingVariant.prototype,
+        [underlyingValue$1]: 3
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: flutter_bluetooth_serial.PairingVariant.prototype,
+        [underlyingValue$1]: 4
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: flutter_bluetooth_serial.PairingVariant.prototype,
+        [underlyingValue$1]: 5
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: flutter_bluetooth_serial.PairingVariant.prototype,
+        [underlyingValue$1]: 6
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: flutter_bluetooth_serial.PairingVariant.prototype,
+        [underlyingValue$1]: 7
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: message_codecs.StandardMessageCodec.prototype
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: message_codecs.StandardMethodCodec.prototype,
+        [StandardMethodCodec_messageCodec]: C[28] || CT.C28
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: platform_channel.MethodChannel.prototype,
+        [MethodChannel__binaryMessenger]: null,
+        [MethodChannel_codec]: C[27] || CT.C27,
+        [MethodChannel_name]: "flutter_bluetooth_serial/methods"
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: platform_channel.EventChannel.prototype,
+        [EventChannel__binaryMessenger]: null,
+        [EventChannel_codec]: C[27] || CT.C27,
+        [EventChannel_name]: "flutter_bluetooth_serial/state"
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: platform_channel.EventChannel.prototype,
+        [EventChannel__binaryMessenger]: null,
+        [EventChannel_codec]: C[27] || CT.C27,
+        [EventChannel_name]: "flutter_bluetooth_serial/discovery"
+      });
+    }
+  }, false);
+  var C = Array(31).fill(void 0);
+  var I = ["package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart"];
+  var underlyingValue = dart.privateName(flutter_bluetooth_serial, "BluetoothState.underlyingValue");
+  var stringValue = dart.privateName(flutter_bluetooth_serial, "BluetoothState.stringValue");
+  flutter_bluetooth_serial.BluetoothState = class BluetoothState extends core.Object {
+    get underlyingValue() {
+      return this[underlyingValue];
+    }
+    set underlyingValue(value) {
+      super.underlyingValue = value;
+    }
+    get stringValue() {
+      return this[stringValue];
+    }
+    set stringValue(value) {
+      super.stringValue = value;
+    }
+    toString() {
+      return "BluetoothState." + dart.str(this.stringValue);
+    }
+    toUnderlyingValue() {
+      return this.underlyingValue;
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return T.BluetoothStateL().is(other) && other.underlyingValue == this.underlyingValue;
+    }
+    get hashCode() {
+      return dart.hashCode(this.underlyingValue);
+    }
+    get isEnabled() {
+      return this._equals(flutter_bluetooth_serial.BluetoothState.STATE_ON);
+    }
+  };
+  (flutter_bluetooth_serial.BluetoothState.fromString = function(string) {
+    this[underlyingValue] = string === "STATE_OFF" ? 10 : string === "STATE_TURNING_ON" ? 11 : string === "STATE_ON" ? 12 : string === "STATE_TURNING_OFF" ? 13 : string === "STATE_BLE_TURNING_ON" ? 14 : string === "STATE_BLE_ON" ? 15 : string === "STATE_BLE_TURNING_OFF" ? 16 : string === "ERROR" ? -1 : -2;
+    this[stringValue] = string === "STATE_OFF" || string === "STATE_TURNING_ON" || string === "STATE_ON" || string === "STATE_TURNING_OFF" || string === "STATE_BLE_TURNING_ON" || string === "STATE_BLE_ON" || string === "STATE_BLE_TURNING_OFF" || string === "ERROR" ? string : "UNKNOWN";
+    ;
+  }).prototype = flutter_bluetooth_serial.BluetoothState.prototype;
+  (flutter_bluetooth_serial.BluetoothState.fromUnderlyingValue = function(value) {
+    this[underlyingValue] = dart.notNull(value) >= 10 && dart.notNull(value) <= 16 || value === -1 ? value : -2;
+    this[stringValue] = value === 10 ? "STATE_OFF" : value === 11 ? "STATE_TURNING_ON" : value === 12 ? "STATE_ON" : value === 13 ? "STATE_TURNING_OFF" : value === 14 ? "STATE_BLE_TURNING_ON" : value === 15 ? "STATE_BLE_ON" : value === 16 ? "STATE_BLE_TURNING_OFF" : value === -1 ? "ERROR" : "UNKNOWN";
+    ;
+  }).prototype = flutter_bluetooth_serial.BluetoothState.prototype;
+  dart.addTypeTests(flutter_bluetooth_serial.BluetoothState);
+  dart.addTypeCaches(flutter_bluetooth_serial.BluetoothState);
+  dart.setMethodSignature(flutter_bluetooth_serial.BluetoothState, () => ({
+    __proto__: dart.getMethods(flutter_bluetooth_serial.BluetoothState.__proto__),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), []),
+    toUnderlyingValue: dart.fnType(dart.legacy(core.int), []),
+    _equals: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.Object)]),
+    [$_equals]: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.Object)])
+  }));
+  dart.setGetterSignature(flutter_bluetooth_serial.BluetoothState, () => ({
+    __proto__: dart.getGetters(flutter_bluetooth_serial.BluetoothState.__proto__),
+    hashCode: dart.legacy(core.int),
+    [$hashCode]: dart.legacy(core.int),
+    isEnabled: dart.legacy(core.bool)
+  }));
+  dart.setLibraryUri(flutter_bluetooth_serial.BluetoothState, I[0]);
+  dart.setFieldSignature(flutter_bluetooth_serial.BluetoothState, () => ({
+    __proto__: dart.getFields(flutter_bluetooth_serial.BluetoothState.__proto__),
+    underlyingValue: dart.finalFieldType(dart.legacy(core.int)),
+    stringValue: dart.finalFieldType(dart.legacy(core.String))
+  }));
+  dart.defineExtensionMethods(flutter_bluetooth_serial.BluetoothState, ['toString', '_equals']);
+  dart.defineExtensionAccessors(flutter_bluetooth_serial.BluetoothState, ['hashCode']);
+  dart.defineLazy(flutter_bluetooth_serial.BluetoothState, {
+    /*flutter_bluetooth_serial.BluetoothState.STATE_OFF*/get STATE_OFF() {
+      return C[0] || CT.C0;
+    },
+    /*flutter_bluetooth_serial.BluetoothState.STATE_TURNING_ON*/get STATE_TURNING_ON() {
+      return C[1] || CT.C1;
+    },
+    /*flutter_bluetooth_serial.BluetoothState.STATE_ON*/get STATE_ON() {
+      return C[2] || CT.C2;
+    },
+    /*flutter_bluetooth_serial.BluetoothState.STATE_TURNING_OFF*/get STATE_TURNING_OFF() {
+      return C[3] || CT.C3;
+    },
+    /*flutter_bluetooth_serial.BluetoothState.STATE_BLE_TURNING_ON*/get STATE_BLE_TURNING_ON() {
+      return C[4] || CT.C4;
+    },
+    /*flutter_bluetooth_serial.BluetoothState.STATE_BLE_ON*/get STATE_BLE_ON() {
+      return C[5] || CT.C5;
+    },
+    /*flutter_bluetooth_serial.BluetoothState.STATE_BLE_TURNING_OFF*/get STATE_BLE_TURNING_OFF() {
+      return C[6] || CT.C6;
+    },
+    /*flutter_bluetooth_serial.BluetoothState.ERROR*/get ERROR() {
+      return C[7] || CT.C7;
+    },
+    /*flutter_bluetooth_serial.BluetoothState.UNKNOWN*/get UNKNOWN() {
+      return C[8] || CT.C8;
+    }
+  }, true);
+  var underlyingValue$ = dart.privateName(flutter_bluetooth_serial, "BluetoothBondState.underlyingValue");
+  var stringValue$ = dart.privateName(flutter_bluetooth_serial, "BluetoothBondState.stringValue");
+  flutter_bluetooth_serial.BluetoothBondState = class BluetoothBondState extends core.Object {
+    get underlyingValue() {
+      return this[underlyingValue$];
+    }
+    set underlyingValue(value) {
+      super.underlyingValue = value;
+    }
+    get stringValue() {
+      return this[stringValue$];
+    }
+    set stringValue(value) {
+      super.stringValue = value;
+    }
+    toString() {
+      return "BluetoothBondState." + dart.str(this.stringValue);
+    }
+    toUnderlyingValue() {
+      return this.underlyingValue;
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return T.BluetoothBondStateL().is(other) && other.underlyingValue == this.underlyingValue;
+    }
+    get hashCode() {
+      return dart.hashCode(this.underlyingValue);
+    }
+    get isBonded() {
+      return this._equals(flutter_bluetooth_serial.BluetoothBondState.bonded);
+    }
+  };
+  (flutter_bluetooth_serial.BluetoothBondState.fromString = function(string) {
+    this[underlyingValue$] = string === "none" ? 10 : string === "bonding" ? 11 : string === "bonded" ? 12 : -2;
+    this[stringValue$] = string === "none" || string === "bonding" || string === "bonded" ? string : "unknown";
+    ;
+  }).prototype = flutter_bluetooth_serial.BluetoothBondState.prototype;
+  (flutter_bluetooth_serial.BluetoothBondState.fromUnderlyingValue = function(value) {
+    this[underlyingValue$] = dart.notNull(value) >= 10 && dart.notNull(value) <= 12 ? value : 0;
+    this[stringValue$] = value === 10 ? "none" : value === 11 ? "bonding" : value === 12 ? "bonded" : "unknown";
+    ;
+  }).prototype = flutter_bluetooth_serial.BluetoothBondState.prototype;
+  dart.addTypeTests(flutter_bluetooth_serial.BluetoothBondState);
+  dart.addTypeCaches(flutter_bluetooth_serial.BluetoothBondState);
+  dart.setMethodSignature(flutter_bluetooth_serial.BluetoothBondState, () => ({
+    __proto__: dart.getMethods(flutter_bluetooth_serial.BluetoothBondState.__proto__),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), []),
+    toUnderlyingValue: dart.fnType(dart.legacy(core.int), []),
+    _equals: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.Object)]),
+    [$_equals]: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.Object)])
+  }));
+  dart.setGetterSignature(flutter_bluetooth_serial.BluetoothBondState, () => ({
+    __proto__: dart.getGetters(flutter_bluetooth_serial.BluetoothBondState.__proto__),
+    hashCode: dart.legacy(core.int),
+    [$hashCode]: dart.legacy(core.int),
+    isBonded: dart.legacy(core.bool)
+  }));
+  dart.setLibraryUri(flutter_bluetooth_serial.BluetoothBondState, I[0]);
+  dart.setFieldSignature(flutter_bluetooth_serial.BluetoothBondState, () => ({
+    __proto__: dart.getFields(flutter_bluetooth_serial.BluetoothBondState.__proto__),
+    underlyingValue: dart.finalFieldType(dart.legacy(core.int)),
+    stringValue: dart.finalFieldType(dart.legacy(core.String))
+  }));
+  dart.defineExtensionMethods(flutter_bluetooth_serial.BluetoothBondState, ['toString', '_equals']);
+  dart.defineExtensionAccessors(flutter_bluetooth_serial.BluetoothBondState, ['hashCode']);
+  dart.defineLazy(flutter_bluetooth_serial.BluetoothBondState, {
+    /*flutter_bluetooth_serial.BluetoothBondState.unknown*/get unknown() {
+      return C[9] || CT.C9;
+    },
+    /*flutter_bluetooth_serial.BluetoothBondState.none*/get none() {
+      return C[10] || CT.C10;
+    },
+    /*flutter_bluetooth_serial.BluetoothBondState.bonding*/get bonding() {
+      return C[11] || CT.C11;
+    },
+    /*flutter_bluetooth_serial.BluetoothBondState.bonded*/get bonded() {
+      return C[12] || CT.C12;
+    }
+  }, true);
+  var underlyingValue$0 = dart.privateName(flutter_bluetooth_serial, "BluetoothDeviceType.underlyingValue");
+  var stringValue$0 = dart.privateName(flutter_bluetooth_serial, "BluetoothDeviceType.stringValue");
+  flutter_bluetooth_serial.BluetoothDeviceType = class BluetoothDeviceType extends core.Object {
+    get underlyingValue() {
+      return this[underlyingValue$0];
+    }
+    set underlyingValue(value) {
+      super.underlyingValue = value;
+    }
+    get stringValue() {
+      return this[stringValue$0];
+    }
+    set stringValue(value) {
+      super.stringValue = value;
+    }
+    toString() {
+      return "BluetoothDeviceType." + dart.str(this.stringValue);
+    }
+    toUnderlyingValue() {
+      return this.underlyingValue;
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return T.BluetoothDeviceTypeL().is(other) && other.underlyingValue == this.underlyingValue;
+    }
+    get hashCode() {
+      return dart.hashCode(this.underlyingValue);
+    }
+  };
+  (flutter_bluetooth_serial.BluetoothDeviceType.fromString = function(string) {
+    this[underlyingValue$0] = string === "unknown" ? 0 : string === "classic" ? 1 : string === "le" ? 2 : string === "dual" ? 3 : -2;
+    this[stringValue$0] = string === "unknown" || string === "classic" || string === "le" || string === "dual" ? string : "unknown";
+    ;
+  }).prototype = flutter_bluetooth_serial.BluetoothDeviceType.prototype;
+  (flutter_bluetooth_serial.BluetoothDeviceType.fromUnderlyingValue = function(value) {
+    this[underlyingValue$0] = dart.notNull(value) >= 0 && dart.notNull(value) <= 3 ? value : 0;
+    this[stringValue$0] = value === 0 ? "unknown" : value === 1 ? "classic" : value === 2 ? "le" : value === 3 ? "dual" : "unknown";
+    ;
+  }).prototype = flutter_bluetooth_serial.BluetoothDeviceType.prototype;
+  dart.addTypeTests(flutter_bluetooth_serial.BluetoothDeviceType);
+  dart.addTypeCaches(flutter_bluetooth_serial.BluetoothDeviceType);
+  dart.setMethodSignature(flutter_bluetooth_serial.BluetoothDeviceType, () => ({
+    __proto__: dart.getMethods(flutter_bluetooth_serial.BluetoothDeviceType.__proto__),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), []),
+    toUnderlyingValue: dart.fnType(dart.legacy(core.int), []),
+    _equals: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.Object)]),
+    [$_equals]: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.Object)])
+  }));
+  dart.setGetterSignature(flutter_bluetooth_serial.BluetoothDeviceType, () => ({
+    __proto__: dart.getGetters(flutter_bluetooth_serial.BluetoothDeviceType.__proto__),
+    hashCode: dart.legacy(core.int),
+    [$hashCode]: dart.legacy(core.int)
+  }));
+  dart.setLibraryUri(flutter_bluetooth_serial.BluetoothDeviceType, I[0]);
+  dart.setFieldSignature(flutter_bluetooth_serial.BluetoothDeviceType, () => ({
+    __proto__: dart.getFields(flutter_bluetooth_serial.BluetoothDeviceType.__proto__),
+    underlyingValue: dart.finalFieldType(dart.legacy(core.int)),
+    stringValue: dart.finalFieldType(dart.legacy(core.String))
+  }));
+  dart.defineExtensionMethods(flutter_bluetooth_serial.BluetoothDeviceType, ['toString', '_equals']);
+  dart.defineExtensionAccessors(flutter_bluetooth_serial.BluetoothDeviceType, ['hashCode']);
+  dart.defineLazy(flutter_bluetooth_serial.BluetoothDeviceType, {
+    /*flutter_bluetooth_serial.BluetoothDeviceType.unknown*/get unknown() {
+      return C[13] || CT.C13;
+    },
+    /*flutter_bluetooth_serial.BluetoothDeviceType.classic*/get classic() {
+      return C[14] || CT.C14;
+    },
+    /*flutter_bluetooth_serial.BluetoothDeviceType.le*/get le() {
+      return C[15] || CT.C15;
+    },
+    /*flutter_bluetooth_serial.BluetoothDeviceType.dual*/get dual() {
+      return C[16] || CT.C16;
+    }
+  }, true);
+  var name$ = dart.privateName(flutter_bluetooth_serial, "BluetoothDevice.name");
+  var address$ = dart.privateName(flutter_bluetooth_serial, "BluetoothDevice.address");
+  var type$ = dart.privateName(flutter_bluetooth_serial, "BluetoothDevice.type");
+  var isConnected$ = dart.privateName(flutter_bluetooth_serial, "BluetoothDevice.isConnected");
+  var bondState$ = dart.privateName(flutter_bluetooth_serial, "BluetoothDevice.bondState");
+  flutter_bluetooth_serial.BluetoothDevice = class BluetoothDevice extends core.Object {
+    get name() {
+      return this[name$];
+    }
+    set name(value) {
+      super.name = value;
+    }
+    get address() {
+      return this[address$];
+    }
+    set address(value) {
+      super.address = value;
+    }
+    get type() {
+      return this[type$];
+    }
+    set type(value) {
+      super.type = value;
+    }
+    get isConnected() {
+      return this[isConnected$];
+    }
+    set isConnected(value) {
+      super.isConnected = value;
+    }
+    get bondState() {
+      return this[bondState$];
+    }
+    set bondState(value) {
+      super.bondState = value;
+    }
+    get bonded() {
+      return this.bondState.isBonded;
+    }
+    get isBonded() {
+      return this.bondState.isBonded;
+    }
+    static fromMap(map) {
+      let t0;
+      return new flutter_bluetooth_serial.BluetoothDevice.new({name: T.StringL().as(map[$_get]("name")), address: T.StringL().as(map[$_get]("address")), type: map[$_get]("type") != null ? new flutter_bluetooth_serial.BluetoothDeviceType.fromUnderlyingValue(T.intL().as(map[$_get]("type"))) : flutter_bluetooth_serial.BluetoothDeviceType.unknown, isConnected: T.boolL().as((t0 = map[$_get]("isConnected"), t0 == null ? false : t0)), bondState: map[$_get]("bondState") != null ? new flutter_bluetooth_serial.BluetoothBondState.fromUnderlyingValue(T.intL().as(map[$_get]("bondState"))) : flutter_bluetooth_serial.BluetoothBondState.unknown});
+    }
+    toMap() {
+      return new (T.IdentityMapOfStringL$dynamic()).from(["name", this.name, "address", this.address, "type", this.type.toUnderlyingValue(), "isConnected", this.isConnected, "bondState", this.bondState.toUnderlyingValue()]);
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return T.BluetoothDeviceL().is(other) && other.address == this.address;
+    }
+    get hashCode() {
+      return dart.hashCode(this.address);
+    }
+  };
+  (flutter_bluetooth_serial.BluetoothDevice.new = function(opts) {
+    let name = opts && 'name' in opts ? opts.name : null;
+    let address = opts && 'address' in opts ? opts.address : null;
+    let type = opts && 'type' in opts ? opts.type : C[13] || CT.C13;
+    let isConnected = opts && 'isConnected' in opts ? opts.isConnected : false;
+    let bondState = opts && 'bondState' in opts ? opts.bondState : C[9] || CT.C9;
+    this[name$] = name;
+    this[address$] = address;
+    this[type$] = type;
+    this[isConnected$] = isConnected;
+    this[bondState$] = bondState;
+    ;
+  }).prototype = flutter_bluetooth_serial.BluetoothDevice.prototype;
+  dart.addTypeTests(flutter_bluetooth_serial.BluetoothDevice);
+  dart.addTypeCaches(flutter_bluetooth_serial.BluetoothDevice);
+  dart.setMethodSignature(flutter_bluetooth_serial.BluetoothDevice, () => ({
+    __proto__: dart.getMethods(flutter_bluetooth_serial.BluetoothDevice.__proto__),
+    toMap: dart.fnType(dart.legacy(core.Map$(dart.legacy(core.String), dart.dynamic)), []),
+    _equals: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.Object)]),
+    [$_equals]: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.Object)])
+  }));
+  dart.setGetterSignature(flutter_bluetooth_serial.BluetoothDevice, () => ({
+    __proto__: dart.getGetters(flutter_bluetooth_serial.BluetoothDevice.__proto__),
+    bonded: dart.legacy(core.bool),
+    isBonded: dart.legacy(core.bool),
+    hashCode: dart.legacy(core.int),
+    [$hashCode]: dart.legacy(core.int)
+  }));
+  dart.setLibraryUri(flutter_bluetooth_serial.BluetoothDevice, I[0]);
+  dart.setFieldSignature(flutter_bluetooth_serial.BluetoothDevice, () => ({
+    __proto__: dart.getFields(flutter_bluetooth_serial.BluetoothDevice.__proto__),
+    name: dart.finalFieldType(dart.legacy(core.String)),
+    address: dart.finalFieldType(dart.legacy(core.String)),
+    type: dart.finalFieldType(dart.legacy(flutter_bluetooth_serial.BluetoothDeviceType)),
+    isConnected: dart.finalFieldType(dart.legacy(core.bool)),
+    bondState: dart.finalFieldType(dart.legacy(flutter_bluetooth_serial.BluetoothBondState))
+  }));
+  dart.defineExtensionMethods(flutter_bluetooth_serial.BluetoothDevice, ['_equals']);
+  dart.defineExtensionAccessors(flutter_bluetooth_serial.BluetoothDevice, ['hashCode']);
+  var underlyingValue$1 = dart.privateName(flutter_bluetooth_serial, "PairingVariant.underlyingValue");
+  flutter_bluetooth_serial.PairingVariant = class PairingVariant extends core.Object {
+    get underlyingValue() {
+      return this[underlyingValue$1];
+    }
+    set underlyingValue(value) {
+      super.underlyingValue = value;
+    }
+    static fromUnderlyingValue(value) {
+      switch (value) {
+        case 0:
+        {
+          return flutter_bluetooth_serial.PairingVariant.Pin;
+        }
+        case 1:
+        {
+          return flutter_bluetooth_serial.PairingVariant.Passkey;
+        }
+        case 2:
+        {
+          return flutter_bluetooth_serial.PairingVariant.PasskeyConfirmation;
+        }
+        case 3:
+        {
+          return flutter_bluetooth_serial.PairingVariant.Consent;
+        }
+        case 4:
+        {
+          return flutter_bluetooth_serial.PairingVariant.DisplayPasskey;
+        }
+        case 5:
+        {
+          return flutter_bluetooth_serial.PairingVariant.DisplayPin;
+        }
+        case 6:
+        {
+          return flutter_bluetooth_serial.PairingVariant.OOB;
+        }
+        case 7:
+        {
+          return flutter_bluetooth_serial.PairingVariant.Pin16Digits;
+        }
+        default:
+        {
+          return flutter_bluetooth_serial.PairingVariant.Error;
+        }
+      }
+    }
+    toUnderlyingValue() {
+      return this.underlyingValue;
+    }
+    toString() {
+      switch (this.underlyingValue) {
+        case 0:
+        {
+          return "PairingVariant.Pin";
+        }
+        case 1:
+        {
+          return "PairingVariant.Passkey";
+        }
+        case 2:
+        {
+          return "PairingVariant.PasskeyConfirmation";
+        }
+        case 3:
+        {
+          return "PairingVariant.Consent";
+        }
+        case 4:
+        {
+          return "PairingVariant.DisplayPasskey";
+        }
+        case 5:
+        {
+          return "PairingVariant.DisplayPin";
+        }
+        case 6:
+        {
+          return "PairingVariant.OOB";
+        }
+        case 7:
+        {
+          return "PairingVariant.Pin16Digits";
+        }
+        default:
+        {
+          return "PairingVariant.Error";
+        }
+      }
+    }
+  };
+  (flutter_bluetooth_serial.PairingVariant.__ = function(underlyingValue) {
+    this[underlyingValue$1] = underlyingValue;
+    ;
+  }).prototype = flutter_bluetooth_serial.PairingVariant.prototype;
+  dart.addTypeTests(flutter_bluetooth_serial.PairingVariant);
+  dart.addTypeCaches(flutter_bluetooth_serial.PairingVariant);
+  dart.setMethodSignature(flutter_bluetooth_serial.PairingVariant, () => ({
+    __proto__: dart.getMethods(flutter_bluetooth_serial.PairingVariant.__proto__),
+    toUnderlyingValue: dart.fnType(dart.legacy(core.int), []),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
+  }));
+  dart.setLibraryUri(flutter_bluetooth_serial.PairingVariant, I[0]);
+  dart.setFieldSignature(flutter_bluetooth_serial.PairingVariant, () => ({
+    __proto__: dart.getFields(flutter_bluetooth_serial.PairingVariant.__proto__),
+    underlyingValue: dart.finalFieldType(dart.legacy(core.int))
+  }));
+  dart.defineExtensionMethods(flutter_bluetooth_serial.PairingVariant, ['toString']);
+  dart.defineLazy(flutter_bluetooth_serial.PairingVariant, {
+    /*flutter_bluetooth_serial.PairingVariant.Error*/get Error() {
+      return C[17] || CT.C17;
+    },
+    /*flutter_bluetooth_serial.PairingVariant.Pin*/get Pin() {
+      return C[18] || CT.C18;
+    },
+    /*flutter_bluetooth_serial.PairingVariant.Passkey*/get Passkey() {
+      return C[19] || CT.C19;
+    },
+    /*flutter_bluetooth_serial.PairingVariant.PasskeyConfirmation*/get PasskeyConfirmation() {
+      return C[20] || CT.C20;
+    },
+    /*flutter_bluetooth_serial.PairingVariant.Consent*/get Consent() {
+      return C[21] || CT.C21;
+    },
+    /*flutter_bluetooth_serial.PairingVariant.DisplayPasskey*/get DisplayPasskey() {
+      return C[22] || CT.C22;
+    },
+    /*flutter_bluetooth_serial.PairingVariant.DisplayPin*/get DisplayPin() {
+      return C[23] || CT.C23;
+    },
+    /*flutter_bluetooth_serial.PairingVariant.OOB*/get OOB() {
+      return C[24] || CT.C24;
+    },
+    /*flutter_bluetooth_serial.PairingVariant.Pin16Digits*/get Pin16Digits() {
+      return C[25] || CT.C25;
+    }
+  }, true);
+  var address$0 = dart.privateName(flutter_bluetooth_serial, "BluetoothPairingRequest.address");
+  var pairingVariant$ = dart.privateName(flutter_bluetooth_serial, "BluetoothPairingRequest.pairingVariant");
+  var passkey$ = dart.privateName(flutter_bluetooth_serial, "BluetoothPairingRequest.passkey");
+  flutter_bluetooth_serial.BluetoothPairingRequest = class BluetoothPairingRequest extends core.Object {
+    get address() {
+      return this[address$0];
+    }
+    set address(value) {
+      super.address = value;
+    }
+    get pairingVariant() {
+      return this[pairingVariant$];
+    }
+    set pairingVariant(value) {
+      super.pairingVariant = value;
+    }
+    get passkey() {
+      return this[passkey$];
+    }
+    set passkey(value) {
+      super.passkey = value;
+    }
+    static fromMap(map) {
+      return new flutter_bluetooth_serial.BluetoothPairingRequest.new({address: T.StringL().as(map[$_get]("address")), pairingVariant: flutter_bluetooth_serial.PairingVariant.fromUnderlyingValue(T.intL().as(map[$_get]("variant"))), passkey: T.intL().as(map[$_get]("passkey"))});
+    }
+  };
+  (flutter_bluetooth_serial.BluetoothPairingRequest.new = function(opts) {
+    let address = opts && 'address' in opts ? opts.address : null;
+    let pairingVariant = opts && 'pairingVariant' in opts ? opts.pairingVariant : null;
+    let passkey = opts && 'passkey' in opts ? opts.passkey : null;
+    this[address$0] = address;
+    this[pairingVariant$] = pairingVariant;
+    this[passkey$] = passkey;
+    ;
+  }).prototype = flutter_bluetooth_serial.BluetoothPairingRequest.prototype;
+  dart.addTypeTests(flutter_bluetooth_serial.BluetoothPairingRequest);
+  dart.addTypeCaches(flutter_bluetooth_serial.BluetoothPairingRequest);
+  dart.setLibraryUri(flutter_bluetooth_serial.BluetoothPairingRequest, I[0]);
+  dart.setFieldSignature(flutter_bluetooth_serial.BluetoothPairingRequest, () => ({
+    __proto__: dart.getFields(flutter_bluetooth_serial.BluetoothPairingRequest.__proto__),
+    address: dart.finalFieldType(dart.legacy(core.String)),
+    pairingVariant: dart.finalFieldType(dart.legacy(flutter_bluetooth_serial.PairingVariant)),
+    passkey: dart.finalFieldType(dart.legacy(core.int))
+  }));
+  var device$ = dart.privateName(flutter_bluetooth_serial, "BluetoothDiscoveryResult.device");
+  var rssi$ = dart.privateName(flutter_bluetooth_serial, "BluetoothDiscoveryResult.rssi");
+  flutter_bluetooth_serial.BluetoothDiscoveryResult = class BluetoothDiscoveryResult extends core.Object {
+    get device() {
+      return this[device$];
+    }
+    set device(value) {
+      super.device = value;
+    }
+    get rssi() {
+      return this[rssi$];
+    }
+    set rssi(value) {
+      super.rssi = value;
+    }
+    static fromMap(map) {
+      let t0;
+      return new flutter_bluetooth_serial.BluetoothDiscoveryResult.new({device: flutter_bluetooth_serial.BluetoothDevice.fromMap(map), rssi: T.intL().as((t0 = map[$_get]("rssi"), t0 == null ? 0 : t0))});
+    }
+  };
+  (flutter_bluetooth_serial.BluetoothDiscoveryResult.new = function(opts) {
+    let device = opts && 'device' in opts ? opts.device : null;
+    let rssi = opts && 'rssi' in opts ? opts.rssi : 0;
+    this[device$] = device;
+    this[rssi$] = rssi;
+    ;
+  }).prototype = flutter_bluetooth_serial.BluetoothDiscoveryResult.prototype;
+  dart.addTypeTests(flutter_bluetooth_serial.BluetoothDiscoveryResult);
+  dart.addTypeCaches(flutter_bluetooth_serial.BluetoothDiscoveryResult);
+  dart.setLibraryUri(flutter_bluetooth_serial.BluetoothDiscoveryResult, I[0]);
+  dart.setFieldSignature(flutter_bluetooth_serial.BluetoothDiscoveryResult, () => ({
+    __proto__: dart.getFields(flutter_bluetooth_serial.BluetoothDiscoveryResult.__proto__),
+    device: dart.finalFieldType(dart.legacy(flutter_bluetooth_serial.BluetoothDevice)),
+    rssi: dart.finalFieldType(dart.legacy(core.int))
+  }));
+  var input = dart.privateName(flutter_bluetooth_serial, "BluetoothConnection.input");
+  var output = dart.privateName(flutter_bluetooth_serial, "BluetoothConnection.output");
+  var _readStreamSubscription = dart.privateName(flutter_bluetooth_serial, "_readStreamSubscription");
+  var _readStreamController = dart.privateName(flutter_bluetooth_serial, "_readStreamController");
+  var _id$ = dart.privateName(flutter_bluetooth_serial, "_id");
+  var _readChannel = dart.privateName(flutter_bluetooth_serial, "_readChannel");
+  flutter_bluetooth_serial.BluetoothConnection = class BluetoothConnection extends core.Object {
+    get input() {
+      return this[input];
+    }
+    set input(value) {
+      this[input] = value;
+    }
+    get output() {
+      return this[output];
+    }
+    set output(value) {
+      this[output] = value;
+    }
+    get isConnected() {
+      return this.output.isConnected;
+    }
+    static toAddress(address) {
+      return async.async(T.BluetoothConnectionL(), function* toAddress() {
+        return new flutter_bluetooth_serial.BluetoothConnection._consumeConnectionID(yield flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(T.intL(), "connect", new (T.IdentityMapOfStringL$StringL()).from(["address", address])));
+      });
+    }
+    dispose() {
+      this.finish();
+    }
+    close() {
+      return async.Future.wait(dart.dynamic, T.JSArrayOfFutureL().of([this.output.close(), this[_readStreamSubscription].cancel(), !dart.test(this[_readStreamController].isClosed) ? this[_readStreamController].close() : async.Future.value()]), {eagerError: true});
+    }
+    cancel() {
+      return this.close();
+    }
+    finish() {
+      return async.async(dart.void, (function* finish() {
+        yield this.output.allSent;
+        this.close();
+      }).bind(this));
+    }
+  };
+  (flutter_bluetooth_serial.BluetoothConnection._consumeConnectionID = function(id) {
+    this[_readStreamSubscription] = null;
+    this[_readStreamController] = null;
+    this[input] = null;
+    this[output] = null;
+    this[_id$] = id;
+    this[_readChannel] = new platform_channel.EventChannel.new("flutter_bluetooth_serial" + "/read/" + dart.str(id));
+    this[_readStreamController] = T.StreamControllerOfUint8ListL().new();
+    this[_readStreamSubscription] = this[_readChannel].receiveBroadcastStream().cast(T.Uint8ListL()).listen(dart.bind(this[_readStreamController], 'add'), {onError: dart.bind(this[_readStreamController], 'addError'), onDone: dart.bind(this, 'close')});
+    this.input = this[_readStreamController].stream;
+    this.output = new (T._BluetoothStreamSinkOfUint8ListL()).new(id);
+  }).prototype = flutter_bluetooth_serial.BluetoothConnection.prototype;
+  dart.addTypeTests(flutter_bluetooth_serial.BluetoothConnection);
+  dart.addTypeCaches(flutter_bluetooth_serial.BluetoothConnection);
+  dart.setMethodSignature(flutter_bluetooth_serial.BluetoothConnection, () => ({
+    __proto__: dart.getMethods(flutter_bluetooth_serial.BluetoothConnection.__proto__),
+    dispose: dart.fnType(dart.void, []),
+    close: dart.fnType(dart.legacy(async.Future$(dart.void)), []),
+    cancel: dart.fnType(dart.legacy(async.Future$(dart.void)), []),
+    finish: dart.fnType(dart.legacy(async.Future$(dart.void)), [])
+  }));
+  dart.setGetterSignature(flutter_bluetooth_serial.BluetoothConnection, () => ({
+    __proto__: dart.getGetters(flutter_bluetooth_serial.BluetoothConnection.__proto__),
+    isConnected: dart.legacy(core.bool)
+  }));
+  dart.setLibraryUri(flutter_bluetooth_serial.BluetoothConnection, I[0]);
+  dart.setFieldSignature(flutter_bluetooth_serial.BluetoothConnection, () => ({
+    __proto__: dart.getFields(flutter_bluetooth_serial.BluetoothConnection.__proto__),
+    [_id$]: dart.finalFieldType(dart.legacy(core.int)),
+    [_readChannel]: dart.finalFieldType(dart.legacy(platform_channel.EventChannel)),
+    [_readStreamSubscription]: dart.fieldType(dart.legacy(async.StreamSubscription$(dart.legacy(typed_data.Uint8List)))),
+    [_readStreamController]: dart.fieldType(dart.legacy(async.StreamController$(dart.legacy(typed_data.Uint8List)))),
+    input: dart.fieldType(dart.legacy(async.Stream$(dart.legacy(typed_data.Uint8List)))),
+    output: dart.fieldType(dart.legacy(flutter_bluetooth_serial._BluetoothStreamSink$(dart.legacy(typed_data.Uint8List))))
+  }));
+  var _chainedFutures = dart.privateName(flutter_bluetooth_serial, "_chainedFutures");
+  var _doneFuture = dart.privateName(flutter_bluetooth_serial, "_doneFuture");
+  const _is__BluetoothStreamSink_default = Symbol('_is__BluetoothStreamSink_default');
+  flutter_bluetooth_serial._BluetoothStreamSink$ = dart.generic(Uint8List => {
+    var Uint8ListL = () => (Uint8ListL = dart.constFn(dart.legacy(Uint8List)))();
+    var StreamOfUint8ListL = () => (StreamOfUint8ListL = dart.constFn(async.Stream$(Uint8ListL())))();
+    var StreamLOfUint8ListL = () => (StreamLOfUint8ListL = dart.constFn(dart.legacy(StreamOfUint8ListL())))();
+    class _BluetoothStreamSink extends async.StreamSink$(dart.legacy(Uint8List)) {
+      add(data) {
+        Uint8ListL().as(data);
+        if (!dart.test(this.isConnected)) {
+          dart.throw(new core.StateError.new("Not connected!"));
+        }
+        this[_chainedFutures] = this[_chainedFutures].then(core.Null, dart.fn(_ => async.async(core.Null, (function*() {
+          if (!dart.test(this.isConnected)) {
+            dart.throw(new core.StateError.new("Not connected!"));
+          }
+          yield flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(dart.dynamic, "write", new (T.IdentityMapOfStringL$ObjectL()).from(["id", this[_id$], "bytes", data]));
+        }).bind(this)), T.voidToFutureLOfNull())).catchError(dart.fn(e => {
+          this.exception = e;
+          this.close();
+        }, T.dynamicToNull()));
+      }
+      addError(error, stackTrace = null) {
+        dart.throw(new core.UnsupportedError.new("BluetoothConnection output (response) sink cannot receive errors!"));
+      }
+      addStream(stream) {
+        StreamLOfUint8ListL().as(stream);
+        return async.Future.new(dart.fn(() => async.async(core.Null, (function*() {
+          let completer = async.Completer.new();
+          stream.listen(dart.bind(this, 'add')).onDone(dart.bind(completer, 'complete'));
+          yield completer.future;
+          yield this[_chainedFutures];
+        }).bind(this)), T.VoidToFutureLOfNull()));
+      }
+      close() {
+        this.isConnected = false;
+        return this.done;
+      }
+      get done() {
+        return this[_doneFuture];
+      }
+      get allSent() {
+        return async.Future.new(dart.fn(() => async.async(core.Null, (function*() {
+          let lastFuture = null;
+          do {
+            lastFuture = this[_chainedFutures];
+            yield lastFuture;
+          } while (!dart.equals(lastFuture, this[_chainedFutures]));
+          if (this.exception != null) {
+            dart.throw(this.exception);
+          }
+          this[_chainedFutures] = T.FutureOfvoid().value();
+        }).bind(this)), T.VoidToFutureLOfNull()));
+      }
+    }
+    (_BluetoothStreamSink.new = function(_id) {
+      this.isConnected = true;
+      this[_chainedFutures] = T.FutureOfvoid().value();
+      this[_doneFuture] = null;
+      this.exception = null;
+      this[_id$] = _id;
+      this[_doneFuture] = async.Future.new(dart.fn(() => async.async(core.Null, (function*() {
+        while (dart.test(this.isConnected)) {
+          yield async.Future.delayed(new core.Duration.new({milliseconds: 111}));
+        }
+        if (this.exception != null) {
+          dart.throw(this.exception);
+        }
+      }).bind(this)), T.VoidToFutureLOfNull()));
+    }).prototype = _BluetoothStreamSink.prototype;
+    dart.addTypeTests(_BluetoothStreamSink);
+    _BluetoothStreamSink.prototype[_is__BluetoothStreamSink_default] = true;
+    dart.addTypeCaches(_BluetoothStreamSink);
+    dart.setMethodSignature(_BluetoothStreamSink, () => ({
+      __proto__: dart.getMethods(_BluetoothStreamSink.__proto__),
+      add: dart.fnType(dart.void, [dart.legacy(core.Object)]),
+      addError: dart.fnType(dart.void, [dart.legacy(core.Object)], [dart.legacy(core.StackTrace)]),
+      addStream: dart.fnType(dart.legacy(async.Future), [dart.legacy(core.Object)]),
+      close: dart.fnType(dart.legacy(async.Future), [])
+    }));
+    dart.setGetterSignature(_BluetoothStreamSink, () => ({
+      __proto__: dart.getGetters(_BluetoothStreamSink.__proto__),
+      done: dart.legacy(async.Future),
+      allSent: dart.legacy(async.Future)
+    }));
+    dart.setLibraryUri(_BluetoothStreamSink, I[0]);
+    dart.setFieldSignature(_BluetoothStreamSink, () => ({
+      __proto__: dart.getFields(_BluetoothStreamSink.__proto__),
+      [_id$]: dart.finalFieldType(dart.legacy(core.int)),
+      isConnected: dart.fieldType(dart.legacy(core.bool)),
+      [_chainedFutures]: dart.fieldType(dart.legacy(async.Future$(dart.void))),
+      [_doneFuture]: dart.fieldType(dart.legacy(async.Future)),
+      exception: dart.fieldType(dart.dynamic)
+    }));
+    return _BluetoothStreamSink;
+  });
+  flutter_bluetooth_serial._BluetoothStreamSink = flutter_bluetooth_serial._BluetoothStreamSink$();
+  dart.addTypeTests(flutter_bluetooth_serial._BluetoothStreamSink, _is__BluetoothStreamSink_default);
+  var _pairingRequestHandler = dart.privateName(flutter_bluetooth_serial, "_pairingRequestHandler");
+  var _defaultConnection = dart.privateName(flutter_bluetooth_serial, "_defaultConnection");
+  var MethodChannel__binaryMessenger = dart.privateName(platform_channel, "MethodChannel._binaryMessenger");
+  var StandardMethodCodec_messageCodec = dart.privateName(message_codecs, "StandardMethodCodec.messageCodec");
+  var MethodChannel_codec = dart.privateName(platform_channel, "MethodChannel.codec");
+  var MethodChannel_name = dart.privateName(platform_channel, "MethodChannel.name");
+  var EventChannel__binaryMessenger = dart.privateName(platform_channel, "EventChannel._binaryMessenger");
+  var EventChannel_codec = dart.privateName(platform_channel, "EventChannel.codec");
+  var EventChannel_name = dart.privateName(platform_channel, "EventChannel.name");
+  flutter_bluetooth_serial.FlutterBluetoothSerial = class FlutterBluetoothSerial extends core.Object {
+    static get instance() {
+      return flutter_bluetooth_serial.FlutterBluetoothSerial._instance;
+    }
+    get isAvailable() {
+      return async.async(T.boolL(), function* isAvailable() {
+        return yield flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(T.boolL(), "isAvailable");
+      });
+    }
+    get isEnabled() {
+      return async.async(T.boolL(), function* isEnabled() {
+        return yield flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(T.boolL(), "isEnabled");
+      });
+    }
+    get isOn() {
+      return async.async(T.boolL(), function* isOn() {
+        return yield flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(T.boolL(), "isOn");
+      });
+    }
+    onStateChanged() {
+      return flutter_bluetooth_serial.FlutterBluetoothSerial._stateChannel.receiveBroadcastStream().map(T.BluetoothStateL(), dart.fn(data => new flutter_bluetooth_serial.BluetoothState.fromUnderlyingValue(T.intL().as(data)), T.dynamicToBluetoothStateL()));
+    }
+    get state() {
+      return async.async(T.BluetoothStateL(), function* state() {
+        return new flutter_bluetooth_serial.BluetoothState.fromUnderlyingValue(yield flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(T.intL(), "getState"));
+      });
+    }
+    get address() {
+      return flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(T.StringL(), "getAddress");
+    }
+    get name() {
+      return flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(T.StringL(), "getName");
+    }
+    changeName(name) {
+      return flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(T.boolL(), "setName", new (T.IdentityMapOfStringL$StringL()).from(["name", name]));
+    }
+    requestEnable() {
+      return async.async(T.boolL(), function* requestEnable() {
+        return yield flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(T.boolL(), "requestEnable");
+      });
+    }
+    requestDisable() {
+      return async.async(T.boolL(), function* requestDisable() {
+        return yield flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(T.boolL(), "requestDisable");
+      });
+    }
+    openSettings() {
+      return async.async(dart.void, function* openSettings() {
+        return yield flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(dart.void, "openSettings");
+      });
+    }
+    getBondStateForAddress(address) {
+      return async.async(T.BluetoothBondStateL(), function* getBondStateForAddress() {
+        return new flutter_bluetooth_serial.BluetoothBondState.fromUnderlyingValue(yield flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(T.intL(), "getDeviceBondState", new (T.IdentityMapOfStringL$StringL()).from(["address", address])));
+      });
+    }
+    bondDeviceAtAddress(address, opts) {
+      let pin = opts && 'pin' in opts ? opts.pin : null;
+      let passkeyConfirm = opts && 'passkeyConfirm' in opts ? opts.passkeyConfirm : null;
+      return async.async(T.boolL(), (function* bondDeviceAtAddress() {
+        if (pin != null || passkeyConfirm != null) {
+          if (this[_pairingRequestHandler] != null) {
+            dart.throw("pairing request handler already registered");
+          }
+          this.setPairingRequestHandler(dart.fn(request => async.async(T.ObjectL(), (function*() {
+            T.FutureOfNull().delayed(new core.Duration.new({seconds: 1}), dart.fn(() => {
+              this.setPairingRequestHandler(null);
+            }, T.VoidToNull()));
+            if (pin != null) {
+              switch (request.pairingVariant) {
+                case C[18] || CT.C18:
+                {
+                  return pin;
+                }
+                default:
+                {
+                  break;
+                }
+              }
+            }
+            if (passkeyConfirm != null) {
+              switch (request.pairingVariant) {
+                case C[21] || CT.C21:
+                case C[20] || CT.C20:
+                {
+                  return passkeyConfirm;
+                }
+                default:
+                {
+                  break;
+                }
+              }
+            }
+            return null;
+          }).bind(this)), T.BluetoothPairingRequestLToFutureLOfObjectL()));
+        }
+        return yield flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(T.boolL(), "bondDevice", new (T.IdentityMapOfStringL$StringL()).from(["address", address]));
+      }).bind(this));
+    }
+    removeDeviceBondWithAddress(address) {
+      return async.async(T.boolL(), function* removeDeviceBondWithAddress() {
+        return yield flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(T.boolL(), "removeDeviceBond", new (T.IdentityMapOfStringL$StringL()).from(["address", address]));
+      });
+    }
+    setPairingRequestHandler(handler) {
+      if (handler == null) {
+        this[_pairingRequestHandler] = null;
+        flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(dart.dynamic, "pairingRequestHandlingDisable");
+        return;
+      }
+      if (this[_pairingRequestHandler] == null) {
+        flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(dart.dynamic, "pairingRequestHandlingEnable");
+      }
+      this[_pairingRequestHandler] = handler;
+    }
+    getBondedDevices() {
+      return async.async(T.ListLOfBluetoothDeviceL(), function* getBondedDevices() {
+        let list = (yield flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(T.ListL(), "getBondedDevices"));
+        return list[$map](T.BluetoothDeviceL(), dart.fn(map => flutter_bluetooth_serial.BluetoothDevice.fromMap(T.MapL().as(map)), T.dynamicToBluetoothDeviceL()))[$toList]();
+      });
+    }
+    get isDiscovering() {
+      return async.async(T.boolL(), function* isDiscovering() {
+        return yield flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(T.boolL(), "isDiscovering");
+      });
+    }
+    startDiscovery() {
+      return new (T._AsyncStarImplOfBluetoothDiscoveryResultL()).new(function* startDiscovery(stream) {
+        let subscription = null;
+        let controller = null;
+        controller = async.StreamController.new({onCancel: dart.fn(() => {
+            subscription.cancel();
+          }, T.VoidToNull())});
+        yield flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(dart.dynamic, "startDiscovery");
+        subscription = flutter_bluetooth_serial.FlutterBluetoothSerial._discoveryChannel.receiveBroadcastStream().listen(dart.bind(controller, 'add'), {onError: dart.bind(controller, 'addError'), onDone: dart.bind(controller, 'close')});
+        if (stream.addStream(controller.stream.map(T.BluetoothDiscoveryResultL(), dart.fn(map => flutter_bluetooth_serial.BluetoothDiscoveryResult.fromMap(T.MapL().as(map)), T.dynamicToBluetoothDiscoveryResultL())))) return;
+        yield;
+      }).stream;
+    }
+    cancelDiscovery() {
+      return async.async(dart.void, function* cancelDiscovery() {
+        return yield flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(dart.void, "cancelDiscovery");
+      });
+    }
+    get isDiscoverable() {
+      return flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(T.boolL(), "isDiscoverable");
+    }
+    requestDiscoverable(durationInSeconds) {
+      return async.async(T.intL(), function* requestDiscoverable() {
+        return yield flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.invokeMethod(T.intL(), "requestDiscoverable", new (T.IdentityMapOfStringL$intL()).from(["duration", durationInSeconds]));
+      });
+    }
+    get isConnected() {
+      return async.async(T.boolL(), (function* isConnected() {
+        return T.FutureOfboolL().value(this[_defaultConnection] == null ? false : this[_defaultConnection].isConnected);
+      }).bind(this));
+    }
+    connect(device) {
+      return this.connectToAddress(device.address);
+    }
+    connectToAddress(address) {
+      return T.FutureOfvoid().new(dart.fn(() => async.async(core.Null, (function*() {
+        this[_defaultConnection] = (yield flutter_bluetooth_serial.BluetoothConnection.toAddress(address));
+      }).bind(this)), T.VoidToFutureLOfNull()));
+    }
+    disconnect() {
+      return this[_defaultConnection].finish();
+    }
+    onRead() {
+      return this[_defaultConnection].input;
+    }
+    write(message) {
+      this[_defaultConnection].output.add(T.Uint8ListL().as(convert.utf8.encode(message)));
+      return this[_defaultConnection].output.allSent;
+    }
+    writeBytes(message) {
+      this[_defaultConnection].output.add(message);
+      return this[_defaultConnection].output.allSent;
+    }
+  };
+  (flutter_bluetooth_serial.FlutterBluetoothSerial.__ = function() {
+    this[_pairingRequestHandler] = null;
+    this[_defaultConnection] = null;
+    flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel.setMethodCallHandler(dart.fn(call => {
+      let t0;
+      switch (call.method) {
+        case "handlePairingRequest":
+        {
+          if (this[_pairingRequestHandler] != null) {
+            return T.FutureL().as((t0 = flutter_bluetooth_serial.BluetoothPairingRequest.fromMap(T.MapL().as(call.arguments)), dart.dsend(this, _pairingRequestHandler, [t0])));
+          }
+          return null;
+          break;
+        }
+        default:
+        {
+          dart.throw("unknown common code method - not implemented");
+          break;
+        }
+      }
+    }, T.MethodCallLToFutureL()));
+  }).prototype = flutter_bluetooth_serial.FlutterBluetoothSerial.prototype;
+  dart.addTypeTests(flutter_bluetooth_serial.FlutterBluetoothSerial);
+  dart.addTypeCaches(flutter_bluetooth_serial.FlutterBluetoothSerial);
+  dart.setMethodSignature(flutter_bluetooth_serial.FlutterBluetoothSerial, () => ({
+    __proto__: dart.getMethods(flutter_bluetooth_serial.FlutterBluetoothSerial.__proto__),
+    onStateChanged: dart.fnType(dart.legacy(async.Stream$(dart.legacy(flutter_bluetooth_serial.BluetoothState))), []),
+    changeName: dart.fnType(dart.legacy(async.Future$(dart.legacy(core.bool))), [dart.legacy(core.String)]),
+    requestEnable: dart.fnType(dart.legacy(async.Future$(dart.legacy(core.bool))), []),
+    requestDisable: dart.fnType(dart.legacy(async.Future$(dart.legacy(core.bool))), []),
+    openSettings: dart.fnType(dart.legacy(async.Future$(dart.void)), []),
+    getBondStateForAddress: dart.fnType(dart.legacy(async.Future$(dart.legacy(flutter_bluetooth_serial.BluetoothBondState))), [dart.legacy(core.String)]),
+    bondDeviceAtAddress: dart.fnType(dart.legacy(async.Future$(dart.legacy(core.bool))), [dart.legacy(core.String)], {passkeyConfirm: dart.legacy(core.bool), pin: dart.legacy(core.String)}, {}),
+    removeDeviceBondWithAddress: dart.fnType(dart.legacy(async.Future$(dart.legacy(core.bool))), [dart.legacy(core.String)]),
+    setPairingRequestHandler: dart.fnType(dart.void, [dart.legacy(dart.fnType(dart.legacy(async.Future), [dart.legacy(flutter_bluetooth_serial.BluetoothPairingRequest)]))]),
+    getBondedDevices: dart.fnType(dart.legacy(async.Future$(dart.legacy(core.List$(dart.legacy(flutter_bluetooth_serial.BluetoothDevice))))), []),
+    startDiscovery: dart.fnType(dart.legacy(async.Stream$(dart.legacy(flutter_bluetooth_serial.BluetoothDiscoveryResult))), []),
+    cancelDiscovery: dart.fnType(dart.legacy(async.Future$(dart.void)), []),
+    requestDiscoverable: dart.fnType(dart.legacy(async.Future$(dart.legacy(core.int))), [dart.legacy(core.int)]),
+    connect: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(flutter_bluetooth_serial.BluetoothDevice)]),
+    connectToAddress: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(core.String)]),
+    disconnect: dart.fnType(dart.legacy(async.Future$(dart.void)), []),
+    onRead: dart.fnType(dart.legacy(async.Stream$(dart.legacy(typed_data.Uint8List))), []),
+    write: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(core.String)]),
+    writeBytes: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(typed_data.Uint8List)])
+  }));
+  dart.setGetterSignature(flutter_bluetooth_serial.FlutterBluetoothSerial, () => ({
+    __proto__: dart.getGetters(flutter_bluetooth_serial.FlutterBluetoothSerial.__proto__),
+    isAvailable: dart.legacy(async.Future$(dart.legacy(core.bool))),
+    isEnabled: dart.legacy(async.Future$(dart.legacy(core.bool))),
+    isOn: dart.legacy(async.Future$(dart.legacy(core.bool))),
+    state: dart.legacy(async.Future$(dart.legacy(flutter_bluetooth_serial.BluetoothState))),
+    address: dart.legacy(async.Future$(dart.legacy(core.String))),
+    name: dart.legacy(async.Future$(dart.legacy(core.String))),
+    isDiscovering: dart.legacy(async.Future$(dart.legacy(core.bool))),
+    isDiscoverable: dart.legacy(async.Future$(dart.legacy(core.bool))),
+    isConnected: dart.legacy(async.Future$(dart.legacy(core.bool)))
+  }));
+  dart.setLibraryUri(flutter_bluetooth_serial.FlutterBluetoothSerial, I[0]);
+  dart.setFieldSignature(flutter_bluetooth_serial.FlutterBluetoothSerial, () => ({
+    __proto__: dart.getFields(flutter_bluetooth_serial.FlutterBluetoothSerial.__proto__),
+    [_pairingRequestHandler]: dart.fieldType(dart.legacy(core.Function)),
+    [_defaultConnection]: dart.fieldType(dart.legacy(flutter_bluetooth_serial.BluetoothConnection))
+  }));
+  dart.defineLazy(flutter_bluetooth_serial.FlutterBluetoothSerial, {
+    /*flutter_bluetooth_serial.FlutterBluetoothSerial.namespace*/get namespace() {
+      return "flutter_bluetooth_serial";
+    },
+    /*flutter_bluetooth_serial.FlutterBluetoothSerial._instance*/get _instance() {
+      return new flutter_bluetooth_serial.FlutterBluetoothSerial.__();
+    },
+    set _instance(_) {},
+    /*flutter_bluetooth_serial.FlutterBluetoothSerial._methodChannel*/get _methodChannel() {
+      return C[26] || CT.C26;
+    },
+    /*flutter_bluetooth_serial.FlutterBluetoothSerial._stateChannel*/get _stateChannel() {
+      return C[29] || CT.C29;
+    },
+    /*flutter_bluetooth_serial.FlutterBluetoothSerial._discoveryChannel*/get _discoveryChannel() {
+      return C[30] || CT.C30;
+    }
+  }, true);
+  dart.trackLibraries("packages/flutter_bluetooth_serial/flutter_bluetooth_serial.dart", {
+    "package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart": flutter_bluetooth_serial
+  }, {
+    "package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart": ["./BluetoothState.dart", "./BluetoothBondState.dart", "./BluetoothDeviceType.dart", "./BluetoothDevice.dart", "./BluetoothPairingRequest.dart", "./BluetoothDiscoveryResult.dart", "./BluetoothConnection.dart", "./FlutterBluetoothSerial.dart"]
+  }, '{"version":3,"sourceRoot":"","sources":["BluetoothState.dart","BluetoothBondState.dart","BluetoothDeviceType.dart","BluetoothDevice.dart","BluetoothPairingRequest.dart","BluetoothDiscoveryResult.dart","BluetoothConnection.dart","FlutterBluetoothSerial.dart"],"names":[],"mappings":"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","file":"../../../../../../../../D:/packages/flutter_bluetooth_serial/flutter_bluetooth_serial.dart.lib.js"}');
+  // Exports:
+  return {
+    flutter_bluetooth_serial: flutter_bluetooth_serial
+  };
+}));
+
+//# sourceMappingURL=flutter_bluetooth_serial.dart.lib.js.map

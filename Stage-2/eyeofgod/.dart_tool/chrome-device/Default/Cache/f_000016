@@ -1,0 +1,329 @@
+define(['dart_sdk', 'packages/plugin_platform_interface/plugin_platform_interface.dart', 'packages/flutter/src/services/system_channels.dart'], (function load__packages__speech_to_text_platform_interface__method_channel_speech_to_text_dart(dart_sdk, packages__plugin_platform_interface__plugin_platform_interface$46dart, packages__flutter__src__services__system_channels$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _js_helper = dart_sdk._js_helper;
+  const async = dart_sdk.async;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const plugin_platform_interface = packages__plugin_platform_interface__plugin_platform_interface$46dart.plugin_platform_interface;
+  const message_codec = packages__flutter__src__services__system_channels$46dart.src__services__message_codec;
+  const platform_channel = packages__flutter__src__services__system_channels$46dart.src__services__platform_channel;
+  const message_codecs = packages__flutter__src__services__system_channels$46dart.src__services__message_codecs;
+  var method_channel_speech_to_text = Object.create(dart.library);
+  var speech_to_text_platform_interface = Object.create(dart.library);
+  var $_set = dartx._set;
+  var $forEach = dartx.forEach;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    boolL: () => (T.boolL = dart.constFn(dart.legacy(core.bool)))(),
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    ObjectL: () => (T.ObjectL = dart.constFn(dart.legacy(core.Object)))(),
+    IdentityMapOfStringL$ObjectL: () => (T.IdentityMapOfStringL$ObjectL = dart.constFn(_js_helper.IdentityMap$(T.StringL(), T.ObjectL())))(),
+    SpeechConfigOptionL: () => (T.SpeechConfigOptionL = dart.constFn(dart.legacy(speech_to_text_platform_interface.SpeechConfigOption)))(),
+    SpeechConfigOptionLTodynamic: () => (T.SpeechConfigOptionLTodynamic = dart.constFn(dart.fnType(dart.dynamic, [T.SpeechConfigOptionL()])))(),
+    IdentityMapOfStringL$dynamic: () => (T.IdentityMapOfStringL$dynamic = dart.constFn(_js_helper.IdentityMap$(T.StringL(), dart.dynamic)))(),
+    ListL: () => (T.ListL = dart.constFn(dart.legacy(core.List)))(),
+    doubleL: () => (T.doubleL = dart.constFn(dart.legacy(core.double)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: message_codecs.StandardMessageCodec.prototype
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: message_codecs.StandardMethodCodec.prototype,
+        [StandardMethodCodec_messageCodec]: C[2] || CT.C2
+      });
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: platform_channel.MethodChannel.prototype,
+        [MethodChannel__binaryMessenger]: null,
+        [MethodChannel_codec]: C[1] || CT.C1,
+        [MethodChannel_name]: "plugin.csdcorp.com/speech_to_text"
+      });
+    }
+  }, false);
+  var C = Array(3).fill(void 0);
+  var I = [
+    "package:speech_to_text_platform_interface/speech_to_text_platform_interface.dart",
+    "package:speech_to_text_platform_interface/method_channel_speech_to_text.dart"
+  ];
+  var _handleCallbacks = dart.privateName(method_channel_speech_to_text, "_handleCallbacks");
+  var onTextRecognition = dart.privateName(speech_to_text_platform_interface, "SpeechToTextPlatform.onTextRecognition");
+  var onError = dart.privateName(speech_to_text_platform_interface, "SpeechToTextPlatform.onError");
+  var onStatus = dart.privateName(speech_to_text_platform_interface, "SpeechToTextPlatform.onStatus");
+  var onSoundLevel = dart.privateName(speech_to_text_platform_interface, "SpeechToTextPlatform.onSoundLevel");
+  speech_to_text_platform_interface.SpeechToTextPlatform = class SpeechToTextPlatform extends plugin_platform_interface.PlatformInterface {
+    get onTextRecognition() {
+      return this[onTextRecognition];
+    }
+    set onTextRecognition(value) {
+      this[onTextRecognition] = value;
+    }
+    get onError() {
+      return this[onError];
+    }
+    set onError(value) {
+      this[onError] = value;
+    }
+    get onStatus() {
+      return this[onStatus];
+    }
+    set onStatus(value) {
+      this[onStatus] = value;
+    }
+    get onSoundLevel() {
+      return this[onSoundLevel];
+    }
+    set onSoundLevel(value) {
+      this[onSoundLevel] = value;
+    }
+    static get instance() {
+      return speech_to_text_platform_interface.SpeechToTextPlatform._instance;
+    }
+    static set instance(instance) {
+      plugin_platform_interface.PlatformInterface.verifyToken(instance, speech_to_text_platform_interface.SpeechToTextPlatform._token);
+      speech_to_text_platform_interface.SpeechToTextPlatform._instance = instance;
+    }
+    hasPermission() {
+      dart.throw(new core.UnimplementedError.new("hasPermission() has not been implemented."));
+    }
+    initialize(opts) {
+      let debugLogging = opts && 'debugLogging' in opts ? opts.debugLogging : false;
+      let options = opts && 'options' in opts ? opts.options : null;
+      dart.throw(new core.UnimplementedError.new("initialize() has not been implemented."));
+    }
+    stop() {
+      dart.throw(new core.UnimplementedError.new("stop() has not been implemented."));
+    }
+    cancel() {
+      dart.throw(new core.UnimplementedError.new("cancel() has not been implemented."));
+    }
+    listen(opts) {
+      let localeId = opts && 'localeId' in opts ? opts.localeId : null;
+      let partialResults = opts && 'partialResults' in opts ? opts.partialResults : true;
+      let onDevice = opts && 'onDevice' in opts ? opts.onDevice : false;
+      let listenMode = opts && 'listenMode' in opts ? opts.listenMode : null;
+      let sampleRate = opts && 'sampleRate' in opts ? opts.sampleRate : 0;
+      dart.throw(new core.UnimplementedError.new("listen() has not been implemented."));
+    }
+    locales() {
+      dart.throw(new core.UnimplementedError.new("locales() has not been implemented."));
+    }
+  };
+  (speech_to_text_platform_interface.SpeechToTextPlatform.new = function() {
+    this[onTextRecognition] = null;
+    this[onError] = null;
+    this[onStatus] = null;
+    this[onSoundLevel] = null;
+    speech_to_text_platform_interface.SpeechToTextPlatform.__proto__.new.call(this, {token: speech_to_text_platform_interface.SpeechToTextPlatform._token});
+    ;
+  }).prototype = speech_to_text_platform_interface.SpeechToTextPlatform.prototype;
+  dart.addTypeTests(speech_to_text_platform_interface.SpeechToTextPlatform);
+  dart.addTypeCaches(speech_to_text_platform_interface.SpeechToTextPlatform);
+  dart.setMethodSignature(speech_to_text_platform_interface.SpeechToTextPlatform, () => ({
+    __proto__: dart.getMethods(speech_to_text_platform_interface.SpeechToTextPlatform.__proto__),
+    hasPermission: dart.fnType(dart.legacy(async.Future$(dart.legacy(core.bool))), []),
+    initialize: dart.fnType(dart.legacy(async.Future$(dart.legacy(core.bool))), [], {debugLogging: dart.dynamic, options: dart.legacy(core.List$(dart.legacy(speech_to_text_platform_interface.SpeechConfigOption)))}, {}),
+    stop: dart.fnType(dart.legacy(async.Future$(dart.void)), []),
+    cancel: dart.fnType(dart.legacy(async.Future$(dart.void)), []),
+    listen: dart.fnType(dart.legacy(async.Future$(dart.legacy(core.bool))), [], {listenMode: dart.legacy(core.int), localeId: dart.legacy(core.String), onDevice: dart.dynamic, partialResults: dart.dynamic, sampleRate: dart.dynamic}, {}),
+    locales: dart.fnType(dart.legacy(async.Future$(dart.legacy(core.List))), [])
+  }));
+  dart.setLibraryUri(speech_to_text_platform_interface.SpeechToTextPlatform, I[0]);
+  dart.setFieldSignature(speech_to_text_platform_interface.SpeechToTextPlatform, () => ({
+    __proto__: dart.getFields(speech_to_text_platform_interface.SpeechToTextPlatform.__proto__),
+    onTextRecognition: dart.fieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.String)]))),
+    onError: dart.fieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.String)]))),
+    onStatus: dart.fieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.String)]))),
+    onSoundLevel: dart.fieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.double)])))
+  }));
+  dart.defineLazy(speech_to_text_platform_interface.SpeechToTextPlatform, {
+    /*speech_to_text_platform_interface.SpeechToTextPlatform._token*/get _token() {
+      return new core.Object.new();
+    },
+    /*speech_to_text_platform_interface.SpeechToTextPlatform._instance*/get _instance() {
+      return new method_channel_speech_to_text.MethodChannelSpeechToText.new();
+    },
+    set _instance(_) {}
+  }, true);
+  method_channel_speech_to_text.MethodChannelSpeechToText = class MethodChannelSpeechToText extends speech_to_text_platform_interface.SpeechToTextPlatform {
+    hasPermission() {
+      return method_channel_speech_to_text._channel.invokeMethod(T.boolL(), "has_permission");
+    }
+    initialize(opts) {
+      let t0;
+      let debugLogging = opts && 'debugLogging' in opts ? opts.debugLogging : false;
+      let options = opts && 'options' in opts ? opts.options : null;
+      method_channel_speech_to_text._channel.setMethodCallHandler(dart.bind(this, _handleCallbacks));
+      let params = new (T.IdentityMapOfStringL$ObjectL()).from(["debugLogging", debugLogging]);
+      t0 = options;
+      t0 == null ? null : t0[$forEach](dart.fn(option => {
+        let t3, t2, t1;
+        t1 = params;
+        t2 = option.name;
+        t3 = option.value;
+        t1[$_set](t2, t3);
+        return t3;
+      }, T.SpeechConfigOptionLTodynamic()));
+      return method_channel_speech_to_text._channel.invokeMethod(T.boolL(), "initialize", params);
+    }
+    stop() {
+      return method_channel_speech_to_text._channel.invokeMethod(dart.void, "stop");
+    }
+    cancel() {
+      return method_channel_speech_to_text._channel.invokeMethod(dart.void, "cancel");
+    }
+    listen(opts) {
+      let localeId = opts && 'localeId' in opts ? opts.localeId : null;
+      let partialResults = opts && 'partialResults' in opts ? opts.partialResults : true;
+      let onDevice = opts && 'onDevice' in opts ? opts.onDevice : false;
+      let listenMode = opts && 'listenMode' in opts ? opts.listenMode : 0;
+      let sampleRate = opts && 'sampleRate' in opts ? opts.sampleRate : 0;
+      let listenParams = new (T.IdentityMapOfStringL$dynamic()).from(["partialResults", partialResults, "onDevice", onDevice, "listenMode", listenMode, "sampleRate", sampleRate]);
+      if (localeId != null) {
+        listenParams[$_set]("localeId", localeId);
+      }
+      return method_channel_speech_to_text._channel.invokeMethod(T.boolL(), "listen", listenParams);
+    }
+    locales() {
+      return method_channel_speech_to_text._channel.invokeMethod(T.ListL(), "locales");
+    }
+    [_handleCallbacks](call) {
+      return async.async(dart.dynamic, (function* _handleCallbacks() {
+        let t0, t0$, t0$0, t0$1;
+        switch (call.method) {
+          case "textRecognition":
+          {
+            if (T.StringL().is(call.arguments) && this.onTextRecognition != null) {
+              t0 = call.arguments;
+              this.onTextRecognition(T.StringL().as(t0));
+            }
+            break;
+          }
+          case "notifyError":
+          {
+            if (T.StringL().is(call.arguments) && this.onError != null) {
+              t0$ = call.arguments;
+              this.onError(T.StringL().as(t0$));
+            }
+            break;
+          }
+          case "notifyStatus":
+          {
+            if (T.StringL().is(call.arguments) && this.onStatus != null) {
+              t0$0 = call.arguments;
+              this.onStatus(T.StringL().as(t0$0));
+            }
+            break;
+          }
+          case "soundLevelChange":
+          {
+            if (T.doubleL().is(call.arguments) && this.onSoundLevel != null) {
+              t0$1 = call.arguments;
+              this.onSoundLevel(T.doubleL().as(t0$1));
+            }
+            break;
+          }
+          default:
+        }
+      }).bind(this));
+    }
+    processMethodCall(call) {
+      return async.async(dart.dynamic, (function* processMethodCall() {
+        return yield this[_handleCallbacks](call);
+      }).bind(this));
+    }
+  };
+  (method_channel_speech_to_text.MethodChannelSpeechToText.new = function() {
+    method_channel_speech_to_text.MethodChannelSpeechToText.__proto__.new.call(this);
+    ;
+  }).prototype = method_channel_speech_to_text.MethodChannelSpeechToText.prototype;
+  dart.addTypeTests(method_channel_speech_to_text.MethodChannelSpeechToText);
+  dart.addTypeCaches(method_channel_speech_to_text.MethodChannelSpeechToText);
+  dart.setMethodSignature(method_channel_speech_to_text.MethodChannelSpeechToText, () => ({
+    __proto__: dart.getMethods(method_channel_speech_to_text.MethodChannelSpeechToText.__proto__),
+    [_handleCallbacks]: dart.fnType(dart.legacy(async.Future), [dart.legacy(message_codec.MethodCall)]),
+    processMethodCall: dart.fnType(dart.legacy(async.Future), [dart.legacy(message_codec.MethodCall)])
+  }));
+  dart.setLibraryUri(method_channel_speech_to_text.MethodChannelSpeechToText, I[1]);
+  dart.defineLazy(method_channel_speech_to_text.MethodChannelSpeechToText, {
+    /*method_channel_speech_to_text.MethodChannelSpeechToText.textRecognitionMethod*/get textRecognitionMethod() {
+      return "textRecognition";
+    },
+    /*method_channel_speech_to_text.MethodChannelSpeechToText.notifyErrorMethod*/get notifyErrorMethod() {
+      return "notifyError";
+    },
+    /*method_channel_speech_to_text.MethodChannelSpeechToText.notifyStatusMethod*/get notifyStatusMethod() {
+      return "notifyStatus";
+    },
+    /*method_channel_speech_to_text.MethodChannelSpeechToText.soundLevelChangeMethod*/get soundLevelChangeMethod() {
+      return "soundLevelChange";
+    }
+  }, true);
+  var MethodChannel__binaryMessenger = dart.privateName(platform_channel, "MethodChannel._binaryMessenger");
+  var StandardMethodCodec_messageCodec = dart.privateName(message_codecs, "StandardMethodCodec.messageCodec");
+  var MethodChannel_codec = dart.privateName(platform_channel, "MethodChannel.codec");
+  var MethodChannel_name = dart.privateName(platform_channel, "MethodChannel.name");
+  dart.defineLazy(method_channel_speech_to_text, {
+    /*method_channel_speech_to_text._channel*/get _channel() {
+      return C[0] || CT.C0;
+    }
+  }, true);
+  var platform$ = dart.privateName(speech_to_text_platform_interface, "SpeechConfigOption.platform");
+  var name$ = dart.privateName(speech_to_text_platform_interface, "SpeechConfigOption.name");
+  var value$ = dart.privateName(speech_to_text_platform_interface, "SpeechConfigOption.value");
+  speech_to_text_platform_interface.SpeechConfigOption = class SpeechConfigOption extends core.Object {
+    get platform() {
+      return this[platform$];
+    }
+    set platform(value) {
+      super.platform = value;
+    }
+    get name() {
+      return this[name$];
+    }
+    set name(value) {
+      super.name = value;
+    }
+    get value() {
+      return this[value$];
+    }
+    set value(value) {
+      super.value = value;
+    }
+  };
+  (speech_to_text_platform_interface.SpeechConfigOption.new = function(platform, name, value) {
+    this[platform$] = platform;
+    this[name$] = name;
+    this[value$] = value;
+    ;
+  }).prototype = speech_to_text_platform_interface.SpeechConfigOption.prototype;
+  dart.addTypeTests(speech_to_text_platform_interface.SpeechConfigOption);
+  dart.addTypeCaches(speech_to_text_platform_interface.SpeechConfigOption);
+  dart.setLibraryUri(speech_to_text_platform_interface.SpeechConfigOption, I[0]);
+  dart.setFieldSignature(speech_to_text_platform_interface.SpeechConfigOption, () => ({
+    __proto__: dart.getFields(speech_to_text_platform_interface.SpeechConfigOption.__proto__),
+    platform: dart.finalFieldType(dart.legacy(core.String)),
+    name: dart.finalFieldType(dart.legacy(core.String)),
+    value: dart.finalFieldType(dart.dynamic)
+  }));
+  dart.trackLibraries("packages/speech_to_text_platform_interface/method_channel_speech_to_text.dart", {
+    "package:speech_to_text_platform_interface/method_channel_speech_to_text.dart": method_channel_speech_to_text,
+    "package:speech_to_text_platform_interface/speech_to_text_platform_interface.dart": speech_to_text_platform_interface
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["speech_to_text_platform_interface.dart","method_channel_speech_to_text.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAqDgC;;;;;;IACF;;;;;;IACC;;;;;;IACD;;;;;;;AAZgB;IAAS;wBAIZ;AACQ,MAA7B,wDAAY,QAAQ,EAAE;AACpB,MAApB,mEAAY,QAAQ;IACtB;;AAgBuE,MAArE,WAAM,gCAAmB;IAC3B;;UAiBK;UAA+C;AACgB,MAAlE,WAAM,gCAAmB;IAC3B;;AAa8D,MAA5D,WAAM,gCAAmB;IAC3B;;AAagE,MAA9D,WAAM,gCAAmB;IAC3B;;UA0BY;UACR;UACA;UACI;UACJ;AAC4D,MAA9D,WAAM,gCAAmB;IAC3B;;AAKiE,MAA/D,WAAM,gCAAmB;IAC3B;;;IApG8B;IACF;IACC;IACD;AArBH,4FAAa;;EAAO;;;;;;;;;;;;;;;;;;;;;MAEzB,6DAAM;YAAG;;MAED,gEAAS;YAAG;;;;;;ACZtC,YAAO,AAAS,gEAAmB;IACrC;;;UAIK;UAA+C;AACH,MAA/C,AAAS,sEAAqB;AAC1B,mBAAyB,6CAC3B,gBAAgB,YAAY;AAEkC,WAAhE,OAAO;mBAAP,OAAS,aAAQ,QAAC;;AAAW,mBAAM;aAAC,AAAO,MAAD;aAAS,AAAO,MAAD;QAAtB;;;AACnC,YAAO,AAAS,gEACd,cACA,MAAM;IAEV;;AAcE,YAAO,AAAS,gEAAa;IAC/B;;AAcE,YAAO,AAAS,gEAAa;IAC/B;;UA2BY;UACR;UACA;UACI;UACJ;AACmB,yBAAe,6CAClC,kBAAkB,cAAc,EAChC,YAAY,QAAQ,EACpB,cAAc,UAAU,EACxB,cAAc,UAAU;AAE1B,UAAY,QAAQ;AACiB,QAAnC,AAAY,YAAA,QAAC,YAAc,QAAQ;;AAErC,YAAO,AAAS,gEAAa,UAAU,YAAY;IACrD;;AAME,YAAO,AAAS,gEAAa;IAC/B;uBAEmC;AAAZ;;AAErB,gBAAQ,AAAK,IAAD;;;AAER,gBAAmB,eAAf,AAAK,IAAD,eAAgC;AACL,mBAAf,AAAK,IAAD;cAAtB,AAAiB,uBAAM;;AAEzB;;;;AAEA,gBAAmB,eAAf,AAAK,IAAD,eAAgC;AACf,oBAAf,AAAK,IAAD;cAAZ,AAAO,aAAM;;AAEf;;;;AAEA,gBAAmB,eAAf,AAAK,IAAD,eAAgC;AACd,qBAAf,AAAK,IAAD;cAAb,AAAQ,cAAM;;AAEhB;;;;AAEA,gBAAmB,eAAf,AAAK,IAAD,eAAgC;AACV,qBAAf,AAAK,IAAD;cAAjB,AAAY,kBAAM;;AAEpB;;;;MAGN;;sBAGoC;AAAZ;AACtB,cAAO,OAAM,uBAAiB,IAAI;MACpC;;;;;;EACF;;;;;;;;;;MA9IsB,6EAAqB;;;MACrB,yEAAiB;;;MACjB,0EAAkB;;;MAClB,8EAAsB;;;;;;;;;MARxB,sCAAQ;;;;;;;;IDQb;;;;;;IAGA;;;;;;IAGC;;;;;;;uEAEU,UAAe,MAAW;IAA1B;IAAe;IAAW;;EAAM","file":"../../../../../../../../D:/packages/speech_to_text_platform_interface/method_channel_speech_to_text.dart.lib.js"}');
+  // Exports:
+  return {
+    method_channel_speech_to_text: method_channel_speech_to_text,
+    speech_to_text_platform_interface: speech_to_text_platform_interface
+  };
+}));
+
+//# sourceMappingURL=method_channel_speech_to_text.dart.lib.js.map

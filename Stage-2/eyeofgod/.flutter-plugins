@@ -1,0 +1,23 @@
+# This is a generated file; do not edit or check into version control.
+camera=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\camera-0.5.8+17\\
+connectivity=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\connectivity-3.0.3\\
+connectivity_for_web=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\connectivity_for_web-0.4.0\\
+connectivity_macos=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\connectivity_macos-0.2.0\\
+flutter_bluetooth_serial=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\flutter_bluetooth_serial-0.2.2\\
+flutter_plugin_android_lifecycle=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\flutter_plugin_android_lifecycle-1.0.11\\
+flutter_tts=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\flutter_tts-3.0.0\\
+geocoder=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\geocoder-0.2.1\\
+geolocator=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\geolocator-6.2.1\\
+geolocator_web=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\geolocator_web-1.0.1\\
+google_maps_flutter=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\google_maps_flutter-0.5.33\\
+image_picker=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\image_picker-0.6.5+3\\
+location=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\location-3.2.4\\
+location_web=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\location_web-1.0.1\\
+native_device_orientation=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\native_device_orientation-1.0.0\\
+path_provider=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider-2.0.1\\
+path_provider_linux=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_linux-2.0.0\\
+path_provider_macos=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_macos-2.0.0\\
+path_provider_windows=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_windows-2.0.0\\
+sensors=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\sensors-2.0.0\\
+speech_to_text=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\speech_to_text-3.2.0\\
+tflite=C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\tflite-1.1.1\\

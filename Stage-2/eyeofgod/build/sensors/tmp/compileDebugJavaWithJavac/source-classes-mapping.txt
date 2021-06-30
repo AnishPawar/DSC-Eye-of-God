@@ -1,0 +1,7 @@
+io/flutter/plugins/sensors/SensorsPlugin.java
+ io.flutter.plugins.sensors.SensorsPlugin
+io/flutter/plugins/sensors/StreamHandlerImpl.java
+ io.flutter.plugins.sensors.StreamHandlerImpl
+ io.flutter.plugins.sensors.StreamHandlerImpl$1
+io/flutter/plugins/sensors/BuildConfig.java
+ io.flutter.plugins.sensors.BuildConfig

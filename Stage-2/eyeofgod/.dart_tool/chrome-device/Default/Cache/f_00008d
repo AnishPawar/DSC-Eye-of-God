@@ -1,0 +1,319 @@
+define(['dart_sdk'], (function load__packages__validate__expect_dart(dart_sdk) {
+  'use strict';
+  const core = dart_sdk.core;
+  const convert = dart_sdk.convert;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  var expect = Object.create(dart.library);
+  var validate = Object.create(dart.library);
+  var $isEmpty = dartx.isEmpty;
+  var $trim = dartx.trim;
+  var $length = dartx.length;
+  var $compareTo = dartx.compareTo;
+  var $containsKey = dartx.containsKey;
+  var $_get = dartx._get;
+  var $toString = dartx.toString;
+  var $replaceFirst = dartx.replaceFirst;
+  var $runtimeType = dartx.runtimeType;
+  var $replaceAll = dartx.replaceAll;
+  dart._checkModuleNullSafetyMode(false);
+  var T$ = {
+    StringL: () => (T$.StringL = dart.constFn(dart.legacy(core.String)))(),
+    VoidToStringL: () => (T$.VoidToStringL = dart.constFn(dart.fnType(T$.StringL(), [])))(),
+    IterableL: () => (T$.IterableL = dart.constFn(dart.legacy(core.Iterable)))(),
+    numL: () => (T$.numL = dart.constFn(dart.legacy(core.num)))(),
+    boolL: () => (T$.boolL = dart.constFn(dart.legacy(core.bool)))(),
+    ListL: () => (T$.ListL = dart.constFn(dart.legacy(core.List)))(),
+    MapL: () => (T$.MapL = dart.constFn(dart.legacy(core.Map)))(),
+    NoSuchMethodErrorL: () => (T$.NoSuchMethodErrorL = dart.constFn(dart.legacy(core.NoSuchMethodError)))(),
+    instanceCheckL: () => (T$.instanceCheckL = dart.constFn(dart.legacy(validate.instanceCheck)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.fn(expect._DEFAULT_IS_NULL_EX_MESSAGE, T$.VoidToStringL());
+    },
+    get C1() {
+      return C[1] = dart.fn(expect._DEFAULT_IS_TRUE_EX_MESSAGE, T$.VoidToStringL());
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: convert.JsonEncoder.prototype,
+        [JsonEncoder__toEncodable]: null,
+        [JsonEncoder_indent]: "  "
+      });
+    }
+  }, false);
+  var C = Array(3).fill(void 0);
+  var I = ["package:validate/validate.dart"];
+  expect._DEFAULT_IS_NULL_EX_MESSAGE = function _DEFAULT_IS_NULL_EX_MESSAGE() {
+    return "The validated object is null";
+  };
+  expect._DEFAULT_IS_TRUE_EX_MESSAGE = function _DEFAULT_IS_TRUE_EX_MESSAGE() {
+    return validate.Validate.DEFAULT_IS_TRUE_EX_MESSAGE;
+  };
+  expect.notNull = function notNull(T, object, opts) {
+    let message = opts && 'message' in opts ? opts.message : C[0] || CT.C0;
+    if (object == null) {
+      dart.throw(new core.ArgumentError.new(message()));
+    }
+    return object;
+  };
+  expect.isTrue = function isTrue(expression, opts) {
+    let message = opts && 'message' in opts ? opts.message : C[1] || CT.C1;
+    if (expression == null || expression === false) {
+      dart.throw(new core.ArgumentError.new(message()));
+    }
+    return expression;
+  };
+  var JsonEncoder__toEncodable = dart.privateName(convert, "JsonEncoder._toEncodable");
+  var JsonEncoder_indent = dart.privateName(convert, "JsonEncoder.indent");
+  validate.Validate = class Validate extends core.Object {
+    static isTrue(expression, message = "The validated expression is false") {
+      return expect.isTrue(expression, {message: dart.fn(() => message, T$.VoidToStringL())});
+    }
+    static notNull(T, object, message = "The validated object is null") {
+      return expect.notNull(dart.legacy(T), object, {message: dart.fn(() => message, T$.VoidToStringL())});
+    }
+    static notEmpty(value, message = "The validated value is empty") {
+      validate.Validate.notNull(dart.dynamic, value, message);
+      if (dart.dtest(dart.dload(value, 'isEmpty'))) {
+        dart.throw(new core.ArgumentError.new(message));
+      }
+      return value;
+    }
+    static notBlank(value, message = "The validated string is blank") {
+      validate.Validate.notNull(T$.StringL(), value, message);
+      if (T$.StringL().is(value) === false || value[$trim]()[$isEmpty]) {
+        dart.throw(new core.ArgumentError.new(message));
+      }
+      return value;
+    }
+    static noNullElements(iterable, message = "The validated array contains null element") {
+      validate.Validate.notNull(T$.IterableL(), iterable);
+      for (let x of iterable) {
+        if (x == null) {
+          dart.throw(new core.ArgumentError.new(message));
+        }
+      }
+      return iterable;
+    }
+    static validIndex(iterable, index, message = "The validated array index is invalid") {
+      validate.Validate.notNull(T$.IterableL(), iterable);
+      if (dart.notNull(index) < 0 || dart.notNull(index) >= dart.notNull(iterable[$length])) {
+        dart.throw(new core.RangeError.new(message));
+      }
+      return iterable;
+    }
+    static validState(expression, message = "The validated state is false") {
+      if (expression === false) {
+        dart.throw(new validate.IllegalStateError.new(message));
+      }
+    }
+    static matchesPattern(input, pattern, message = "The string does not match the pattern") {
+      if (pattern.hasMatch(input) === false) {
+        dart.throw(new core.ArgumentError.new(message));
+      }
+    }
+    static isEmail(input, message = "The string does not match the pattern") {
+      validate.Validate.matchesPattern(input, core.RegExp.new(validate.Validate.PATTERN_EMAIL), message);
+    }
+    static isPassword(input, message = "The string does not match the pattern") {
+      validate.Validate.matchesPattern(input, core.RegExp.new(validate.Validate.PATTERN_PW), message);
+    }
+    static isAlphaNumeric(input, message = "The string does not match the pattern") {
+      validate.Validate.matchesPattern(input, core.RegExp.new("^[a-zA-Z0-9öäüÖÄÜß]+$"), message);
+    }
+    static isHex(input, message = "The string does not match the pattern") {
+      validate.Validate.matchesPattern(input, core.RegExp.new(validate.Validate.PATTERN_HEX), message);
+    }
+    static isUUID(input, message = "The string does not match the pattern") {
+      validate.Validate.matchesPattern(input, core.RegExp.new(validate.Validate.PATTERN_UUID), message);
+    }
+    static inclusiveBetween(start, end, value, message = "The value is not in the specified inclusive range") {
+      if (dart.notNull(value[$compareTo](start)) < 0 || dart.notNull(value[$compareTo](end)) > 0) {
+        dart.throw(new core.ArgumentError.new(message));
+      }
+    }
+    static exclusiveBetween(start, end, value, message = "The value is not in the specified exclusive range") {
+      if (dart.notNull(value[$compareTo](start)) <= 0 || dart.notNull(value[$compareTo](end)) >= 0) {
+        dart.throw(new core.ArgumentError.new(message));
+      }
+    }
+    static isJson(value, message = "The value is neither a num, String, bool, Null, List or Map") {
+      validate.Validate.notNull(dart.dynamic, value, message);
+      if (!(T$.numL().is(value) || T$.StringL().is(value) || T$.boolL().is(value) || T$.ListL().is(value) || T$.MapL().is(value))) {
+        try {
+          dart.dsend(value, 'toJson', []);
+        } catch (e) {
+          let ex = dart.getThrown(e);
+          if (T$.NoSuchMethodErrorL().is(ex)) {
+            dart.throw(new core.ArgumentError.new(message));
+          } else
+            throw e;
+        }
+      }
+    }
+    static isKeyInMap(key, map, message = "The key '%key%' is not available for this structure: %structure%") {
+      validate.Validate.notNull(T$.MapL(), map, message);
+      if (!dart.test(map[$containsKey](key)) || map[$_get](key) == null) {
+        dart.throw(new core.ArgumentError.new(message[$replaceFirst]("%key%", dart.toString(key))[$replaceFirst]("%structure%", validate.Validate._PRETTYJSON.convert(map))));
+      }
+    }
+    static isInstance(instanceCheck, obj, message = "The instance of the validated object is invalid. Should have been %wish% but was %truth%") {
+      validate.Validate.notNull(T$.instanceCheckL(), instanceCheck);
+      if (!dart.test(instanceCheck.check(obj))) {
+        let wish = instanceCheck.type;
+        let truth = obj != null ? dart.toString(dart.runtimeType(obj)) : "null";
+        dart.throw(new core.ArgumentError.new(message[$replaceAll]("%wish%", wish)[$replaceAll]("%truth%", truth)));
+      }
+    }
+  };
+  (validate.Validate.new = function() {
+    ;
+  }).prototype = validate.Validate.prototype;
+  dart.addTypeTests(validate.Validate);
+  dart.addTypeCaches(validate.Validate);
+  dart.setLibraryUri(validate.Validate, I[0]);
+  dart.defineLazy(validate.Validate, {
+    /*validate.Validate.PATTERN_EMAIL*/get PATTERN_EMAIL() {
+      return "^([0-9a-zA-Z]([-.+\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
+    },
+    /*validate.Validate.PATTERN_PW*/get PATTERN_PW() {
+      return "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%?])[0-9a-zA-Z@#$%?]{8,15}$";
+    },
+    /*validate.Validate.PATTERN_ALPHANUMERIC*/get PATTERN_ALPHANUMERIC() {
+      return "^[a-zA-Z0-9öäüÖÄÜß]+$";
+    },
+    /*validate.Validate.PATTERN_HEX*/get PATTERN_HEX() {
+      return "^(0x[a-fA-F0-9]+)|([a-fA-F0-9])+$";
+    },
+    /*validate.Validate.PATTERN_UUID*/get PATTERN_UUID() {
+      return "^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}$";
+    },
+    /*validate.Validate.DEFAULT_IS_TRUE_EX_MESSAGE*/get DEFAULT_IS_TRUE_EX_MESSAGE() {
+      return "The validated expression is false";
+    },
+    /*validate.Validate.DEFAULT_IS_NULL_EX_MESSAGE*/get DEFAULT_IS_NULL_EX_MESSAGE() {
+      return "The validated object is null";
+    },
+    /*validate.Validate.DEFAULT_NOT_EMPTY_MESSAGE*/get DEFAULT_NOT_EMPTY_MESSAGE() {
+      return "The validated value is empty";
+    },
+    /*validate.Validate.DEFAULT_NOT_BLANK_EX_MESSAGE*/get DEFAULT_NOT_BLANK_EX_MESSAGE() {
+      return "The validated string is blank";
+    },
+    /*validate.Validate.DEFAULT_NO_NULL_ELEMENTS_ARRAY_EX_MESSAGE*/get DEFAULT_NO_NULL_ELEMENTS_ARRAY_EX_MESSAGE() {
+      return "The validated array contains null element";
+    },
+    /*validate.Validate.DEFAULT_VALID_INDEX_ARRAY_EX_MESSAGE*/get DEFAULT_VALID_INDEX_ARRAY_EX_MESSAGE() {
+      return "The validated array index is invalid";
+    },
+    /*validate.Validate.DEFAULT_VALID_STATE_EX_MESSAGE*/get DEFAULT_VALID_STATE_EX_MESSAGE() {
+      return "The validated state is false";
+    },
+    /*validate.Validate.DEFAULT_MATCHES_PATTERN_EX*/get DEFAULT_MATCHES_PATTERN_EX() {
+      return "The string does not match the pattern";
+    },
+    /*validate.Validate.DEFAULT_INCLUSIVE_BETWEEN_EX_MESSAGE*/get DEFAULT_INCLUSIVE_BETWEEN_EX_MESSAGE() {
+      return "The value is not in the specified inclusive range";
+    },
+    /*validate.Validate.DEFAULT_EXCLUSIVE_BETWEEN_EX_MESSAGE*/get DEFAULT_EXCLUSIVE_BETWEEN_EX_MESSAGE() {
+      return "The value is not in the specified exclusive range";
+    },
+    /*validate.Validate.DEFAULT_JSON_MESSAGE*/get DEFAULT_JSON_MESSAGE() {
+      return "The value is neither a num, String, bool, Null, List or Map";
+    },
+    /*validate.Validate.DEFAULT_KEY_IN_MAP_MESSAGE*/get DEFAULT_KEY_IN_MAP_MESSAGE() {
+      return "The key '%key%' is not available for this structure: %structure%";
+    },
+    /*validate.Validate.DEFAULT_IS_INSTANCE_OF_EX_MESSAGE*/get DEFAULT_IS_INSTANCE_OF_EX_MESSAGE() {
+      return "The instance of the validated object is invalid. Should have been %wish% but was %truth%";
+    },
+    /*validate.Validate._PRETTYJSON*/get _PRETTYJSON() {
+      return C[2] || CT.C2;
+    }
+  }, true);
+  var message$ = dart.privateName(validate, "ErrorMessage.message");
+  validate.ErrorMessage = class ErrorMessage extends core.Error {
+    get message() {
+      return this[message$];
+    }
+    set message(value) {
+      super.message = value;
+    }
+  };
+  (validate.ErrorMessage.new = function(message) {
+    this[message$] = message;
+    validate.ErrorMessage.__proto__.new.call(this);
+    ;
+  }).prototype = validate.ErrorMessage.prototype;
+  dart.addTypeTests(validate.ErrorMessage);
+  dart.addTypeCaches(validate.ErrorMessage);
+  dart.setLibraryUri(validate.ErrorMessage, I[0]);
+  dart.setFieldSignature(validate.ErrorMessage, () => ({
+    __proto__: dart.getFields(validate.ErrorMessage.__proto__),
+    message: dart.finalFieldType(dart.legacy(core.String))
+  }));
+  validate.IllegalStateError = class IllegalStateError extends validate.ErrorMessage {};
+  (validate.IllegalStateError.new = function(message) {
+    validate.IllegalStateError.__proto__.new.call(this, message);
+    ;
+  }).prototype = validate.IllegalStateError.prototype;
+  dart.addTypeTests(validate.IllegalStateError);
+  dart.addTypeCaches(validate.IllegalStateError);
+  dart.setLibraryUri(validate.IllegalStateError, I[0]);
+  var _strict = dart.privateName(validate, "_strict");
+  const _is_instanceCheck_default = Symbol('_is_instanceCheck_default');
+  validate.instanceCheck$ = dart.generic(T => {
+    var TL = () => (TL = dart.constFn(dart.legacy(T)))();
+    class instanceCheck extends core.Object {
+      check(obj) {
+        return TL().is(obj) && this[_strict] === false || this[_strict] === true && TL().is(obj) && dart.toString(dart.runtimeType(obj)) == this.type;
+      }
+      get type() {
+        let type = dart.toString(this.runtimeType)[$replaceFirst](core.RegExp.new("[^<]+<"), "")[$replaceFirst](core.RegExp.new(">$"), "");
+        return type;
+      }
+    }
+    (instanceCheck.new = function(opts) {
+      let strict = opts && 'strict' in opts ? opts.strict : true;
+      this[_strict] = strict;
+      ;
+    }).prototype = instanceCheck.prototype;
+    dart.addTypeTests(instanceCheck);
+    instanceCheck.prototype[_is_instanceCheck_default] = true;
+    dart.addTypeCaches(instanceCheck);
+    dart.setMethodSignature(instanceCheck, () => ({
+      __proto__: dart.getMethods(instanceCheck.__proto__),
+      check: dart.fnType(dart.legacy(core.bool), [dart.dynamic])
+    }));
+    dart.setGetterSignature(instanceCheck, () => ({
+      __proto__: dart.getGetters(instanceCheck.__proto__),
+      type: dart.legacy(core.String)
+    }));
+    dart.setLibraryUri(instanceCheck, I[0]);
+    dart.setFieldSignature(instanceCheck, () => ({
+      __proto__: dart.getFields(instanceCheck.__proto__),
+      [_strict]: dart.finalFieldType(dart.legacy(core.bool))
+    }));
+    return instanceCheck;
+  });
+  validate.instanceCheck = validate.instanceCheck$();
+  dart.addTypeTests(validate.instanceCheck, _is_instanceCheck_default);
+  dart.trackLibraries("packages/validate/expect.dart", {
+    "package:validate/expect.dart": expect,
+    "package:validate/validate.dart": validate
+  }, {
+    "package:validate/validate.dart": ["src/errors.dart", "src/utils.dart"]
+  }, '{"version":3,"sourceRoot":"","sources":["expect.dart","validate.dart","src/errors.dart","src/utils.dart"],"names":[],"mappings":"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","file":"../../../../../../../../D:/packages/validate/expect.dart.lib.js"}');
+  // Exports:
+  return {
+    expect: expect,
+    validate: validate
+  };
+}));
+
+//# sourceMappingURL=expect.dart.lib.js.map
