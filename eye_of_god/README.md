@@ -1,16 +1,27 @@
-# eye_of_god
+# How to run
 
-A new Flutter project.
+## Flutter Project:
 
-## Getting Started
+`eye_of_god`
 
-This project is a starting point for a Flutter application.
+## OpenCV CPP Setup:
 
-A few resources to get you started if this is your first Flutter project:
+Download OpenCV framework for iOS:https://docs.opencv.org/4.5.2/d5/da3/tutorial_ios_install.html
+Copy or create symlinks: opencv2.framework to native_opencv/ios
+Open Runner.xcworkspace and copy OpenCV framework to Runnner(.xcproject) and Runner(.xcworkspace).
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Google Maps Setup:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Paste Google Maps API Key ios/Runner/AppDelegate.swift: GMSServices.provideAPIKey("YOUR-API-KEY")
+
+## Xcode Setup:
+
+Change the development team in Targets/Runner/Signing&Capabilities to your Apple ID.
+Add a unique Bundle identifier
+
+## Model Files:
+
+Incase the model files ("*.tflite") are missing from eye_of_god/assets folder, download it from here and place it in eye_of_god/assets: https://drive.google.com/drive/folders/1UU3Cknl5Ns4tQJxeLE_aPkNXSMrRk8VF?usp=sharing
+
+Run the app using flutter run in the main directory of the project eye_of_god.
+
