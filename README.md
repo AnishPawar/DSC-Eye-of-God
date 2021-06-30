@@ -110,7 +110,7 @@ Run the app using `flutter run` in the main directory of the project `eye_of_god
 <h3><strong> For Outdoor Navigation:<h3></strong>
 
 1.	Turn on the belt for the app to pair automatically with it.
-2.	Run the Flutter Application on your Phone and mount it to a VR headset/in your breast pocket.
+2.	Run the Flutter Application on your Phone and mount it to a VR headset.
 3.	Press the button on the belt to activate speech input and dictate “Start Outdoor Navigation”.
 4.	Dictate your destination starting with "Take me to \<your destination here>".
 5.	Follow the commands dictated by the app to reach the destination.
@@ -122,7 +122,7 @@ Run the app using `flutter run` in the main directory of the project `eye_of_god
 <h3><strong>For Indoor Navigation:<h3></strong>
 
 1.	Turn on the belt for the app to pair automatically with it.
-2.	Run the Flutter Application on your Phone and mount it to a VR headset/in your breast pocket.
+2.	Run the Flutter Application on your Phone and mount it to a VR headset.
 3.	Press the button on the belt to activate speech input and dictate "Start Indoor Navigation".
 4.	Dictate the label of your destination starting with "Take me to \<destination label here>".
 5.	Follow the pulsating motor to reach your destination.
