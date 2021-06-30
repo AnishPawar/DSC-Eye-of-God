@@ -1,7 +1,7 @@
 <h1 align="center">Eye of God Stage-1</h1>
 
 <div align="center">
-<img src="Stage-1\Readme_Assets_Stage1\Eye_of_god.png"> 
+<img src="Readme_Assets_Stage1\Eye_of_god.png"> 
 </div>
 
 <br>
@@ -48,13 +48,13 @@ This innovative use of technology can help them feel more empowered and independ
 
 * Outdoor Navigation
 <div align="center">
-<img src="Stage-1\Readme_Assets_Stage1\Outdoor_Workflow.png"> 
+<img src="Readme_Assets_Stage1\Outdoor_Workflow.png"> 
 </div>
 <br>
 
 * Indoor Navigation
 <div align="center">
-<img src="Stage-1\Readme_Assets_Stage1\Indoor_Workflow.png"> 
+<img src="Readme_Assets_Stage1\Indoor_Workflow.png"> 
 </div>
 <br>
 
@@ -90,7 +90,7 @@ Compile and execute the `Arduino/Arduino_Controller.ino` file on a arduino board
 
 <h2><strong>Circuit Diagram</h2></strong>
 <div align="center">
-<img src="Stage-1\Readme_Assets_Stage1\Arduino_Circuit.JPG"> 
+<img src="Readme_Assets_Stage1\Arduino_Circuit.JPG"> 
 </div>
 <br>
 
@@ -129,12 +129,12 @@ Compile and execute the `Arduino/Arduino_Controller.ino` file on a arduino board
 
 * Front end
 <div align="center">
-<img src="Stage-1\Readme_Assets_Stage1\App_Screenshot.png"> 
+<img src="Readme_Assets_Stage1\App_Screenshot.png"> 
 </div>
 
 * Backend
 <div align="center">
-<img src="Stage-1\Readme_Assets_Stage1\Backend.png"> 
+<img src="Readme_Assets_Stage1\Backend.png"> 
 </div>
 
 ---
