@@ -144,13 +144,15 @@ Run the app using `flutter run` in the main directory of the project `eye_of_god
 <h2>References</h2>
 
 
-https://github.com/ialhashim/DenseDepth
+https://github.com/intel-isl/MiDaS
 
-https://youtu.be/P6AwCCvGC58
+https://medium.com/flutter-community/integrating-c-library-in-a-flutter-app-using-dart-ffi-38a15e16bc14
 
-https://github.com/am15h/object_detection_flutter
+https://stackoverflow.com/questions/62212942/how-to-use-opencv-with-dartffi-on-ios
 
-https://create.arduino.cc/projecthub/reanimationxp/how-to-multithread-an-arduino-protothreading-tutorial-dd2c37
+https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a
+
+https://medium.com/@am15hg/real-time-object-detection-using-new-tensorflow-lite-flutter-support-ea41263e801d
 
 
 <br>
@@ -159,7 +161,7 @@ https://create.arduino.cc/projecthub/reanimationxp/how-to-multithread-an-arduino
 
 <br>
 Link to the Demo Video:
-[Eye of God](https://youtu.be/heCKjZSQmQY)
+[Eye of God](https://youtu.be/2Sjfpl-V7BU)
 <br>
 ---
 
