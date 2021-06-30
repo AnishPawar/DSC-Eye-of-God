@@ -1,4 +1,4 @@
-<h1 align="center">Eye of God</h1>
+<h1 align="center">Eye of God Stage-1</h1>
 
 <div align="center">
 <img src="Readme_Assets\Eye_of_god.png"> 
