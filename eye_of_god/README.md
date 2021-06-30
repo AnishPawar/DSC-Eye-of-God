@@ -23,5 +23,5 @@ Add a unique Bundle identifier
 
 Incase the model files ("*.tflite") are missing from eye_of_god/assets folder, download it from here and place it in eye_of_god/assets: https://drive.google.com/drive/folders/1UU3Cknl5Ns4tQJxeLE_aPkNXSMrRk8VF?usp=sharing
 
-Run the app using flutter run in the main directory of the project eye_of_god.
+Run the app using flutter run in the main directory of the project `eye_of_god`.
 
