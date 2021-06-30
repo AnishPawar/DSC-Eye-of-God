@@ -6,13 +6,15 @@
 
 ## OpenCV CPP Setup:
 
-Download OpenCV framework for iOS:https://docs.opencv.org/4.5.2/d5/da3/tutorial_ios_install.html
+1. Download OpenCV framework for iOS:https://docs.opencv.org/4.5.2/d5/da3/tutorial_ios_install.html
 Copy or create symlinks: opencv2.framework to native_opencv/ios
-Open Runner.xcworkspace and copy OpenCV framework to Runnner(.xcproject) and Runner(.xcworkspace).
+
+2. Open Runner.xcworkspace and copy OpenCV framework to Runnner(.xcproject) and Runner(.xcworkspace).
 
 ## Google Maps Setup:
 
-Paste Google Maps API Key ios/Runner/AppDelegate.swift: GMSServices.provideAPIKey("YOUR-API-KEY")
+1. Paste Google Maps API Key ios/Runner/AppDelegate.swift: 
+  `GMSServices.provideAPIKey("YOUR-API-KEY")`
 
 ## Xcode Setup:
 
